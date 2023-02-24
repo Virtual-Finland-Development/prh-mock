@@ -1,0 +1,3 @@
+name: prh-mock
+runtime: dotnet
+description: Project for mock PRH API
