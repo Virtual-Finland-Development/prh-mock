@@ -1,0 +1,18 @@
+# Ignore stuff
+git_push.sh
+appveyor.yml
+
+# No solution
+*.sln
+
+# We just want models so no need for API or API Client
+src/*/Api/*
+src/*/Client/*.cs
+!src/*/Client/OpenAPIDateConverter.cs
+
+# No TY to docs
+/docs/*.md
+
+# Don't generate .gitignore or README.MD
+.gitignore
+README.md

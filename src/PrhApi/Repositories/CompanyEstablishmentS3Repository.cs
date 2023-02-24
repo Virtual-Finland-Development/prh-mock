@@ -2,16 +2,20 @@ using System.Net;
 using System.Text.Json;
 using Amazon.S3;
 using Amazon.S3.Model;
+using PrhApi.Models.CodeGen.Model;
+using PrhApi.Services;
 
-namespace company_establishment_api.Controllers;
+namespace PrhApi.Repositories;
 
-public class CompanyDetailsRepository : ICompanyDetailsRepository
+public class CompanyEstablishmentS3Repository : ICompanyEstablishmentRepository
 {
-    private readonly ILogger<CompanyDetailsRepository> _logger;
+    private readonly ILogger<CompanyEstablishmentS3Repository> _logger;
     private readonly string _prhBucketName;
     private readonly AmazonS3Client _s3Client;
 
-    public CompanyDetailsRepository(AmazonS3Client s3Client, ILogger<CompanyDetailsRepository> logger,
+    public CompanyEstablishmentS3Repository(
+        AmazonS3Client s3Client,
+        ILogger<CompanyEstablishmentS3Repository> logger,
         IConfiguration configuration)
     {
         _s3Client = s3Client;
@@ -20,40 +24,36 @@ public class CompanyDetailsRepository : ICompanyDetailsRepository
                          throw new InvalidOperationException("AWS bucket name key is missing");
     }
 
-    /*
-    
-       format of the data should be
-       {user-id}/company-details/{document-id}.json
-       
-       user-id = uuid of the user who created the company
-       document-id = business ID
-    
-    */
-
-    public async Task<CompanyDetails?> LoadWithKey(string key)
+    public async Task<EstablishmentResponse?> LoadWithKey(string key)
     {
         return await LoadWithObjectKey(key);
     }
 
-    public async Task<CompanyDetails?> LoadWithBusinessId(string businessId)
+    public async Task<EstablishmentResponse?> LoadWithBusinessId(string businessId)
     {
-        var response = await _s3Client.ListObjectsV2Async(new ListObjectsV2Request { BucketName = _prhBucketName });
-        var result = response.S3Objects.SingleOrDefault(x => x.Key.Contains(businessId));
+        var response = await _s3Client.ListObjectsV2Async(new ListObjectsV2Request
+        {
+            BucketName = _prhBucketName
+        });
+
+        var result =
+            response.S3Objects.SingleOrDefault(x => S3ObjectKey.GetBusinessIdFromS3ObjectKey(x.Key) == businessId);
 
         if (result is null) return null;
 
         return await LoadWithObjectKey(result.Key);
     }
 
-    public async Task<string?> Save(Guid userId, CompanyDetails details)
+    public async Task<string?> Save(Guid userId, string businessId, EstablishmentResponse details)
     {
         var request = new PutObjectRequest
         {
             BucketName = _prhBucketName,
-            Key = S3ObjectKeyBuilder.Build(userId, details.BusinessId),
+            Key = S3ObjectKey.BuildFrom(userId, businessId),
             ContentType = "application/json",
             ContentBody = JsonSerializer.Serialize(details)
         };
+        request.Metadata.Add("company-name", details.CompanyDetails.Name);
 
         try
         {
@@ -67,22 +67,22 @@ public class CompanyDetailsRepository : ICompanyDetailsRepository
             throw;
         }
 
-        return details.BusinessId;
+        return businessId;
     }
 
-    public async Task<List<CompanyDetails>> LoadUserCompanies(Guid userId)
+    public async Task<List<EstablishmentResponse>> LoadUserCompanies(Guid userId)
     {
         var listObjectsRequest = new ListObjectsV2Request
         {
             BucketName = _prhBucketName,
-            Prefix = $"{userId}/company-details/"
+            Prefix = $"{userId}/establishment/"
         };
 
         // TODO: Result only shows first 1000 entries without loop of some sort
         var result = await _s3Client.ListObjectsV2Async(listObjectsRequest);
         var keys = result.S3Objects.Select(s3Object => s3Object.Key).ToList();
 
-        var companies = new List<CompanyDetails>();
+        var companies = new List<EstablishmentResponse>();
 
         foreach (var key in keys)
         {
@@ -94,7 +94,43 @@ public class CompanyDetailsRepository : ICompanyDetailsRepository
         return companies;
     }
 
-    private async Task<CompanyDetails?> LoadWithObjectKey(string key)
+    public async Task<List<MinimalCompanyDetails>> LoadAll()
+    {
+        var response = await _s3Client.ListObjectsV2Async(new ListObjectsV2Request
+        {
+            BucketName = _prhBucketName
+        });
+
+        var result = response.S3Objects.Select(o => new MinimalCompanyDetails
+        {
+            BusinessId = S3ObjectKey.GetBusinessIdFromS3ObjectKey(o.Key),
+            Key = o.Key
+        }).ToList();
+
+        return result;
+    }
+
+    public async Task<Task> Delete(Guid userId, string businessId)
+    {
+        var request = new DeleteObjectRequest
+        {
+            BucketName = _prhBucketName,
+            Key = S3ObjectKey.BuildFrom(userId, businessId)
+        };
+
+        try
+        {
+            await _s3Client.DeleteObjectAsync(request);
+        }
+        catch (AmazonS3Exception e)
+        {
+            await Task.FromException<AmazonS3Exception>(e);
+        }
+
+        return Task.CompletedTask;
+    }
+
+    private async Task<EstablishmentResponse?> LoadWithObjectKey(string key)
     {
         var request = new GetObjectRequest
         {
@@ -121,7 +157,7 @@ public class CompanyDetailsRepository : ICompanyDetailsRepository
             throw;
         }
 
-        var responseObject = JsonSerializer.Deserialize<CompanyDetails>(contents);
+        var responseObject = JsonSerializer.Deserialize<EstablishmentResponse>(contents);
         return responseObject;
     }
 }

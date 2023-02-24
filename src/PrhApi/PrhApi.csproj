@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AWSSDK.S3" Version="3.7.103.11"/>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.3"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="..\.dockerignore">
+            <Link>.dockerignore</Link>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Models"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\PrhApi.Models.CodeGen\PrhApi.Models.CodeGen.csproj"/>
+        <ProjectReference Include="..\PrhMock.Infrasturcure.Api.CodeGen\PrhMock.Infrasturcure.Api.CodeGen.csproj"/>
+        <ProjectReference Include="..\PrhMock.Infrasturcure.Productizer.CodeGen\PrhMock.Infrasturcure.Productizer.CodeGen.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="PrhMock.Infrasturcure.Api.CodeGen">
+            <HintPath>bin\Debug\net7.0\PrhMock.Infrasturcure.Api.CodeGen.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+</Project>

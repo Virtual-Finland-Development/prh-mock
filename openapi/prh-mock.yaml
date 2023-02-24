@@ -1,0 +1,533 @@
+openapi: 3.0.1
+x-stoplight:
+  id: 287485cf1625a
+info:
+  title: PRH mock API
+  version: '1.0'
+  description: API definition for PRH mock API
+  contact:
+    name: Lassi Patanen
+    email: lassi.patanen@gofore.com
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /NonListedCompany/Establishment:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstablishmentResponse'
+      operationId: get-NonListedCompany-Establishment
+  /NonListedCompany/BeneficialOwners:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+      operationId: get-non-listed-company-beneficail-owners
+    parameters: []
+  /NonListedCompany/SignatoryRights:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+      operationId: get-NonListedCompany-Signature
+    parameters: []
+  /companies:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListCompaniesResponse'
+      operationId: get-companies
+      description: List companies
+  '/companies/{businessId}':
+    parameters:
+      - schema:
+          type: string
+        name: businessId
+        in: path
+        required: true
+        description: Y-tunnus
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+      operationId: get-companies-businessId
+      description: Get company establishment details
+  '/users/{userId}/companies':
+    parameters:
+      - schema:
+          type: string
+        name: userId
+        in: path
+        required: true
+        description: User identifier in Guid format
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EstablishmentResponse'
+      operationId: get-users-userId-companies
+      description: List companies founded by user
+    post:
+      summary: ''
+      operationId: post-users-userId-companies
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                example: 2521971-1
+      description: Create new company
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EstablishmentResponse'
+        description: Request body for creating new company
+  '/users/{userId}/companies/{businessId}':
+    parameters:
+      - schema:
+          type: string
+        name: userId
+        in: path
+        required: true
+        description: User identifier in Guid format
+      - schema:
+          type: string
+        name: businessId
+        in: path
+        required: true
+        description: Y-tunnus
+    patch:
+      summary: ''
+      operationId: patch-users-userId-companies-businessId
+      responses:
+        '200':
+          description: OK
+      description: Update company details
+    delete:
+      summary: ''
+      operationId: delete-users-userId-companies-businessId
+      responses:
+        '200':
+          description: OK
+      description: Delete company
+components:
+  schemas:
+    Auditor:
+      type: object
+      x-examples:
+        Example 1:
+          companyName: ''
+          nationalIdentifier: ''
+      properties:
+        companyName:
+          type: string
+          maxLength: 250
+        nationalIdentifier:
+          type: string
+          maxLength: 40
+      required:
+        - companyName
+        - nationalIdentifier
+    BoardMember:
+      type: object
+      x-examples:
+        Example 1:
+          boardMemberRole: CHAIRPERSON
+          givenName: string
+          middleNames: string
+          lastName: string
+          dateOfBirth: '2019-08-24T14:15:22Z'
+          nationality: str
+      properties:
+        role:
+          type: string
+        givenName:
+          type: string
+          maxLength: 250
+        middleNames:
+          type: string
+          maxLength: 250
+        lastName:
+          type: string
+          maxLength: 250
+        dateOfBirth:
+          type: string
+          format: date-time
+        nationality:
+          type: string
+          minLength: 3
+          maxLength: 3
+      required:
+        - role
+        - givenName
+        - middleNames
+        - lastName
+        - dateOfBirth
+        - nationality
+    CompanyAddress:
+      type: object
+      x-examples:
+        Example 1:
+          fullAddress: ''
+          thoroughfare: ''
+          locatorDesignator: ''
+          locatorName: ''
+          addressArea: ''
+          postCode: ''
+          postName: ''
+          poBox: ''
+          adminUnitLevel1: ''
+          adminUnitLevel2: ''
+      properties:
+        fullAddress:
+          type: string
+          maxLength: 250
+        thoroughfare:
+          type: string
+          maxLength: 40
+        locatorDesignator:
+          type: string
+          maxLength: 10
+        locatorName:
+          type: string
+          maxLength: 40
+        addressArea:
+          type: string
+          maxLength: 40
+        postCode:
+          type: string
+          maxLength: 10
+        postName:
+          type: string
+          maxLength: 40
+        poBox:
+          type: string
+          maxLength: 10
+        adminUnitLevel1:
+          type: string
+          minLength: 3
+          maxLength: 3
+        adminUnitLevel2:
+          type: string
+          maxLength: 40
+      required:
+        - fullAddress
+    CompanyDetails:
+      type: object
+      x-examples:
+        Example 1:
+          name: ''
+          alternativeName: ''
+          foundingDate: ''
+          industrySector: ''
+          shareCapital: ''
+          settlementDeposit: ''
+          settlementDate: ''
+          countryOfResidence: ''
+      properties:
+        name:
+          type: string
+          maxLength: 250
+        alternativeName:
+          type: string
+          maxLength: 250
+        foundingDate:
+          type: string
+          format: date-time
+        industrySector:
+          type: string
+        shareCapital:
+          type: number
+        settlementDeposit:
+          type: number
+        settlementDate:
+          type: string
+          format: date-time
+        countryOfResidence:
+          type: string
+          maxLength: 3
+          minLength: 3
+      required:
+        - name
+        - foundingDate
+        - industrySector
+        - shareCapital
+    EstablishmentResponse:
+      title: NonListedCompanyEstablishmentResponse
+      x-stoplight:
+        id: dc9b55fadcd90
+      type: object
+      properties:
+        registrant:
+          $ref: '#/components/schemas/Registrant'
+        companyDetails:
+          $ref: '#/components/schemas/CompanyDetails'
+        shareSeries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShareSeries'
+        companyAddress:
+          $ref: '#/components/schemas/CompanyAddress'
+        managingDirectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManagingDirector'
+        boardMembers:
+          type: array
+          items:
+            $ref: '#/components/schemas/BoardMember'
+        auditor:
+          $ref: '#/components/schemas/Auditor'
+    ManagingDirector:
+      type: object
+      x-examples:
+        Example 1:
+          role: ''
+          givenName: ''
+          middleNames: ''
+          lastName: ''
+          dateOfBirth: ''
+          nationality: ''
+      properties:
+        role:
+          type: string
+        givenName:
+          type: string
+          maxLength: 250
+        middleNames:
+          type: string
+          maxLength: 250
+        lastName:
+          type: string
+          maxLength: 250
+        dateOfBirth:
+          type: string
+          format: date-time
+        nationality:
+          type: string
+          minLength: 3
+          maxLength: 3
+      required:
+        - role
+        - givenName
+        - middleNames
+        - lastName
+        - dateOfBirth
+        - nationality
+    Ownership:
+      title: Ownership
+      x-stoplight:
+        id: d8squwfh404og
+      type: object
+      properties:
+        shareSeries:
+          type: string
+        quantity:
+          type: integer
+      required:
+        - shareSeries
+        - quantity
+    Registrant:
+      type: object
+      x-examples:
+        Example 1:
+          givenName: ''
+          lastName: ''
+          email: ''
+          phoneNumber: ''
+      properties:
+        givenName:
+          type: string
+          maxLength: 250
+        lastName:
+          type: string
+          maxLength: 250
+        email:
+          type: string
+          format: email
+        phoneNumber:
+          type: string
+      required:
+        - givenName
+        - lastName
+        - email
+        - phoneNumber
+    ShareSeries:
+      type: object
+      x-examples:
+        Example 1:
+          shareSeriesClass: ''
+          numberOfShares: ''
+          shareValues: ''
+      x-stoplight:
+        id: 0233acac0402c
+      properties:
+        shareSeriesClass:
+          type: string
+        numberOfShares:
+          type: integer
+        shareValues:
+          type: number
+      required:
+        - shareSeriesClass
+        - numberOfShares
+        - shareValues
+    Shareholder:
+      title: Shareholder
+      x-stoplight:
+        id: 3kph8jvzi3tnc
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 250
+        ownerships:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ownership'
+      required:
+        - name
+    SigningRights:
+      title: SigningRights
+      x-stoplight:
+        id: u9059b3v2wctw
+      type: object
+      properties:
+        personalId:
+          type: string
+          maxLength: 40
+        givenName:
+          type: string
+          maxLength: 250
+        middleNames:
+          type: string
+          maxLength: 250
+        lastName:
+          type: string
+          maxLength: 250
+        dateOfBirth:
+          type: string
+          format: date-time
+        nationality:
+          type: string
+          minLength: 3
+          maxLength: 3
+        fullAddress:
+          type: string
+          maxLength: 250
+        thoroughfare:
+          type: string
+          maxLength: 40
+        locatorDesignator:
+          type: string
+          maxLength: 10
+        locatorName:
+          type: string
+          maxLength: 40
+        addressArea:
+          type: string
+          maxLength: 40
+        postCode:
+          type: string
+          maxLength: 10
+        postName:
+          type: string
+          maxLength: 40
+        poBox:
+          type: string
+          maxLength: 10
+        adminUnitLevel1:
+          type: string
+          minLength: 3
+          maxLength: 3
+        adminUnitLevel2:
+          type: string
+          maxLength: 40
+      required:
+        - givenName
+        - middleNames
+        - lastName
+        - dateOfBirth
+        - nationality
+        - fullAddress
+    BeneficialOwnerShareSeries:
+      title: BeneficialOwnerShareSeries
+      x-stoplight:
+        id: 55obmds34oygp
+      type: object
+      properties:
+        shareSeriesClass:
+          type: string
+        numberOfShares:
+          type: integer
+        votesPerShare:
+          type: integer
+      required:
+        - shareSeriesClass
+        - numberOfShares
+        - votesPerShare
+    SignatoryRightsResponse:
+      title: SignatoryRightsResponse
+      x-stoplight:
+        id: 2mzvgigao2mou
+      type: object
+      properties:
+        signingRights:
+          $ref: '#/components/schemas/SigningRights'
+    BeneficialOwnersResponse:
+      title: BeneficialOwnersResponse
+      x-stoplight:
+        id: 05m3bny6dbiuc
+      type: object
+      properties:
+        shareSeries:
+          $ref: '#/components/schemas/BeneficialOwnerShareSeries'
+        shareholders:
+          $ref: '#/components/schemas/Shareholder'
+        ownership:
+          $ref: '#/components/schemas/Ownership'
+    ListCompaniesResponse:
+      title: ListCompaniesResponse
+      x-stoplight:
+        id: 4miwrnaela2dk
+      type: array
+      items:
+        $ref: '#/components/schemas/MinimalCompanyDetails'
+    MinimalCompanyDetails:
+      title: MinimalCompanyDetails
+      x-stoplight:
+        id: 1280a7kxfvy2c
+      type: object
+      properties:
+        businessId:
+          type: string
+        key:
+          type: string

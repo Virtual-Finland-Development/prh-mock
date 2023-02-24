@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrhApi", "PrhApi\PrhApi.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrhApi.UnitTests", "PrhApi.UnitTests\PrhApi.UnitTests.csproj", "{0A4AA5E1-5A3E-486E-BE0B-3BAD3515A1A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrhApi.Models.CodeGen", "PrhApi.Models.CodeGen\PrhApi.Models.CodeGen.csproj", "{24EA86D1-E1F5-4F97-9ACE-78C60630487C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{0A4AA5E1-5A3E-486E-BE0B-3BAD3515A1A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A4AA5E1-5A3E-486E-BE0B-3BAD3515A1A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A4AA5E1-5A3E-486E-BE0B-3BAD3515A1A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24EA86D1-E1F5-4F97-9ACE-78C60630487C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24EA86D1-E1F5-4F97-9ACE-78C60630487C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24EA86D1-E1F5-4F97-9ACE-78C60630487C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24EA86D1-E1F5-4F97-9ACE-78C60630487C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
