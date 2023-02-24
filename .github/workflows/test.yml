@@ -1,0 +1,44 @@
+name: Run tests
+
+on:
+  pull_request
+
+env:
+  PULUMI_ORGANIZATION: virtualfinland
+  PULUMI_STACK: dev
+  
+jobs:
+  preview-pulumi:
+    name: Preview Pulumi
+    runs-on: ubuntu-latest
+    env:
+      PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN}}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 6.0.x
+      - name: Restore dependencies
+        run: dotnet restore src/PrhMock.sln
+      - name: Build
+        run: dotnet build src/PrhMock.sln --no-restore -o deployment/release
+      - name: Test
+        run: dotnet test deployment/release/PrhApi.UnitTests.dll --verbosity normal
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-region: ${{ secrets.AWS_REGION }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Install Pulumi CLI
+        uses: pulumi/setup-pulumi@v2
+      - name: Select Pulumi stack
+        working-directory: ./deployment
+        run: pulumi stack select ${{ env.PULUMI_ORGANIZATION}}/${{ env.PULUMI_STACK }}
+      - name: Set artifact path
+        working-directory: ./deployment
+        run: pulumi config set artifactPath release/
+      - name: Run Pulumi deployment
+        working-directory: ./deployment
+        run: pulumi preview
