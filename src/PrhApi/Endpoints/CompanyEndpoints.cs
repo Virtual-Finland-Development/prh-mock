@@ -11,7 +11,7 @@ public static class CompanyEndpoints
         app.MapGet("companies/{businessId}", GetCompanyDetails).Produces<EstablishmentResponse>().Produces(404);
         app.MapGet("users/{userId:guid}/companies", GetAllUserCompanies);
         app.MapPost("users/{userId:guid}/companies", CreateCompany);
-        app.MapPatch("users/{userId:guid}/companies/{businessId}", UpdateCompany).Produces(204);
+        app.MapMethods("users/{userId:guid}/companies/{businessId}", new[] { "PATCH" }, UpdateCompany).Produces(204);
         app.MapDelete("users/{userId:guid}/companies/{businessId}", DeleteCompany).Produces(204);
     }
 

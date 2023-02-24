@@ -34,7 +34,7 @@ public static partial class FinnishBusinessId
         // Check that the business ID is exactly 9 characters long
         if (businessId.Length != 9) return false;
 
-        var pattern = BusinessIdRegex();
+        var pattern = new Regex("\\d{7}-\\d");
         if (!pattern.Match(businessId).Success) return false;
 
         // Calculate the checksum and compare it to the last digit of the ID
@@ -45,7 +45,4 @@ public static partial class FinnishBusinessId
 
         return checksum == digits[7];
     }
-
-    [GeneratedRegex("\\d{7}-\\d")]
-    private static partial Regex BusinessIdRegex();
 }
