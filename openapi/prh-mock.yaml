@@ -1,6 +1,4 @@
 openapi: 3.0.1
-x-stoplight:
-  id: 287485cf1625a
 info:
   title: PRH mock API
   version: '1.0'
@@ -10,11 +8,14 @@ info:
     email: lassi.patanen@gofore.com
 servers:
   - url: 'http://localhost:3000'
+tags:
+  - name: productizer
+  - name: prh-api
 paths:
   /NonListedCompany/Establishment:
-    get:
-      summary: Your GET endpoint
-      tags: []
+    post:
+      summary: ''
+      operationId: post-NonListedCompany-Establishment
       responses:
         '200':
           description: OK
@@ -22,29 +23,58 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EstablishmentResponse'
-      operationId: get-NonListedCompany-Establishment
+      description: Get non listed company establishment details
+      tags:
+        - productizer
+  /NonListedCompany/Establishment/Write:
+    post:
+      summary: ''
+      operationId: post-NonListedCompany-Establishment-Write
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstablishmentResponse'
+      description: Write non listed company establishment details
+      tags:
+        - productizer
   /NonListedCompany/BeneficialOwners:
-    get:
-      summary: Your GET endpoint
-      tags: []
+    parameters: []
+    post:
+      summary: ''
+      operationId: post-NonListedCompany-BeneficialOwners
       responses:
         '200':
           description: OK
-      operationId: get-non-listed-company-beneficail-owners
-    parameters: []
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BeneficialOwnersResponse'
+      tags:
+        - productizer
+      description: Get company beneficial owners details
   /NonListedCompany/SignatoryRights:
-    get:
-      summary: Your GET endpoint
-      tags: []
+    parameters: []
+    post:
+      summary: ''
+      operationId: post-NonListedCompany-SignatoryRights
       responses:
         '200':
           description: OK
-      operationId: get-NonListedCompany-Signature
-    parameters: []
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignatoryRightsResponse'
+      tags:
+        - productizer
+      description: Get company signatory rights details
   /companies:
     get:
       summary: Your GET endpoint
-      tags: []
+      tags:
+        - prh-api
       responses:
         '200':
           description: OK
@@ -64,7 +94,8 @@ paths:
         description: Y-tunnus
     get:
       summary: Your GET endpoint
-      tags: []
+      tags:
+        - prh-api
       responses:
         '200':
           description: OK
@@ -80,7 +111,8 @@ paths:
         description: User identifier in Guid format
     get:
       summary: Your GET endpoint
-      tags: []
+      tags:
+        - prh-api
       responses:
         '200':
           description: OK
@@ -110,6 +142,8 @@ paths:
             schema:
               $ref: '#/components/schemas/EstablishmentResponse'
         description: Request body for creating new company
+      tags:
+        - prh-api
   '/users/{userId}/companies/{businessId}':
     parameters:
       - schema:
@@ -131,6 +165,8 @@ paths:
         '200':
           description: OK
       description: Update company details
+      tags:
+        - prh-api
     delete:
       summary: ''
       operationId: delete-users-userId-companies-businessId
@@ -138,6 +174,8 @@ paths:
         '200':
           description: OK
       description: Delete company
+      tags:
+        - prh-api
 components:
   schemas:
     Auditor:

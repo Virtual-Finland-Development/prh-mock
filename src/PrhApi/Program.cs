@@ -38,5 +38,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapCompanyEndpoints();
+app.MapProductizerEndpoints();
 
 app.Run();
