@@ -17,9 +17,9 @@ jobs:
         with:
           dotnet-version: 6.0.x
       - name: Restore dependencies
-        run: dotnet restore src/PrhMock
+        run: dotnet restore src/PrhMock.sln
       - name: Build
-        run: dotnet build src/PrhMock --no-restore
+        run: dotnet build src/PrhMock.sln --no-restore
       - name: Publish
         run: dotnet publish src/PrhApi/PrhApi.csproj -c Release -o release --nologo
       - name: Upload build artifact
