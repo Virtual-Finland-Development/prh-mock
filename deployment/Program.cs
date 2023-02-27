@@ -51,45 +51,43 @@ return await Deployment.RunAsync(() =>
         Tags = tags
     });
 
-    var s3BucketPolicyDocument = Output.Format($@"
-        {{
-            ""Version"": ""2012-10-17"",
-            ""Statement"": [
-                {{
-                    ""Effect"": ""Allow"",
-                    ""Action"": [
-                        ""s3:ListBucket"",
-                        ""s3:PutObject"",
-                        ""s3:GetObject"",
-                        ""s3:DeleteObject""
-                    ],
-                    ""Resource"": [
-                        ""{bucket.Arn}"",
-                        ""{bucket.Arn}/*""
-                    ]
-                }}
-            ]
-        }}
-    ");
-
     var s3BucketPolicy = new Policy($"{projectName}-s3-policy-{environment}", new PolicyArgs
     {
         Description = "Access policy for S3 bucket",
-        PolicyDocument = s3BucketPolicyDocument,
+        PolicyDocument = Output.Format($@"
+            {{
+                ""Statement"": [
+                    {{
+                        ""Action"": [
+                            ""s3:ListBucket"",
+                            ""s3:PutObject"",
+                            ""s3:GetObject"",
+                            ""s3:DeleteObject""
+                        ],
+                        ""Effect"": ""Allow"",
+                        ""Resource"": [
+                            ""{bucket.Arn}"",
+                            ""{bucket.Arn}/*""
+                        ]
+                    }}
+                ],
+                ""Version"": ""2012-10-17""
+            }}
+        "),
         Tags = tags
     });
 
     var s3RolePolicyAttachment = new RolePolicyAttachment($"{projectName}-s3-role-attachment-{environment}",
         new RolePolicyAttachmentArgs
         {
-            Role = Output.Format($"{role.Name}"),
+            Role = role.Name,
             PolicyArn = s3BucketPolicy.Arn
         });
     
     var lambdaRolePolicyAttachment = new RolePolicyAttachment($"{projectName}-lambda-role-attachment-{environment}",
         new RolePolicyAttachmentArgs
         {
-            Role = Output.Format($"{role.Name}"),
+            Role = role.Name,
             PolicyArn = ManagedPolicy.AWSLambdaBasicExecutionRole.ToString()
         });
 
@@ -119,20 +117,6 @@ return await Deployment.RunAsync(() =>
         AuthorizationType = "NONE"
     });
 
-
-    
-    /*
-    var addPermissionsCommand = new Command($"{projectName}-add-permissions-command-{environment}", new CommandArgs
-        {
-            Create = Output.Format(
-                $"aws lambda add-permission --function-name {lambdaFunction.Arn} --action lambda:InvokeFunctionUrl --principal '*' --function-url-auth-type NONE --statement-id FunctionUrlAllowAccess")
-        }, new CustomResourceOptions
-        {
-            DeleteBeforeReplace = true,
-            DependsOn = new InputList<Resource> { lambdaFunction }
-        }
-    );*/
-    
     var command = new Command($"{projectName}-add-permissions-command-{environment}", new CommandArgs
         {
             Create = Output.Format(
@@ -140,10 +124,7 @@ return await Deployment.RunAsync(() =>
         }, new CustomResourceOptions
         {
             DeleteBeforeReplace = true,
-            DependsOn = new InputList<Resource>
-            {
-                lambdaFunction
-            }
+            DependsOn = new InputList<Resource> { lambdaFunction }
         }
     );
     
