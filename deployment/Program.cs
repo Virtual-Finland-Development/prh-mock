@@ -79,14 +79,14 @@ return await Deployment.RunAsync(() =>
     var s3RolePolicyAttachment = new RolePolicyAttachment($"{projectName}-s3-role-attachment-{environment}",
         new RolePolicyAttachmentArgs
         {
-            Role = Output.Format($"{role.Name}"),
+            Role = role.Arn,
             PolicyArn = s3BucketPolicy.Arn
         });
     
     var lambdaRolePolicyAttachment = new RolePolicyAttachment($"{projectName}-lambda-role-attachment-{environment}",
         new RolePolicyAttachmentArgs
         {
-            Role = Output.Format($"{role.Name}"),
+            Role = role.Arn,
             PolicyArn = ManagedPolicy.AWSLambdaBasicExecutionRole.ToString()
         });
 
