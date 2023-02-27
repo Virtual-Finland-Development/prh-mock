@@ -1,0 +1,38 @@
+<div class="content">
+  <p>Use the form below to create new company</p>
+</div>
+
+<form>
+  <div class="field">
+    <label for="businessId" class="label">Business ID</label>
+    <div class="control">
+      <input
+        type="text"
+        class="input"
+        id="businessId"
+        name="businessId"
+        [(ngModel)]="company.businessId"
+      />
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="companyName" class="label">Name</label>
+    <div class="control">
+      <input
+        type="text"
+        class="input"
+        id="companyName"
+        name="companyName"
+        [(ngModel)]="company.name"
+      />
+    </div>
+  </div>
+
+  <a
+    #saveCompanyButton
+    class="button is-primary"
+    (click)="saveCompany(company, $event)"
+    >Save</a
+  >
+</form>

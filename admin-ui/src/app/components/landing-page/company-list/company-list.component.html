@@ -1,0 +1,21 @@
+<div class="content">
+  <p>List of all companies created by users</p>
+</div>
+
+<ul>
+  <li *ngFor="let company of companies">
+    <div class="box p-2 mb-2 is-flex is-flex-direction-row">
+      <span class="is-flex is-align-self-flex-start is-flex-grow-1">
+        <a href="company/{{ company.name }}">
+          {{ company.name }}
+        </a>
+      </span>
+
+      <div class="icon-text is-flex is-align-self-flex-end">
+        <span class="icon" (click)="deleteCompany(company.name)">
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </span>
+      </div>
+    </div>
+  </li>
+</ul>

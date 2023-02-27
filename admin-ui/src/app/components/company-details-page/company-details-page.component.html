@@ -1,0 +1,16 @@
+<div class="section">
+  <div class="container" *ngIf="!company">
+    <span>Loading...</span>
+  </div>
+
+  <div class="container">
+    <div class="hero">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title is-1">{{ company.name }}</h1>
+          <h2 class="subtitle is-4">{{ company.businessId }}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
