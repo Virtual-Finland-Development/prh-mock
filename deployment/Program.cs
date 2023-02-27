@@ -102,7 +102,7 @@ return await Deployment.RunAsync(() =>
             Variables =
             {
                 { "ASPNETCORE_ENVIRONMENT", environment },
-                { "Aws:PrhBucketName", bucket.BucketName }
+                { "PrhBucketName", bucket.BucketName }
             }
         },
         Code = new FileArchive(artifactPath),

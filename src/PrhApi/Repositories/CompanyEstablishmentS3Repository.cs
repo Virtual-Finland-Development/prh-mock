@@ -20,7 +20,7 @@ public class CompanyEstablishmentS3Repository : ICompanyEstablishmentRepository
     {
         _s3Client = s3Client;
         _logger = logger;
-        _prhBucketName = configuration.GetSection("Aws:PrhBucketName").Value ??
+        _prhBucketName = configuration.GetSection("PrhBucketName").Value ??
                          throw new InvalidOperationException("AWS bucket name key is missing");
     }
 
