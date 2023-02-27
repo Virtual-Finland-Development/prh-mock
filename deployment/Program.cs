@@ -54,8 +54,7 @@ return await Deployment.RunAsync(() =>
     var s3BucketPolicy = new Policy($"{projectName}-s3-policy-{environment}", new PolicyArgs
     {
         Description = "Access policy for S3 bucket",
-        PolicyDocument = Output.Format($@"
-            {{
+        PolicyDocument = Output.Format($@"{{
                 ""Statement"": [
                     {{
                         ""Action"": [
