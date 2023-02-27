@@ -95,8 +95,8 @@ return await Deployment.RunAsync(() =>
         Role = role.Arn,
         Runtime = "dotnet6",
         Handler = "PrhApi",
-        Timeout = 30,
-        MemorySize = 512,
+        Timeout = 15,
+        MemorySize = 1024,
         Environment = new FunctionEnvironmentArgs
         {
             Variables =
