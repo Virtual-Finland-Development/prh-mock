@@ -26,7 +26,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Application_Artifact
-          path: prh-mock/release/
+          path: /home/runner/work/prh-mock/prh-mock/release/
           retention-days: 1
   deploy:
     name: Deploy
