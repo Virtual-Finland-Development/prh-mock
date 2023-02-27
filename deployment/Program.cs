@@ -122,7 +122,7 @@ return await Deployment.RunAsync(() =>
                 $"aws lambda add-permission --function-name {lambdaFunction.Arn} --action lambda:InvokeFunctionUrl --principal '*' --function-url-auth-type NONE --statement-id FunctionUrlAllowAccess")
         }, new CustomResourceOptions
         {
-            DeleteBeforeReplace = true,
+            DeleteBeforeReplace = false,
             DependsOn = new InputList<Resource> { lambdaFunction }
         }
     );
