@@ -25,14 +25,6 @@
 
     <ItemGroup>
         <ProjectReference Include="..\PrhApi.Models.CodeGen\PrhApi.Models.CodeGen.csproj" />
-        <ProjectReference Include="..\PrhMock.Infrasturcure.Api.CodeGen\PrhMock.Infrasturcure.Api.CodeGen.csproj" />
-        <ProjectReference Include="..\PrhMock.Infrasturcure.Productizer.CodeGen\PrhMock.Infrasturcure.Productizer.CodeGen.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <Reference Include="PrhMock.Infrasturcure.Api.CodeGen">
-            <HintPath>bin\Debug\net7.0\PrhMock.Infrasturcure.Api.CodeGen.dll</HintPath>
-        </Reference>
     </ItemGroup>
 
 </Project>
