@@ -1,4 +1,4 @@
-namespace PrhApi.Repositories;
+namespace PrhApi.Models;
 
 public record CompanyMinimalDetail
 {

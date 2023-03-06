@@ -21,7 +21,7 @@ public class CompanyDetailsService : ICompanyDetailsService
         return details;
     }
 
-    public async Task<string?> CreateCompany(Guid userId, EstablishmentResponse details)
+    public async Task<string> CreateCompany(string userId, EstablishmentResponse details)
     {
         var businessId = FinnishBusinessId.Generate();
         while (await _repository.LoadWithBusinessId(businessId) is not null) businessId = FinnishBusinessId.Generate();
@@ -30,7 +30,7 @@ public class CompanyDetailsService : ICompanyDetailsService
         return result;
     }
 
-    public async Task<string?> SaveOrUpdateCompany(Guid userId, string businessId, EstablishmentResponse details)
+    public async Task<string> SaveOrUpdateCompany(string userId, string businessId, EstablishmentResponse details)
     {
         var existingCompany = await _repository.LoadWithBusinessId(businessId);
         if (existingCompany is not null)
@@ -60,12 +60,12 @@ public class CompanyDetailsService : ICompanyDetailsService
         return createResult;
     }
 
-    public Task<List<EstablishmentResponse>> GetUserCompanies(Guid userId)
+    public Task<List<EstablishmentResponse>> GetUserCompanies(string userId)
     {
         return _repository.LoadUserCompanies(userId);
     }
 
-    public async Task DeleteCompany(Guid userId, string businessId)
+    public async Task DeleteCompany(string userId, string businessId)
     {
         await _repository.Delete(userId, businessId);
     }

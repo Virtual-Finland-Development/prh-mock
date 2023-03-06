@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Mvc;
 using PrhApi.Models.CodeGen.Model;
 using PrhApi.Services;
+using PrhApi.Utils;
 
 namespace PrhApi.Endpoints;
 
@@ -7,42 +9,89 @@ public static class ProductizerEndpoints
 {
     public static void MapProductizerEndpoints(this WebApplication app)
     {
-        // Here we assume y-tunnus will be posted in requests body
         app.MapPost("productizer/NonListedCompany/Establishment",
-            async (string businessId, ICompanyDetailsService service) =>
+            async ([FromBody] string businessId, [FromServices] ICompanyDetailsService service,
+                [FromServices] IAuthenticationGatewayService authenticationGatewayService, HttpContext context) =>
             {
+                await authenticationGatewayService.VerifyTokens(context.Request.Headers);
+                
+                var bearerTokenValue = context.Request.Headers.GetBearerTokenValue();
+                var userId = TokenExtensions.ParseFromBearerToken(bearerTokenValue);
+
                 var company = await service.LoadCompany(businessId);
-                return Results.Ok(company);
+                return company is null
+                    ? Results.BadRequest($"Could not find company with businessId {businessId}")
+                    : Results.Ok(company);
             }).Produces<EstablishmentResponse>();
 
-        app.MapPost("productizer/NonListedCompany/Establishment/Write", (EstablishmentResponse data) =>
-        {
-            // TODO: Get user ID from token and call service.CreateCompany with correct user ID
-            throw new NotImplementedException();
-        }).Produces<EstablishmentResponse>();
+        app.MapPost("productizer/NonListedCompany/Establishment/Write",
+            async ([FromBody] EstablishmentResponse payload, [FromServices] ICompanyDetailsService service,
+                [FromServices] IAuthenticationGatewayService authenticationGatewayService, HttpContext context) =>
+            {
+                await authenticationGatewayService.VerifyTokens(context.Request.Headers);
 
-        app.MapPost("productizer/NonListedCompany/BeneficialOwners", () =>
-        {
-            // TODO: Implementation missing
-            throw new NotImplementedException();
-        }).Produces<BeneficialOwnersResponse>();
+                // TODO: Get testbed user ID from authorization token
+                var bearerTokenValue = context.Request.Headers.GetBearerTokenValue();
+                var userId = TokenExtensions.ParseFromBearerToken(bearerTokenValue);
 
-        app.MapPost("productizer/NonListedCompany/BeneficialOwners/Write", (BeneficialOwnersResponse data) =>
-        {
-            // TODO: Implementation missing
-            throw new NotImplementedException();
-        }).Produces<BeneficialOwnersResponse>();
+                var createdCompanyBusinessId = await service.CreateCompany(userId, payload);
 
-        app.MapPost("productizer/NonListedCompany/SignatoryRights", () =>
-        {
-            // TODO: Implementation missing
-            throw new NotImplementedException();
-        }).Produces<SignatoryRightsResponse>();
+                if (string.IsNullOrEmpty(createdCompanyBusinessId))
+                    return Results.BadRequest($"Could not create company {payload.CompanyDetails.Name}");
 
-        app.MapPost("productizer/NonListedCompany/SignatoryRights/Write", (SignatoryRightsResponse data) =>
-        {
-            // TODO: Implementation missing
-            throw new NotImplementedException();
-        }).Produces<SignatoryRightsResponse>();
+                var result = await service.LoadCompany(createdCompanyBusinessId);
+
+                return Results.Ok(result);
+            }).Produces<EstablishmentResponse>().Produces<string>(400);
+
+        app.MapPost("productizer/NonListedCompany/BeneficialOwners",
+            async ([FromBody] string businessId, [FromServices] IBeneficialOwnersService service,
+                [FromServices] IAuthenticationGatewayService authService,
+                HttpContext context) =>
+            {
+                await authService.VerifyTokens(context.Request.Headers);
+                var userId = TokenExtensions.ParseFromBearerToken(context.Request.Headers.GetBearerTokenValue());
+
+                var result = await service.Load(userId, businessId, default);
+
+                return result;
+            }).Produces<BeneficialOwnersResponse>();
+
+        app.MapPost("productizer/NonListedCompany/BeneficialOwners/Write",
+                async ([FromBody] BeneficialOwnersWriteRequest payload, [FromServices] IBeneficialOwnersService service,
+                    [FromServices] IAuthenticationGatewayService authService, HttpContext context) =>
+                {
+                    await authService.VerifyTokens(context.Request.Headers);
+                    var userId = TokenExtensions.ParseFromBearerToken(context.Request.Headers.GetBearerTokenValue());
+
+                    var data = await service.SaveOrUpdate(userId, payload.BusinessId, payload, default);
+
+                    return data;
+                })
+            .Produces<BeneficialOwnersResponse>();
+
+        app.MapPost("productizer/NonListedCompany/SignatoryRights",
+            async ([FromBody] string businessId, [FromServices] ISignatoryRightsService service,
+                [FromServices] IAuthenticationGatewayService authService, HttpContext context) =>
+            {
+                await authService.VerifyTokens(context.Request.Headers);
+                var userId = TokenExtensions.ParseFromBearerToken(context.Request.Headers.GetBearerTokenValue());
+
+                var data = await service.Load(userId, businessId, default);
+
+                return data;
+            }).Produces<SignatoryRightsResponse>();
+
+        app.MapPost("productizer/NonListedCompany/SignatoryRights/Write",
+            async (SignatoryRightsWriteRequest payload, ISignatoryRightsService service,
+                IAuthenticationGatewayService authService, HttpContext context) =>
+            {
+                await authService.VerifyTokens(context.Request.Headers);
+                var userId = TokenExtensions.ParseFromBearerToken(context.Request.Headers.GetBearerTokenValue());
+
+                var result = await service.SaveOrUpdate(userId, payload.BusinessId, payload, default);
+
+                return result;
+            }).Produces<SignatoryRightsResponse>();
     }
 }

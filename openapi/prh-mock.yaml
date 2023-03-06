@@ -55,6 +55,42 @@ paths:
       tags:
         - productizer
       description: Get company beneficial owners details
+  /NonListedCompany/BeneficialOwners/Write:
+    post:
+      summary: ''
+      operationId: post-NonListedCompany-BeneficialOwners-Write
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BeneficialOwnersResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BeneficialOwnersWriteRequest'
+            examples:
+              Example 1:
+                value:
+                  businessId: string
+                  beneficialOwners:
+                    shareSeries:
+                      shareSeriesClass: string
+                      numberOfShares: 0
+                      votesPerShare: 0
+                    shareholders:
+                      name: string
+                      ownerships:
+                        - shareSeries: string
+                          quantity: 0
+                    ownership:
+                      shareSeries: string
+                      quantity: 0
+      tags:
+        - productizer
+      description: Endpoint for writing beneficial owner data
   /NonListedCompany/SignatoryRights:
     parameters: []
     post:
@@ -70,6 +106,47 @@ paths:
       tags:
         - productizer
       description: Get company signatory rights details
+  /NonListedCompany/SignatoryRights/Write:
+    post:
+      summary: ''
+      operationId: post-NonListedCompany-SignatoryRights-Write
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignatoryRightsResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignatoryRightsWriteRequest'
+            examples:
+              Example 1:
+                value:
+                  businessId: string
+                  signatoryRights:
+                    signingRights:
+                      personalId: string
+                      givenName: string
+                      middleNames: string
+                      lastName: string
+                      dateOfBirth: '2019-08-24T14:15:22Z'
+                      nationality: str
+                      fullAddress: string
+                      thoroughfare: string
+                      locatorDesignator: string
+                      locatorName: string
+                      addressArea: string
+                      postCode: string
+                      postName: string
+                      poBox: string
+                      adminUnitLevel1: str
+                      adminUnitLevel2: string
+      tags:
+        - productizer
+      description: Endpoint for writing signatory rights data
   /companies:
     get:
       summary: Your GET endpoint
@@ -569,3 +646,23 @@ components:
           type: string
         key:
           type: string
+    SignatoryRightsWriteRequest:
+      title: SignatoryRightsWriteRequest
+      x-stoplight:
+        id: fy54mgc8miwbm
+      type: object
+      properties:
+        businessId:
+          type: string
+        signatoryRights:
+          $ref: '#/components/schemas/SignatoryRightsResponse'
+    BeneficialOwnersWriteRequest:
+      title: BeneficialOwnersWriteRequest
+      x-stoplight:
+        id: se5qn1v79fs6v
+      type: object
+      properties:
+        businessId:
+          type: string
+        beneficialOwners:
+          $ref: '#/components/schemas/BeneficialOwnersResponse'
