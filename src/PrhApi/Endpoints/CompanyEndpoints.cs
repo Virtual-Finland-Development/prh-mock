@@ -17,8 +17,6 @@ public static class CompanyEndpoints
 
     private static async Task<IResult> GetAllCompanies(ICompanyDetailsService service, HttpContext context)
     {
-        //var bearerTokenValue = context.Request.Headers.GetBearerTokenValue();
-        //var userId = TokenExtensions.ParseFromBearerToken(bearerTokenValue);
         var companies = await service.LoadCompanies();
         return Results.Ok(companies);
     }

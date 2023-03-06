@@ -77,7 +77,7 @@ public class CompanyEstablishmentS3Repository : ICompanyEstablishmentRepository
         var listObjectsRequest = new ListObjectsV2Request
         {
             BucketName = _prhBucketName,
-            Prefix = $"{userId}/establishment/"
+            Prefix = $"establishment/{userId}/"
         };
 
         // TODO: Result only shows first 1000 entries without loop of some sort
@@ -100,7 +100,8 @@ public class CompanyEstablishmentS3Repository : ICompanyEstablishmentRepository
     {
         var response = await _s3Client.ListObjectsV2Async(new ListObjectsV2Request
         {
-            BucketName = _prhBucketName
+            BucketName = _prhBucketName,
+            Prefix = "establishment/"
         });
 
         var result = response.S3Objects.Select(o => new MinimalCompanyDetails

@@ -54,7 +54,9 @@ public static class ProductizerEndpoints
 
                 var result = await service.Load(userId, businessId, default);
 
-                return result;
+                return result is null 
+                    ? Results.BadRequest($"Could not find beneficial owner data for company {businessId}") 
+                    : Results.Ok(result);
             }).Produces<BeneficialOwnersResponse>();
 
         app.MapPost("productizer/NonListedCompany/BeneficialOwners/Write",
@@ -79,7 +81,9 @@ public static class ProductizerEndpoints
 
                 var data = await service.Load(userId, businessId, default);
 
-                return data;
+                return data is null 
+                    ? Results.BadRequest($"Could not find signatory rights data for company {businessId}") 
+                    : Results.Ok(data);
             }).Produces<SignatoryRightsResponse>();
 
         app.MapPost("productizer/NonListedCompany/SignatoryRights/Write",
