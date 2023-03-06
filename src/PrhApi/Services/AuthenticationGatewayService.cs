@@ -1,5 +1,6 @@
 using System.Net.Http.Headers;
 using PrhApi.Utils;
+using PrhApi.Utils.Extensions;
 
 namespace PrhApi.Services;
 

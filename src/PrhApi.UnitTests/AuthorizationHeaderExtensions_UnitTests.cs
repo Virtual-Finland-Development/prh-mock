@@ -2,6 +2,7 @@ using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Primitives;
 using PrhApi.Utils;
+using PrhApi.Utils.Extensions;
 
 namespace PrhApi.UnitTests;
 
@@ -31,13 +32,13 @@ public class AuthorizationHeaderExtensions_UnitTests
     }
 
     [Test]
-    public void TryingToGetBearerTokenValueFromHeaders_WithMultipleBearerTokens_ShouldThrowError()
+    public void TryingToGetBearerTokenValueFromHeaders_WithNoAuthorizationValues_ShouldReturnNull()
     {
         IHeaderDictionary headers = new HeaderDictionary();
-        headers.Add("Authorization", new StringValues(new[] { "Bearer ABC", "Basic XYZ" }));
+        headers.Add("Authorization", new StringValues());
 
         var result = headers.GetBearerTokenValue();
         
-        result.Should<string>().BeEquivalentTo("ABC");
+        result.Should<string>().BeNull();
     }
 }

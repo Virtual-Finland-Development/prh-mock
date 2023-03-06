@@ -1,6 +1,6 @@
 using System.IdentityModel.Tokens.Jwt;
 
-namespace PrhApi.Utils;
+namespace PrhApi.Utils.Extensions;
 
 public static class TokenExtensions
 {

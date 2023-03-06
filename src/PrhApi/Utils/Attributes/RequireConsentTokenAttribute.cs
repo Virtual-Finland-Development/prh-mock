@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace PrhApi.Utils;
+namespace PrhApi.Utils.Attributes;
 
 public class RequireConsentTokenAttribute : Attribute, IAuthorizationFilter
 {

@@ -1,4 +1,4 @@
-namespace PrhApi.Utils;
+namespace PrhApi.Utils.Extensions;
 
 public static class HeaderExtension
 {

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using PrhApi.Models.CodeGen.Model;
 using PrhApi.Services;
 using PrhApi.Utils;
+using PrhApi.Utils.Extensions;
 
 namespace PrhApi.Endpoints;
 

@@ -1,7 +1,8 @@
 using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Mvc.Filters;
+using PrhApi.Utils.Extensions;
 
-namespace PrhApi.Utils;
+namespace PrhApi.Utils.Attributes;
 
 public class UseAuthGwVerificationAttribute : Attribute, IAuthorizationFilter
 {
