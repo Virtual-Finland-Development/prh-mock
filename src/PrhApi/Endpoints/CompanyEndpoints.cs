@@ -15,7 +15,7 @@ public static class CompanyEndpoints
         app.MapDelete("users/{userId}/companies/{businessId}", DeleteCompany).Produces(204);
     }
 
-    private static async Task<IResult> GetAllCompanies(ICompanyDetailsService service, HttpContext context)
+    private static async Task<IResult> GetAllCompanies(ICompanyDetailsService service)
     {
         var companies = await service.LoadCompanies();
         return Results.Ok(companies);
