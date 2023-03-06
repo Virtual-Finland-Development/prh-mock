@@ -3,7 +3,6 @@ using System.Text.Json;
 using Amazon.S3;
 using Amazon.S3.Model;
 using PrhApi.Models.CodeGen.Model;
-using PrhApi.Services;
 using PrhApi.Utils;
 
 namespace PrhApi.Repositories;

@@ -14,7 +14,7 @@ public static class ProductizerEndpoints
                 [FromServices] IAuthenticationGatewayService authenticationGatewayService, HttpContext context) =>
             {
                 await authenticationGatewayService.VerifyTokens(context.Request.Headers);
-                
+
                 var bearerTokenValue = context.Request.Headers.GetBearerTokenValue();
                 var userId = TokenExtensions.ParseFromBearerToken(bearerTokenValue);
 
@@ -54,8 +54,8 @@ public static class ProductizerEndpoints
 
                 var result = await service.Load(userId, businessId, default);
 
-                return result is null 
-                    ? Results.BadRequest($"Could not find beneficial owner data for company {businessId}") 
+                return result is null
+                    ? Results.BadRequest($"Could not find beneficial owner data for company {businessId}")
                     : Results.Ok(result);
             }).Produces<BeneficialOwnersResponse>();
 
@@ -81,8 +81,8 @@ public static class ProductizerEndpoints
 
                 var data = await service.Load(userId, businessId, default);
 
-                return data is null 
-                    ? Results.BadRequest($"Could not find signatory rights data for company {businessId}") 
+                return data is null
+                    ? Results.BadRequest($"Could not find signatory rights data for company {businessId}")
                     : Results.Ok(data);
             }).Produces<SignatoryRightsResponse>();
 

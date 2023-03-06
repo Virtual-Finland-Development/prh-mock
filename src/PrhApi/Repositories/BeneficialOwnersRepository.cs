@@ -23,12 +23,12 @@ internal class BeneficialOwnersRepository : IBeneficialOwnersRepository
     }
 
     public async Task<BeneficialOwnersResponse?> LoadAsync(
-        string userId, 
+        string userId,
         string businessId,
         CancellationToken cancellationToken)
     {
         var key = S3ObjectKey.BeneficialOwnerKeyFrom(userId, businessId);
-        
+
         try
         {
             var result = await LoadWithObjectKey(key);
@@ -38,14 +38,14 @@ internal class BeneficialOwnersRepository : IBeneficialOwnersRepository
         {
             _logger.LogInformation("{Message}", e.Message);
         }
-        
+
         return null;
     }
 
     public async Task<BeneficialOwnersResponse> SaveAsync(
-        string userId, 
+        string userId,
         string businessId,
-        BeneficialOwnersWriteRequest details, 
+        BeneficialOwnersWriteRequest details,
         CancellationToken cancellationToken)
     {
         var request = new PutObjectRequest

@@ -13,7 +13,7 @@ internal class BeneficialOwnersService : IBeneficialOwnersService
     }
 
     public async Task<BeneficialOwnersResponse?> Load(
-        string userId, 
+        string userId,
         string businessId,
         CancellationToken cancellationToken)
     {
@@ -21,9 +21,9 @@ internal class BeneficialOwnersService : IBeneficialOwnersService
     }
 
     public async Task<BeneficialOwnersResponse> SaveOrUpdate(
-        string userId, 
+        string userId,
         string businessId,
-        BeneficialOwnersWriteRequest data, 
+        BeneficialOwnersWriteRequest data,
         CancellationToken cancellationToken)
     {
         return await _repository.SaveAsync(userId, businessId, data, cancellationToken);

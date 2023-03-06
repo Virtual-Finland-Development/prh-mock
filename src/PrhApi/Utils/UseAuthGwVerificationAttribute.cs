@@ -25,16 +25,16 @@ public class UseAuthGwVerificationAttribute : Attribute, IAuthorizationFilter
         {
             var request = context.HttpContext.Request;
             var token = request.Headers.GetBearerTokenValue();
-            
+
             var myToken = request.Headers.Authorization
                 .ToList()
                 .Single(x => x.Contains("Bearer"))
                 .Replace("Bearer", string.Empty);
-            
+
             var httpClient = httpClientFactory.CreateClient();
-            
+
             var myOriginalToken = request.Headers.Authorization.ToString().Replace("Bearer ", string.Empty);
-            
+
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(myOriginalToken);
             httpClient.DefaultRequestHeaders.Add(XAuthorizationContext, XApplicationContext);
 

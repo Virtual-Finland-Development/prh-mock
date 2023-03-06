@@ -18,11 +18,7 @@ builder.Services.AddSingleton<IBeneficialOwnersRepository, BeneficialOwnersRepos
 builder.Services.AddSingleton<IAuthenticationGatewayService, AuthenticationGatewayService>();
 builder.Services.AddSingleton<AmazonS3Client>();
 
-builder.Services.AddHttpClient("auth-gw", options =>
-{
-    options.BaseAddress = new Uri("http://localhost:5000");
-    
-});
+builder.Services.AddHttpClient("auth-gw", options => { options.BaseAddress = new Uri("http://localhost:5000"); });
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

@@ -26,7 +26,7 @@ public static class S3ObjectKey
     {
         if (userId is null || dataProduct is null || businessId is null)
             throw new ArgumentNullException(nameof(userId));
-        
+
         return $"{dataProduct}/{userId}/{businessId}.json";
     }
 }

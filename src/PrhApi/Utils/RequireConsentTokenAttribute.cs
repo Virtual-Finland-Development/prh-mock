@@ -11,7 +11,7 @@ public class RequireConsentTokenAttribute : Attribute, IAuthorizationFilter
     {
         _requireConsentToken = requireConsentToken;
     }
-    
+
     public void OnAuthorization(AuthorizationFilterContext context)
     {
         if (!_requireConsentToken) return;
