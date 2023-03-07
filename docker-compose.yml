@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  api:
+    build:
+      dockerfile: PrhApi/Dockerfile
+      context: ./src
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Local
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+    volumes:
+      - $HOME/.aws/credentials:/root/.aws/credentials:ro
+    ports:
+      - '6000:80'
+      
