@@ -3,6 +3,7 @@ src/PrhApi.Models.CodeGen/Model/AbstractOpenAPISchema.cs
 src/PrhApi.Models.CodeGen/Model/Auditor.cs
 src/PrhApi.Models.CodeGen/Model/BeneficialOwnerShareSeries.cs
 src/PrhApi.Models.CodeGen/Model/BeneficialOwnersResponse.cs
+src/PrhApi.Models.CodeGen/Model/BeneficialOwnersWriteRequest.cs
 src/PrhApi.Models.CodeGen/Model/BoardMember.cs
 src/PrhApi.Models.CodeGen/Model/CompanyAddress.cs
 src/PrhApi.Models.CodeGen/Model/CompanyDetails.cs
@@ -14,5 +15,6 @@ src/PrhApi.Models.CodeGen/Model/Registrant.cs
 src/PrhApi.Models.CodeGen/Model/ShareSeries.cs
 src/PrhApi.Models.CodeGen/Model/Shareholder.cs
 src/PrhApi.Models.CodeGen/Model/SignatoryRightsResponse.cs
+src/PrhApi.Models.CodeGen/Model/SignatoryRightsWriteRequest.cs
 src/PrhApi.Models.CodeGen/Model/SigningRights.cs
 src/PrhApi.Models.CodeGen/PrhApi.Models.CodeGen.csproj

@@ -2,7 +2,7 @@ using System.Text.RegularExpressions;
 
 namespace PrhApi.Domain;
 
-public static partial class FinnishBusinessId
+public static class FinnishBusinessId
 {
     public static string Generate()
     {
