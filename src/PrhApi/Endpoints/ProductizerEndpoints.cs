@@ -9,7 +9,7 @@ public static class ProductizerEndpoints
 {
     public static void MapProductizerEndpoints(this WebApplication app)
     {
-        app.MapPost("draft/NSG/Agent/LegalEntity/NonListedCompany/Establishment/Write",
+        app.MapPost("draft/NSG/Agent/LegalEntity/NonListedCompany/Establishment",
             async ([FromBody] string businessId, [FromServices] ICompanyDetailsService service,
                 [FromServices] IAuthenticationGatewayService authenticationGatewayService, HttpContext context) =>
             {

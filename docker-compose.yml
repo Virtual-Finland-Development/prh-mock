@@ -8,9 +8,10 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Local
       - ASPNETCORE_URLS=http://0.0.0.0:80
+      - AWS_PROFILE=${AWS_PROFILE:-default}
       - AWS_REGION=eu-north-1
     volumes:
-      - $HOME/.aws/credentials:/root/.aws/credentials:ro
+      - $HOME/.aws:/root/.aws:ro
     ports:
       - '6000:80'
       
