@@ -23,12 +23,15 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/productizer/NonListedCompany/Establishment",
+							"raw": "{{host}}/draft/NSG/Agent/LegalEntity/NonListedCompany/Establishment",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"productizer",
+								"draft",
+								"NSG",
+								"Agent",
+								"LegalEntity",
 								"NonListedCompany",
 								"Establishment"
 							]
@@ -51,12 +54,15 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/productizer/NonListedCompany/Establishment/Write",
+							"raw": "{{host}}/draft/NSG/Agent/LegalEntity/NonListedCompany/Establishment/Write",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"productizer",
+								"draft",
+								"NSG",
+								"Agent",
+								"LegalEntity",
 								"NonListedCompany",
 								"Establishment",
 								"Write"
@@ -80,12 +86,15 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/productizer/NonListedCompany/BeneficialOwners",
+							"raw": "{{host}}/draft/NSG/Agent/LegalEntity/NonListedCompany/BeneficialOwners",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"productizer",
+								"draft",
+								"NSG",
+								"Agent",
+								"LegalEntity",
 								"NonListedCompany",
 								"BeneficialOwners"
 							]
@@ -108,12 +117,15 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/productizer/NonListedCompany/BeneficialOwners/Write",
+							"raw": "{{host}}/draft/NSG/Agent/LegalEntity/NonListedCompany/BeneficialOwners/Write",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"productizer",
+								"draft",
+								"NSG",
+								"Agent",
+								"LegalEntity",
 								"NonListedCompany",
 								"BeneficialOwners",
 								"Write"
@@ -137,12 +149,15 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/productizer/NonListedCompany/SignatoryRights",
+							"raw": "{{host}}/draft/NSG/Agent/LegalEntity/NonListedCompany/SignatoryRights",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"productizer",
+								"draft",
+								"NSG",
+								"Agent",
+								"LegalEntity",
 								"NonListedCompany",
 								"SignatoryRights"
 							]
@@ -165,12 +180,15 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/productizer/NonListedCompany/SignatoryRights/Write",
+							"raw": "{{host}}/draft/NSG/Agent/LegalEntity/NonListedCompany/SignatoryRights/Write",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"productizer",
+								"draft",
+								"NSG",
+								"Agent",
+								"LegalEntity",
 								"NonListedCompany",
 								"SignatoryRights",
 								"Write"
