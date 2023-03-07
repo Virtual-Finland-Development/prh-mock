@@ -10,18 +10,13 @@ public interface IAuthenticationGatewayService
 
 public class AuthenticationGatewayService : IAuthenticationGatewayService
 {
-    private readonly string _authenticationGatewayBaseUrl;
-    private readonly IHttpClientFactory _httpClientFactory;
+    private readonly HttpClient _httpClient;
     private readonly ILogger<AuthenticationGatewayService> _logger;
 
-    public AuthenticationGatewayService(
-        IHttpClientFactory httpClientFactory,
-        ILogger<AuthenticationGatewayService> logger,
-        IConfiguration config)
+    public AuthenticationGatewayService(HttpClient httpClient, ILogger<AuthenticationGatewayService> logger)
     {
-        _httpClientFactory = httpClientFactory;
+        _httpClient = httpClient;
         _logger = logger;
-        _authenticationGatewayBaseUrl = config.GetSection("AuthGwBaseAddress").Value;
     }
 
     public async Task VerifyTokens(IHeaderDictionary headers, bool requireConsentToken = false)
@@ -31,9 +26,8 @@ public class AuthenticationGatewayService : IAuthenticationGatewayService
             var token = headers.GetBearerTokenValue();
             if (string.IsNullOrEmpty(token)) throw new InvalidOperationException("Token is missing");
 
-            var httpClient = _httpClientFactory.CreateClient("auth-gw");
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
-            httpClient.DefaultRequestHeaders.Add("x-authorization-context", "application-context-app-name");
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(token);
+            _httpClient.DefaultRequestHeaders.Add("x-authorization-context", "application-context-app-name");
 
             // TODO: This should be completely separate method
             if (requireConsentToken)
@@ -42,10 +36,10 @@ public class AuthenticationGatewayService : IAuthenticationGatewayService
                     throw new InvalidOperationException("Consent token is missing");
 
                 // Use header propagation instead
-                httpClient.DefaultRequestHeaders.Add("x-consent-token", headers["x-consent-token"].ToString());
+                _httpClient.DefaultRequestHeaders.Add("x-consent-token", headers["x-consent-token"].ToString());
             }
 
-            using var response = await httpClient.PostAsync($"{_authenticationGatewayBaseUrl}/authorize", null);
+            using var response = await _httpClient.PostAsync("/authorize", null);
             response.EnsureSuccessStatusCode();
         }
         catch (HttpRequestException e)

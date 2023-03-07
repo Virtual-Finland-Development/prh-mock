@@ -18,7 +18,12 @@ builder.Services.AddSingleton<IBeneficialOwnersRepository, BeneficialOwnersRepos
 builder.Services.AddSingleton<IAuthenticationGatewayService, AuthenticationGatewayService>();
 builder.Services.AddSingleton<AmazonS3Client>();
 
-builder.Services.AddHttpClient("auth-gw", options => { options.BaseAddress = new Uri("http://localhost:5000"); });
+builder.Services.AddHttpClient<IAuthenticationGatewayService, AuthenticationGatewayService>(options =>
+{
+    options.BaseAddress = options.BaseAddress = new Uri(
+        builder.Configuration.GetSection("AuthGwBaseAddress").Value
+        ?? throw new InvalidOperationException("Missing configuration value for Auth GW API base address"));
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
