@@ -3,7 +3,7 @@ using System.Text.Json;
 using Amazon.S3;
 using Amazon.S3.Model;
 using PrhApi.Models.CodeGen.Model;
-using PrhApi.Services;
+using PrhApi.Utils;
 
 namespace PrhApi.Repositories;
 
@@ -33,23 +33,24 @@ public class CompanyEstablishmentS3Repository : ICompanyEstablishmentRepository
     {
         var response = await _s3Client.ListObjectsV2Async(new ListObjectsV2Request
         {
-            BucketName = _prhBucketName
+            BucketName = _prhBucketName,
+            Prefix = "establishment/"
         });
 
-        var result =
-            response.S3Objects.SingleOrDefault(x => S3ObjectKey.GetBusinessIdFromS3ObjectKey(x.Key) == businessId);
+        var result = response.S3Objects
+            .SingleOrDefault(x => S3ObjectKey.GetBusinessIdFromS3ObjectKey(x.Key) == businessId);
 
         if (result is null) return null;
 
         return await LoadWithObjectKey(result.Key);
     }
 
-    public async Task<string?> Save(Guid userId, string businessId, EstablishmentResponse details)
+    public async Task<string> Save(string userId, string businessId, EstablishmentResponse details)
     {
         var request = new PutObjectRequest
         {
             BucketName = _prhBucketName,
-            Key = S3ObjectKey.BuildFrom(userId, businessId),
+            Key = S3ObjectKey.CompanyEstablishmentKeyFrom(userId, businessId),
             ContentType = "application/json",
             ContentBody = JsonSerializer.Serialize(details)
         };
@@ -63,19 +64,19 @@ public class CompanyEstablishmentS3Repository : ICompanyEstablishmentRepository
         }
         catch (AmazonS3Exception e)
         {
-            Console.WriteLine(e);
+            _logger.LogError("{Message}", e.Message);
             throw;
         }
 
         return businessId;
     }
 
-    public async Task<List<EstablishmentResponse>> LoadUserCompanies(Guid userId)
+    public async Task<List<EstablishmentResponse>> LoadUserCompanies(string userId)
     {
         var listObjectsRequest = new ListObjectsV2Request
         {
             BucketName = _prhBucketName,
-            Prefix = $"{userId}/establishment/"
+            Prefix = $"establishment/{userId}/"
         };
 
         // TODO: Result only shows first 1000 entries without loop of some sort
@@ -98,7 +99,8 @@ public class CompanyEstablishmentS3Repository : ICompanyEstablishmentRepository
     {
         var response = await _s3Client.ListObjectsV2Async(new ListObjectsV2Request
         {
-            BucketName = _prhBucketName
+            BucketName = _prhBucketName,
+            Prefix = "establishment/"
         });
 
         var result = response.S3Objects.Select(o => new MinimalCompanyDetails
@@ -110,12 +112,12 @@ public class CompanyEstablishmentS3Repository : ICompanyEstablishmentRepository
         return result;
     }
 
-    public async Task<Task> Delete(Guid userId, string businessId)
+    public async Task<Task> Delete(string userId, string businessId)
     {
         var request = new DeleteObjectRequest
         {
             BucketName = _prhBucketName,
-            Key = S3ObjectKey.BuildFrom(userId, businessId)
+            Key = S3ObjectKey.CompanyEstablishmentKeyFrom(userId, businessId)
         };
 
         try
@@ -142,18 +144,12 @@ public class CompanyEstablishmentS3Repository : ICompanyEstablishmentRepository
         try
         {
             using var response = await _s3Client.GetObjectAsync(request);
-            if (response.HttpStatusCode != HttpStatusCode.OK)
-            {
-                _logger.LogInformation("Json file with key {Key} not found", key);
-                return null;
-            }
-
             using var streamReader = new StreamReader(response.ResponseStream);
             contents = await streamReader.ReadToEndAsync();
         }
         catch (AmazonS3Exception e)
         {
-            Console.WriteLine(e);
+            _logger.LogInformation("Json file with key {Key} not found. Message: {Message}", key, e.Message);
             throw;
         }
 

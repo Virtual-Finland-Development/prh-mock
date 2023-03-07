@@ -1,0 +1,398 @@
+{
+	"info": {
+		"_postman_id": "a344b645-eb26-4eba-b9ba-5836cc4f6c32",
+		"name": "NSG",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "productizer",
+			"item": [
+				{
+					"name": "Establishment",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\"1264254-5\"",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/draft/NSG/Agent/LegalEntity/NonListedCompany/Establishment",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"draft",
+								"NSG",
+								"Agent",
+								"LegalEntity",
+								"NonListedCompany",
+								"Establishment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Establishment/Write",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"registrant\": {\n    \"givenName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"string\",\n    \"phoneNumber\": \"string\"\n  },\n  \"companyDetails\": {\n    \"name\": \"string\",\n    \"alternativeName\": \"string\",\n    \"foundingDate\": \"2023-02-22T12:26:30.543Z\",\n    \"industrySector\": \"string\",\n    \"shareCapital\": 0,\n    \"settlementDeposit\": 0,\n    \"settlementDate\": \"2023-02-22T12:26:30.543Z\",\n    \"countryOfResidence\": \"string\"\n  },\n  \"shareSeries\": [\n    {\n      \"shareSeriesClass\": \"string\",\n      \"numberOfShares\": 0,\n      \"shareValues\": 0\n    }\n  ],\n  \"companyAddress\": {\n    \"fullAddress\": \"string\",\n    \"thoroughfare\": \"string\",\n    \"locatorDesignator\": \"string\",\n    \"locatorName\": \"string\",\n    \"addressArea\": \"string\",\n    \"postCode\": \"string\",\n    \"postName\": \"string\",\n    \"poBox\": \"string\",\n    \"adminUnitLevel1\": \"string\",\n    \"adminUnitLevel2\": \"string\"\n  },\n  \"managingDirectors\": [\n    {\n      \"role\": \"string\",\n      \"givenName\": \"string\",\n      \"middleNames\": \"string\",\n      \"lastName\": \"string\",\n      \"dateOfBirth\": \"2023-02-22T12:26:30.543Z\",\n      \"nationality\": \"string\"\n    }\n  ],\n  \"boardMembers\": [\n    {\n      \"role\": \"string\",\n      \"givenName\": \"string\",\n      \"middleNames\": \"string\",\n      \"lastName\": \"string\",\n      \"dateOfBirth\": \"2023-02-22T12:26:30.543Z\",\n      \"nationality\": \"string\"\n    }\n  ],\n  \"auditor\": {\n    \"companyName\": \"string\",\n    \"nationalIdentifier\": \"string\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/draft/NSG/Agent/LegalEntity/NonListedCompany/Establishment/Write",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"draft",
+								"NSG",
+								"Agent",
+								"LegalEntity",
+								"NonListedCompany",
+								"Establishment",
+								"Write"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BeneficialOwners",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\"1264254-5\"",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/draft/NSG/Agent/LegalEntity/NonListedCompany/BeneficialOwners",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"draft",
+								"NSG",
+								"Agent",
+								"LegalEntity",
+								"NonListedCompany",
+								"BeneficialOwners"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BeneficialOwners/Write",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"businessId\": \"1264254-5\",\n    \"beneficialOwners\": {\n        \"shareSeries\": {\n            \"shareSeriesClass\": \"string\",\n            \"numberOfShares\": 0,\n            \"votesPerShare\": 0\n        },\n        \"shareholders\": {\n            \"name\": \"string\",\n            \"ownerships\": [\n                {\n                    \"shareSeries\": \"string\",\n                    \"quantity\": 0\n                }\n            ]\n        },\n        \"ownership\": {\n            \"shareSeries\": \"string\",\n            \"quantity\": 0\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/draft/NSG/Agent/LegalEntity/NonListedCompany/BeneficialOwners/Write",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"draft",
+								"NSG",
+								"Agent",
+								"LegalEntity",
+								"NonListedCompany",
+								"BeneficialOwners",
+								"Write"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SignatoryRights",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\"1264254-5\"",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/draft/NSG/Agent/LegalEntity/NonListedCompany/SignatoryRights",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"draft",
+								"NSG",
+								"Agent",
+								"LegalEntity",
+								"NonListedCompany",
+								"SignatoryRights"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SignatoryRights/Write",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"businessId\": \"1264254-5\",\n    \"signatoryRights\": {\n        \"signingRights\": {\n            \"personalId\": \"string\",\n            \"givenName\": \"string\",\n            \"middleNames\": \"string\",\n            \"lastName\": \"string\",\n            \"dateOfBirth\": \"2019-08-24T14:15:22Z\",\n            \"nationality\": \"str\",\n            \"fullAddress\": \"string\",\n            \"thoroughfare\": \"string\",\n            \"locatorDesignator\": \"string\",\n            \"locatorName\": \"string\",\n            \"addressArea\": \"string\",\n            \"postCode\": \"string\",\n            \"postName\": \"string\",\n            \"poBox\": \"string\",\n            \"adminUnitLevel1\": \"str\",\n            \"adminUnitLevel2\": \"string\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/draft/NSG/Agent/LegalEntity/NonListedCompany/SignatoryRights/Write",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"draft",
+								"NSG",
+								"Agent",
+								"LegalEntity",
+								"NonListedCompany",
+								"SignatoryRights",
+								"Write"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Company",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/companies/{{business_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"companies",
+						"{{business_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List User Companies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/users/{{user_id}}/companies",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"users",
+						"{{user_id}}",
+						"companies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Companies",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/companies",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"companies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Company",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"registrant\": {\n    \"givenName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"string\",\n    \"phoneNumber\": \"string\"\n  },\n  \"companyDetails\": {\n    \"name\": \"string\",\n    \"alternativeName\": \"string\",\n    \"foundingDate\": \"2023-02-22T12:26:30.543Z\",\n    \"industrySector\": \"string\",\n    \"shareCapital\": 0,\n    \"settlementDeposit\": 0,\n    \"settlementDate\": \"2023-02-22T12:26:30.543Z\",\n    \"countryOfResidence\": \"string\"\n  },\n  \"shareSeries\": [\n    {\n      \"shareSeriesClass\": \"string\",\n      \"numberOfShares\": 0,\n      \"shareValues\": 0\n    }\n  ],\n  \"companyAddress\": {\n    \"fullAddress\": \"string\",\n    \"thoroughfare\": \"string\",\n    \"locatorDesignator\": \"string\",\n    \"locatorName\": \"string\",\n    \"addressArea\": \"string\",\n    \"postCode\": \"string\",\n    \"postName\": \"string\",\n    \"poBox\": \"string\",\n    \"adminUnitLevel1\": \"string\",\n    \"adminUnitLevel2\": \"string\"\n  },\n  \"managingDirectors\": [\n    {\n      \"role\": \"string\",\n      \"givenName\": \"string\",\n      \"middleNames\": \"string\",\n      \"lastName\": \"string\",\n      \"dateOfBirth\": \"2023-02-22T12:26:30.543Z\",\n      \"nationality\": \"string\"\n    }\n  ],\n  \"boardMembers\": [\n    {\n      \"role\": \"string\",\n      \"givenName\": \"string\",\n      \"middleNames\": \"string\",\n      \"lastName\": \"string\",\n      \"dateOfBirth\": \"2023-02-22T12:26:30.543Z\",\n      \"nationality\": \"string\"\n    }\n  ],\n  \"auditor\": {\n    \"companyName\": \"string\",\n    \"nationalIdentifier\": \"string\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/users/{{user_id}}/companies",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"users",
+						"{{user_id}}",
+						"companies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Company",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/users/{{user_id}}/companies/{{business_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"users",
+						"{{user_id}}",
+						"companies",
+						"{{business_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Company",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"registrant\": {\n    \"givenName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"string\",\n    \"phoneNumber\": \"string\"\n  },\n  \"companyDetails\": {\n    \"name\": \"string\",\n    \"alternativeName\": \"string\",\n    \"foundingDate\": \"2023-02-22T12:26:30.543Z\",\n    \"industrySector\": \"string\",\n    \"shareCapital\": 0,\n    \"settlementDeposit\": 0,\n    \"settlementDate\": \"2023-02-22T12:26:30.543Z\",\n    \"countryOfResidence\": \"string\"\n  },\n  \"shareSeries\": [\n    {\n      \"shareSeriesClass\": \"string\",\n      \"numberOfShares\": 0,\n      \"shareValues\": 0\n    }\n  ],\n  \"companyAddress\": {\n    \"fullAddress\": \"string\",\n    \"thoroughfare\": \"string\",\n    \"locatorDesignator\": \"string\",\n    \"locatorName\": \"string\",\n    \"addressArea\": \"string\",\n    \"postCode\": \"string\",\n    \"postName\": \"string\",\n    \"poBox\": \"string\",\n    \"adminUnitLevel1\": \"string\",\n    \"adminUnitLevel2\": \"string\"\n  },\n  \"managingDirectors\": [\n    {\n      \"role\": \"string\",\n      \"givenName\": \"string\",\n      \"middleNames\": \"string\",\n      \"lastName\": \"string\",\n      \"dateOfBirth\": \"2023-02-22T12:26:30.543Z\",\n      \"nationality\": \"string\"\n    }\n  ],\n  \"boardMembers\": [\n    {\n      \"role\": \"string\",\n      \"givenName\": \"string\",\n      \"middleNames\": \"string\",\n      \"lastName\": \"string\",\n      \"dateOfBirth\": \"2023-02-22T12:26:30.543Z\",\n      \"nationality\": \"string\"\n    }\n  ],\n  \"auditor\": {\n    \"companyName\": \"string\",\n    \"nationalIdentifier\": \"string\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/users/{{user_id}}/companies/{{business_id}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"users",
+						"{{user_id}}",
+						"companies",
+						"{{business_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "user_id",
+			"value": "",
+			"type": "default"
+		},
+		{
+			"key": "business_id",
+			"value": "",
+			"type": "default"
+		}
+	]
+}

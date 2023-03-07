@@ -1,6 +1,4 @@
 openapi: 3.0.1
-x-stoplight:
-  id: 287485cf1625a
 info:
   title: PRH mock API
   version: '1.0'
@@ -10,11 +8,14 @@ info:
     email: lassi.patanen@gofore.com
 servers:
   - url: 'http://localhost:3000'
+tags:
+  - name: productizer
+  - name: prh-api
 paths:
   /NonListedCompany/Establishment:
-    get:
-      summary: Your GET endpoint
-      tags: []
+    post:
+      summary: ''
+      operationId: post-NonListedCompany-Establishment
       responses:
         '200':
           description: OK
@@ -22,29 +23,135 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EstablishmentResponse'
-      operationId: get-NonListedCompany-Establishment
+      description: Get non listed company establishment details
+      tags:
+        - productizer
+  /NonListedCompany/Establishment/Write:
+    post:
+      summary: ''
+      operationId: post-NonListedCompany-Establishment-Write
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EstablishmentResponse'
+      description: Write non listed company establishment details
+      tags:
+        - productizer
   /NonListedCompany/BeneficialOwners:
-    get:
-      summary: Your GET endpoint
-      tags: []
+    parameters: []
+    post:
+      summary: ''
+      operationId: post-NonListedCompany-BeneficialOwners
       responses:
         '200':
           description: OK
-      operationId: get-non-listed-company-beneficail-owners
-    parameters: []
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BeneficialOwnersResponse'
+      tags:
+        - productizer
+      description: Get company beneficial owners details
+  /NonListedCompany/BeneficialOwners/Write:
+    post:
+      summary: ''
+      operationId: post-NonListedCompany-BeneficialOwners-Write
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BeneficialOwnersResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BeneficialOwnersWriteRequest'
+            examples:
+              Example 1:
+                value:
+                  businessId: string
+                  beneficialOwners:
+                    shareSeries:
+                      shareSeriesClass: string
+                      numberOfShares: 0
+                      votesPerShare: 0
+                    shareholders:
+                      name: string
+                      ownerships:
+                        - shareSeries: string
+                          quantity: 0
+                    ownership:
+                      shareSeries: string
+                      quantity: 0
+      tags:
+        - productizer
+      description: Endpoint for writing beneficial owner data
   /NonListedCompany/SignatoryRights:
-    get:
-      summary: Your GET endpoint
-      tags: []
+    parameters: []
+    post:
+      summary: ''
+      operationId: post-NonListedCompany-SignatoryRights
       responses:
         '200':
           description: OK
-      operationId: get-NonListedCompany-Signature
-    parameters: []
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignatoryRightsResponse'
+      tags:
+        - productizer
+      description: Get company signatory rights details
+  /NonListedCompany/SignatoryRights/Write:
+    post:
+      summary: ''
+      operationId: post-NonListedCompany-SignatoryRights-Write
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignatoryRightsResponse'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignatoryRightsWriteRequest'
+            examples:
+              Example 1:
+                value:
+                  businessId: string
+                  signatoryRights:
+                    signingRights:
+                      personalId: string
+                      givenName: string
+                      middleNames: string
+                      lastName: string
+                      dateOfBirth: '2019-08-24T14:15:22Z'
+                      nationality: str
+                      fullAddress: string
+                      thoroughfare: string
+                      locatorDesignator: string
+                      locatorName: string
+                      addressArea: string
+                      postCode: string
+                      postName: string
+                      poBox: string
+                      adminUnitLevel1: str
+                      adminUnitLevel2: string
+      tags:
+        - productizer
+      description: Endpoint for writing signatory rights data
   /companies:
     get:
       summary: Your GET endpoint
-      tags: []
+      tags:
+        - prh-api
       responses:
         '200':
           description: OK
@@ -64,7 +171,8 @@ paths:
         description: Y-tunnus
     get:
       summary: Your GET endpoint
-      tags: []
+      tags:
+        - prh-api
       responses:
         '200':
           description: OK
@@ -80,7 +188,8 @@ paths:
         description: User identifier in Guid format
     get:
       summary: Your GET endpoint
-      tags: []
+      tags:
+        - prh-api
       responses:
         '200':
           description: OK
@@ -110,6 +219,8 @@ paths:
             schema:
               $ref: '#/components/schemas/EstablishmentResponse'
         description: Request body for creating new company
+      tags:
+        - prh-api
   '/users/{userId}/companies/{businessId}':
     parameters:
       - schema:
@@ -131,6 +242,8 @@ paths:
         '200':
           description: OK
       description: Update company details
+      tags:
+        - prh-api
     delete:
       summary: ''
       operationId: delete-users-userId-companies-businessId
@@ -138,6 +251,8 @@ paths:
         '200':
           description: OK
       description: Delete company
+      tags:
+        - prh-api
 components:
   schemas:
     Auditor:
@@ -531,3 +646,23 @@ components:
           type: string
         key:
           type: string
+    SignatoryRightsWriteRequest:
+      title: SignatoryRightsWriteRequest
+      x-stoplight:
+        id: fy54mgc8miwbm
+      type: object
+      properties:
+        businessId:
+          type: string
+        signatoryRights:
+          $ref: '#/components/schemas/SignatoryRightsResponse'
+    BeneficialOwnersWriteRequest:
+      title: BeneficialOwnersWriteRequest
+      x-stoplight:
+        id: se5qn1v79fs6v
+      type: object
+      properties:
+        businessId:
+          type: string
+        beneficialOwners:
+          $ref: '#/components/schemas/BeneficialOwnersResponse'
