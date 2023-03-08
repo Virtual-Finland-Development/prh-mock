@@ -10,9 +10,16 @@ public static class CompanyEndpoints
         app.MapGet("companies", GetAllCompanies);
         app.MapGet("companies/{businessId}", GetCompanyDetails).Produces<EstablishmentResponse>().Produces(404);
         app.MapGet("users/{userId}/companies", GetAllUserCompanies);
+        app.MapGet("users/{userId}/companies:last-modified", GetLastModifiedUserCompany);
         app.MapPost("users/{userId}/companies", CreateCompany);
         app.MapMethods("users/{userId}/companies/{businessId}", new[] { "PATCH" }, UpdateCompany).Produces(204);
         app.MapDelete("users/{userId}/companies/{businessId}", DeleteCompany).Produces(204);
+    }
+
+    private static async Task<IResult> GetLastModifiedUserCompany(string userId, ICompanyDetailsService service)
+    {
+        var company = await service.GetUserCompanies(userId);
+        return company is {Count: 0} ? Results.NotFound() : Results.Ok(company.First());
     }
 
     private static async Task<IResult> GetAllCompanies(ICompanyDetailsService service)
@@ -23,7 +30,6 @@ public static class CompanyEndpoints
 
     private static async Task<IResult> GetCompanyDetails(string businessId, ICompanyDetailsService service)
     {
-        //TODO: Fix this
         var company = await service.LoadCompany(businessId);
         return company is null ? Results.NotFound() : Results.Ok(company);
     }
