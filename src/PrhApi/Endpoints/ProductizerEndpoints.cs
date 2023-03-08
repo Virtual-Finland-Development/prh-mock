@@ -15,9 +15,6 @@ public static class ProductizerEndpoints
             {
                 await authenticationGatewayService.VerifyTokens(context.Request.Headers);
 
-                var bearerTokenValue = context.Request.Headers.GetBearerTokenValue();
-                var userId = TokenExtensions.ParseFromBearerToken(bearerTokenValue);
-
                 var company = await service.LoadCompany(businessId);
                 return company is null
                     ? Results.BadRequest($"Could not find company with businessId {businessId}")
