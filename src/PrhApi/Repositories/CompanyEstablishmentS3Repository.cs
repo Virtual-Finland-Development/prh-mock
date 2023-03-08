@@ -71,7 +71,7 @@ public class CompanyEstablishmentS3Repository : ICompanyEstablishmentRepository
         return businessId;
     }
 
-    public async Task<List<EstablishmentResponse>> LoadUserCompanies(string userId)
+    public async Task<List<UserCompany>> LoadUserCompanies(string userId)
     {
         var listObjectsRequest = new ListObjectsV2Request
         {
@@ -83,13 +83,18 @@ public class CompanyEstablishmentS3Repository : ICompanyEstablishmentRepository
         var result = await _s3Client.ListObjectsV2Async(listObjectsRequest);
         var keys = result.S3Objects.Select(s3Object => s3Object.Key).ToList();
 
-        var companies = new List<EstablishmentResponse>();
+        var companies = new List<UserCompany>();
 
         foreach (var key in keys)
         {
             var company = await LoadWithObjectKey(key);
             if (company is null) continue;
-            companies.Add(company);
+            
+            companies.Add(new UserCompany
+            {
+                BusinessId = S3ObjectKey.GetBusinessIdFromS3ObjectKey(key),
+                Data = company
+            });
         }
 
         return companies;

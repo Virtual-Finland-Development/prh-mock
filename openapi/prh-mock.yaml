@@ -71,23 +71,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/BeneficialOwnersWriteRequest'
-            examples:
-              Example 1:
-                value:
-                  businessId: string
-                  beneficialOwners:
-                    shareSeries:
-                      shareSeriesClass: string
-                      numberOfShares: 0
-                      votesPerShare: 0
-                    shareholders:
-                      name: string
-                      ownerships:
-                        - shareSeries: string
-                          quantity: 0
-                    ownership:
-                      shareSeries: string
-                      quantity: 0
       tags:
         - productizer
       description: Endpoint for writing beneficial owner data
@@ -196,9 +179,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/EstablishmentResponse'
+                $ref: '#/components/schemas/ListUserCompaniesResponse'
       operationId: get-users-userId-companies
       description: List companies founded by user
     post:
@@ -666,3 +647,20 @@ components:
           type: string
         beneficialOwners:
           $ref: '#/components/schemas/BeneficialOwnersResponse'
+    ListUserCompaniesResponse:
+      title: ListUserCompaniesResponse
+      x-stoplight:
+        id: m65geh3zxs56m
+      type: array
+      items:
+        $ref: '#/components/schemas/UserCompany'
+    UserCompany:
+      title: UserCompany
+      x-stoplight:
+        id: ygvn0zlu2b2ee
+      type: object
+      properties:
+        businessId:
+          type: string
+        data:
+          $ref: '#/components/schemas/EstablishmentResponse'

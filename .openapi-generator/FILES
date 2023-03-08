@@ -17,4 +17,5 @@ src/PrhApi.Models.CodeGen/Model/Shareholder.cs
 src/PrhApi.Models.CodeGen/Model/SignatoryRightsResponse.cs
 src/PrhApi.Models.CodeGen/Model/SignatoryRightsWriteRequest.cs
 src/PrhApi.Models.CodeGen/Model/SigningRights.cs
+src/PrhApi.Models.CodeGen/Model/UserCompany.cs
 src/PrhApi.Models.CodeGen/PrhApi.Models.CodeGen.csproj

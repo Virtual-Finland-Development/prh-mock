@@ -60,7 +60,7 @@ public class CompanyDetailsService : ICompanyDetailsService
         return createResult;
     }
 
-    public Task<List<EstablishmentResponse>> GetUserCompanies(string userId)
+    public Task<List<UserCompany>> GetUserCompanies(string userId)
     {
         return _repository.LoadUserCompanies(userId);
     }
