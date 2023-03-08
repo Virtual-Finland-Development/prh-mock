@@ -608,8 +608,7 @@ components:
           $ref: '#/components/schemas/BeneficialOwnerShareSeries'
         shareholders:
           $ref: '#/components/schemas/Shareholder'
-        ownership:
-          $ref: '#/components/schemas/Ownership'
+      description: Beneficial Owners response model
     ListCompaniesResponse:
       title: ListCompaniesResponse
       x-stoplight:
