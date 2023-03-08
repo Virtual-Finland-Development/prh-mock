@@ -15,14 +15,11 @@ public static class ProductizerEndpoints
             {
                 await authenticationGatewayService.VerifyTokens(context.Request.Headers);
 
-                var bearerTokenValue = context.Request.Headers.GetBearerTokenValue();
-                var userId = TokenExtensions.ParseFromBearerToken(bearerTokenValue);
-
                 var company = await service.LoadCompany(businessId);
                 return company is null
-                    ? Results.BadRequest($"Could not find company with businessId {businessId}")
+                    ? Results.NotFound($"Could not find company with businessId {businessId}")
                     : Results.Ok(company);
-            }).Produces<EstablishmentResponse>();
+            }).Produces<EstablishmentResponse>().Produces(404);
 
         app.MapPost("draft/NSG/Agent/LegalEntity/NonListedCompany/Establishment/Write",
             async ([FromBody] EstablishmentResponse payload, [FromServices] ICompanyDetailsService service,
@@ -54,9 +51,9 @@ public static class ProductizerEndpoints
                 var result = await service.Load(userId, businessId, default);
 
                 return result is null
-                    ? Results.BadRequest($"Could not find beneficial owner data for company {businessId}")
+                    ? Results.NotFound($"Could not find beneficial owner data for company {businessId}")
                     : Results.Ok(result);
-            }).Produces<BeneficialOwnersResponse>();
+            }).Produces<BeneficialOwnersResponse>().Produces(404);
 
         app.MapPost("draft/NSG/Agent/LegalEntity/NonListedCompany/BeneficialOwners/Write",
                 async ([FromBody] BeneficialOwnersWriteRequest payload, [FromServices] IBeneficialOwnersService service,
@@ -81,9 +78,9 @@ public static class ProductizerEndpoints
                 var data = await service.Load(userId, businessId, default);
 
                 return data is null
-                    ? Results.BadRequest($"Could not find signatory rights data for company {businessId}")
+                    ? Results.NotFound($"Could not find signatory rights data for company {businessId}")
                     : Results.Ok(data);
-            }).Produces<SignatoryRightsResponse>();
+            }).Produces<SignatoryRightsResponse>().Produces(404);
 
         app.MapPost("draft/NSG/Agent/LegalEntity/NonListedCompany/SignatoryRights/Write",
             async (SignatoryRightsWriteRequest payload, ISignatoryRightsService service,
