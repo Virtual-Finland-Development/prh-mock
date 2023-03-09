@@ -603,12 +603,14 @@ components:
       x-stoplight:
         id: 05m3bny6dbiuc
       type: object
+      description: Beneficial Owners response model
       properties:
         shareSeries:
           $ref: '#/components/schemas/BeneficialOwnerShareSeries'
         shareholders:
-          $ref: '#/components/schemas/Shareholder'
-      description: Beneficial Owners response model
+          type: array
+          items:
+            $ref: '#/components/schemas/Shareholder'
     ListCompaniesResponse:
       title: ListCompaniesResponse
       x-stoplight:
