@@ -27,7 +27,7 @@ using OpenAPIDateConverter = PrhApi.Models.CodeGen.Client.OpenAPIDateConverter;
 namespace PrhApi.Models.CodeGen.Model
 {
     /// <summary>
-    /// BeneficialOwnersResponse
+    /// Beneficial Owners response model
     /// </summary>
     [DataContract(Name = "BeneficialOwnersResponse")]
     public partial class BeneficialOwnersResponse : IEquatable<BeneficialOwnersResponse>, IValidatableObject
@@ -37,12 +37,10 @@ namespace PrhApi.Models.CodeGen.Model
         /// </summary>
         /// <param name="shareSeries">shareSeries.</param>
         /// <param name="shareholders">shareholders.</param>
-        /// <param name="ownership">ownership.</param>
-        public BeneficialOwnersResponse(BeneficialOwnerShareSeries shareSeries = default(BeneficialOwnerShareSeries), Shareholder shareholders = default(Shareholder), Ownership ownership = default(Ownership))
+        public BeneficialOwnersResponse(BeneficialOwnerShareSeries shareSeries = default(BeneficialOwnerShareSeries), Shareholder shareholders = default(Shareholder))
         {
             this.ShareSeries = shareSeries;
             this.Shareholders = shareholders;
-            this.Ownership = ownership;
         }
 
         /// <summary>
@@ -58,12 +56,6 @@ namespace PrhApi.Models.CodeGen.Model
         public Shareholder Shareholders { get; set; }
 
         /// <summary>
-        /// Gets or Sets Ownership
-        /// </summary>
-        [DataMember(Name = "ownership", EmitDefaultValue = false)]
-        public Ownership Ownership { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -73,7 +65,6 @@ namespace PrhApi.Models.CodeGen.Model
             sb.Append("class BeneficialOwnersResponse {\n");
             sb.Append("  ShareSeries: ").Append(ShareSeries).Append("\n");
             sb.Append("  Shareholders: ").Append(Shareholders).Append("\n");
-            sb.Append("  Ownership: ").Append(Ownership).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -118,11 +109,6 @@ namespace PrhApi.Models.CodeGen.Model
                     this.Shareholders == input.Shareholders ||
                     (this.Shareholders != null &&
                     this.Shareholders.Equals(input.Shareholders))
-                ) && 
-                (
-                    this.Ownership == input.Ownership ||
-                    (this.Ownership != null &&
-                    this.Ownership.Equals(input.Ownership))
                 );
         }
 
@@ -142,10 +128,6 @@ namespace PrhApi.Models.CodeGen.Model
                 if (this.Shareholders != null)
                 {
                     hashCode = (hashCode * 59) + this.Shareholders.GetHashCode();
-                }
-                if (this.Ownership != null)
-                {
-                    hashCode = (hashCode * 59) + this.Ownership.GetHashCode();
                 }
                 return hashCode;
             }

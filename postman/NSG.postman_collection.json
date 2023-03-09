@@ -109,7 +109,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"businessId\": \"1264254-5\",\n    \"beneficialOwners\": {\n        \"shareSeries\": {\n            \"shareSeriesClass\": \"string\",\n            \"numberOfShares\": 0,\n            \"votesPerShare\": 0\n        },\n        \"shareholders\": {\n            \"name\": \"string\",\n            \"ownerships\": [\n                {\n                    \"shareSeries\": \"string\",\n                    \"quantity\": 0\n                }\n            ]\n        },\n        \"ownership\": {\n            \"shareSeries\": \"string\",\n            \"quantity\": 0\n        }\n    }\n}",
+							"raw": "{\n    \"businessId\": \"1264254-5\",\n    \"beneficialOwners\": {\n        \"shareSeries\": {\n            \"shareSeriesClass\": \"string\",\n            \"numberOfShares\": 0,\n            \"votesPerShare\": 0\n        },\n        \"shareholders\": {\n            \"name\": \"string\",\n            \"ownerships\": [\n                {\n                    \"shareSeries\": \"string\",\n                    \"quantity\": 0\n                }\n            ]\n        }\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -347,6 +347,37 @@
 						"{{user_id}}",
 						"companies",
 						"{{business_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get last modified user company",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/users/{{user_id}}/companies:last-modified",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"users",
+						"{{user_id}}",
+						"companies:last-modified"
 					]
 				}
 			},

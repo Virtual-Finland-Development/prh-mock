@@ -81,7 +81,7 @@ public class CompanyEstablishmentS3Repository : ICompanyEstablishmentRepository
 
         // TODO: Result only shows first 1000 entries without loop of some sort
         var result = await _s3Client.ListObjectsV2Async(listObjectsRequest);
-        var keys = result.S3Objects.Select(s3Object => s3Object.Key).ToList();
+        var keys = result.S3Objects.OrderByDescending(c => c.LastModified).Select(s3Object => s3Object.Key).ToList();
 
         var companies = new List<UserCompany>();
 
