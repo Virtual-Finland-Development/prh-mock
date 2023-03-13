@@ -571,6 +571,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SigningRights'
+      required:
+        - signingRights
     SignatoryRightsWriteRequest:
       title: SignatoryRightsWriteRequest
       x-stoplight:
