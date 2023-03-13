@@ -40,24 +40,24 @@ namespace PrhApi.Models.CodeGen.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Ownership" /> class.
         /// </summary>
-        /// <param name="shareSeries">shareSeries (required).</param>
+        /// <param name="shareSeriesClass">shareSeriesClass (required).</param>
         /// <param name="quantity">quantity (required).</param>
-        public Ownership(string shareSeries = default(string), int quantity = default(int))
+        public Ownership(string shareSeriesClass = default(string), int quantity = default(int))
         {
-            // to ensure "shareSeries" is required (not null)
-            if (shareSeries == null)
+            // to ensure "shareSeriesClass" is required (not null)
+            if (shareSeriesClass == null)
             {
-                throw new ArgumentNullException("shareSeries is a required property for Ownership and cannot be null");
+                throw new ArgumentNullException("shareSeriesClass is a required property for Ownership and cannot be null");
             }
-            this.ShareSeries = shareSeries;
+            this.ShareSeriesClass = shareSeriesClass;
             this.Quantity = quantity;
         }
 
         /// <summary>
-        /// Gets or Sets ShareSeries
+        /// Gets or Sets ShareSeriesClass
         /// </summary>
-        [DataMember(Name = "shareSeries", IsRequired = true, EmitDefaultValue = true)]
-        public string ShareSeries { get; set; }
+        [DataMember(Name = "shareSeriesClass", IsRequired = true, EmitDefaultValue = true)]
+        public string ShareSeriesClass { get; set; }
 
         /// <summary>
         /// Gets or Sets Quantity
@@ -73,7 +73,7 @@ namespace PrhApi.Models.CodeGen.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class Ownership {\n");
-            sb.Append("  ShareSeries: ").Append(ShareSeries).Append("\n");
+            sb.Append("  ShareSeriesClass: ").Append(ShareSeriesClass).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -111,9 +111,9 @@ namespace PrhApi.Models.CodeGen.Model
             }
             return 
                 (
-                    this.ShareSeries == input.ShareSeries ||
-                    (this.ShareSeries != null &&
-                    this.ShareSeries.Equals(input.ShareSeries))
+                    this.ShareSeriesClass == input.ShareSeriesClass ||
+                    (this.ShareSeriesClass != null &&
+                    this.ShareSeriesClass.Equals(input.ShareSeriesClass))
                 ) && 
                 (
                     this.Quantity == input.Quantity ||
@@ -130,9 +130,9 @@ namespace PrhApi.Models.CodeGen.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ShareSeries != null)
+                if (this.ShareSeriesClass != null)
                 {
-                    hashCode = (hashCode * 59) + this.ShareSeries.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ShareSeriesClass.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.Quantity.GetHashCode();
                 return hashCode;

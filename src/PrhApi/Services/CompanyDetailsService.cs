@@ -110,7 +110,9 @@ public class CompanyDetailsService : ICompanyDetailsService
 
         existingCompany.BoardMembers = details.BoardMembers;
 
-        existingCompany.Auditor.CompanyName = details.Auditor.CompanyName;
-        existingCompany.Auditor.NationalIdentifier = details.Auditor.NationalIdentifier;
+        existingCompany.AuditorDetails.CompanyName = details.AuditorDetails.CompanyName;
+        existingCompany.AuditorDetails.NationalIdentifier = details.AuditorDetails.NationalIdentifier;
+        existingCompany.AuditorDetails.GivenName = details.AuditorDetails.GivenName;
+        existingCompany.AuditorDetails.LastName = details.AuditorDetails.LastName;
     }
 }

@@ -40,6 +40,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SigningRights" /> class.
         /// </summary>
+        /// <param name="role">role.</param>
         /// <param name="personalId">personalId.</param>
         /// <param name="givenName">givenName (required).</param>
         /// <param name="middleNames">middleNames (required).</param>
@@ -56,7 +57,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// <param name="poBox">poBox.</param>
         /// <param name="adminUnitLevel1">adminUnitLevel1.</param>
         /// <param name="adminUnitLevel2">adminUnitLevel2.</param>
-        public SigningRights(string personalId = default(string), string givenName = default(string), string middleNames = default(string), string lastName = default(string), DateTime dateOfBirth = default(DateTime), string nationality = default(string), string fullAddress = default(string), string thoroughfare = default(string), string locatorDesignator = default(string), string locatorName = default(string), string addressArea = default(string), string postCode = default(string), string postName = default(string), string poBox = default(string), string adminUnitLevel1 = default(string), string adminUnitLevel2 = default(string))
+        public SigningRights(string role = default(string), string personalId = default(string), string givenName = default(string), string middleNames = default(string), string lastName = default(string), DateTime dateOfBirth = default(DateTime), string nationality = default(string), string fullAddress = default(string), string thoroughfare = default(string), string locatorDesignator = default(string), string locatorName = default(string), string addressArea = default(string), string postCode = default(string), string postName = default(string), string poBox = default(string), string adminUnitLevel1 = default(string), string adminUnitLevel2 = default(string))
         {
             // to ensure "givenName" is required (not null)
             if (givenName == null)
@@ -89,6 +90,7 @@ namespace PrhApi.Models.CodeGen.Model
                 throw new ArgumentNullException("fullAddress is a required property for SigningRights and cannot be null");
             }
             this.FullAddress = fullAddress;
+            this.Role = role;
             this.PersonalId = personalId;
             this.Thoroughfare = thoroughfare;
             this.LocatorDesignator = locatorDesignator;
@@ -100,6 +102,12 @@ namespace PrhApi.Models.CodeGen.Model
             this.AdminUnitLevel1 = adminUnitLevel1;
             this.AdminUnitLevel2 = adminUnitLevel2;
         }
+
+        /// <summary>
+        /// Gets or Sets Role
+        /// </summary>
+        [DataMember(Name = "role", EmitDefaultValue = false)]
+        public string Role { get; set; }
 
         /// <summary>
         /// Gets or Sets PersonalId
@@ -205,6 +213,7 @@ namespace PrhApi.Models.CodeGen.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class SigningRights {\n");
+            sb.Append("  Role: ").Append(Role).Append("\n");
             sb.Append("  PersonalId: ").Append(PersonalId).Append("\n");
             sb.Append("  GivenName: ").Append(GivenName).Append("\n");
             sb.Append("  MiddleNames: ").Append(MiddleNames).Append("\n");
@@ -256,6 +265,11 @@ namespace PrhApi.Models.CodeGen.Model
                 return false;
             }
             return 
+                (
+                    this.Role == input.Role ||
+                    (this.Role != null &&
+                    this.Role.Equals(input.Role))
+                ) && 
                 (
                     this.PersonalId == input.PersonalId ||
                     (this.PersonalId != null &&
@@ -347,6 +361,10 @@ namespace PrhApi.Models.CodeGen.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Role != null)
+                {
+                    hashCode = (hashCode * 59) + this.Role.GetHashCode();
+                }
                 if (this.PersonalId != null)
                 {
                     hashCode = (hashCode * 59) + this.PersonalId.GetHashCode();

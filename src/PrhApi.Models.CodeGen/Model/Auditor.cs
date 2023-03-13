@@ -42,7 +42,9 @@ namespace PrhApi.Models.CodeGen.Model
         /// </summary>
         /// <param name="companyName">companyName (required).</param>
         /// <param name="nationalIdentifier">nationalIdentifier (required).</param>
-        public Auditor(string companyName = default(string), string nationalIdentifier = default(string))
+        /// <param name="givenName">givenName.</param>
+        /// <param name="lastName">lastName.</param>
+        public Auditor(string companyName = default(string), string nationalIdentifier = default(string), string givenName = default(string), string lastName = default(string))
         {
             // to ensure "companyName" is required (not null)
             if (companyName == null)
@@ -56,6 +58,8 @@ namespace PrhApi.Models.CodeGen.Model
                 throw new ArgumentNullException("nationalIdentifier is a required property for Auditor and cannot be null");
             }
             this.NationalIdentifier = nationalIdentifier;
+            this.GivenName = givenName;
+            this.LastName = lastName;
         }
 
         /// <summary>
@@ -71,6 +75,18 @@ namespace PrhApi.Models.CodeGen.Model
         public string NationalIdentifier { get; set; }
 
         /// <summary>
+        /// Gets or Sets GivenName
+        /// </summary>
+        [DataMember(Name = "givenName", EmitDefaultValue = false)]
+        public string GivenName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LastName
+        /// </summary>
+        [DataMember(Name = "lastName", EmitDefaultValue = false)]
+        public string LastName { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -80,6 +96,8 @@ namespace PrhApi.Models.CodeGen.Model
             sb.Append("class Auditor {\n");
             sb.Append("  CompanyName: ").Append(CompanyName).Append("\n");
             sb.Append("  NationalIdentifier: ").Append(NationalIdentifier).Append("\n");
+            sb.Append("  GivenName: ").Append(GivenName).Append("\n");
+            sb.Append("  LastName: ").Append(LastName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -124,6 +142,16 @@ namespace PrhApi.Models.CodeGen.Model
                     this.NationalIdentifier == input.NationalIdentifier ||
                     (this.NationalIdentifier != null &&
                     this.NationalIdentifier.Equals(input.NationalIdentifier))
+                ) && 
+                (
+                    this.GivenName == input.GivenName ||
+                    (this.GivenName != null &&
+                    this.GivenName.Equals(input.GivenName))
+                ) && 
+                (
+                    this.LastName == input.LastName ||
+                    (this.LastName != null &&
+                    this.LastName.Equals(input.LastName))
                 );
         }
 
@@ -143,6 +171,14 @@ namespace PrhApi.Models.CodeGen.Model
                 if (this.NationalIdentifier != null)
                 {
                     hashCode = (hashCode * 59) + this.NationalIdentifier.GetHashCode();
+                }
+                if (this.GivenName != null)
+                {
+                    hashCode = (hashCode * 59) + this.GivenName.GetHashCode();
+                }
+                if (this.LastName != null)
+                {
+                    hashCode = (hashCode * 59) + this.LastName.GetHashCode();
                 }
                 return hashCode;
             }

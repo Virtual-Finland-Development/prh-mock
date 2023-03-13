@@ -36,7 +36,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// Initializes a new instance of the <see cref="SignatoryRightsResponse" /> class.
         /// </summary>
         /// <param name="signingRights">signingRights.</param>
-        public SignatoryRightsResponse(SigningRights signingRights = default(SigningRights))
+        public SignatoryRightsResponse(List<SigningRights> signingRights = default(List<SigningRights>))
         {
             this.SigningRights = signingRights;
         }
@@ -45,7 +45,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// Gets or Sets SigningRights
         /// </summary>
         [DataMember(Name = "signingRights", EmitDefaultValue = false)]
-        public SigningRights SigningRights { get; set; }
+        public List<SigningRights> SigningRights { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -93,8 +93,9 @@ namespace PrhApi.Models.CodeGen.Model
             return 
                 (
                     this.SigningRights == input.SigningRights ||
-                    (this.SigningRights != null &&
-                    this.SigningRights.Equals(input.SigningRights))
+                    this.SigningRights != null &&
+                    input.SigningRights != null &&
+                    this.SigningRights.SequenceEqual(input.SigningRights)
                 );
         }
 

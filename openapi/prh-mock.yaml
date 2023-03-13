@@ -249,6 +249,10 @@ components:
         nationalIdentifier:
           type: string
           maxLength: 40
+        givenName:
+          type: string
+        lastName:
+          type: string
       required:
         - companyName
         - nationalIdentifier
@@ -362,8 +366,12 @@ components:
           type: string
         shareCapital:
           type: number
+        capitalCurrency:
+          type: string
         settlementDeposit:
           type: number
+        depositCurrency:
+          type: string
         settlementDate:
           type: string
           format: date-time
@@ -376,32 +384,6 @@ components:
         - foundingDate
         - industrySector
         - shareCapital
-    EstablishmentResponse:
-      title: NonListedCompanyEstablishmentResponse
-      x-stoplight:
-        id: dc9b55fadcd90
-      type: object
-      properties:
-        registrant:
-          $ref: '#/components/schemas/Registrant'
-        companyDetails:
-          $ref: '#/components/schemas/CompanyDetails'
-        shareSeries:
-          type: array
-          items:
-            $ref: '#/components/schemas/ShareSeries'
-        companyAddress:
-          $ref: '#/components/schemas/CompanyAddress'
-        managingDirectors:
-          type: array
-          items:
-            $ref: '#/components/schemas/ManagingDirector'
-        boardMembers:
-          type: array
-          items:
-            $ref: '#/components/schemas/BoardMember'
-        auditor:
-          $ref: '#/components/schemas/Auditor'
     ManagingDirector:
       type: object
       x-examples:
@@ -444,12 +426,12 @@ components:
         id: d8squwfh404og
       type: object
       properties:
-        shareSeries:
+        shareSeriesClass:
           type: string
         quantity:
           type: integer
       required:
-        - shareSeries
+        - shareSeriesClass
         - quantity
     Registrant:
       type: object
@@ -492,6 +474,8 @@ components:
           type: integer
         shareValues:
           type: number
+        shareValueCurrency:
+          type: string
       required:
         - shareSeriesClass
         - numberOfShares
@@ -517,6 +501,8 @@ components:
         id: u9059b3v2wctw
       type: object
       properties:
+        role:
+          type: string
         personalId:
           type: string
           maxLength: 40
@@ -574,6 +560,32 @@ components:
         - dateOfBirth
         - nationality
         - fullAddress
+    EstablishmentResponse:
+      title: NonListedCompanyEstablishmentResponse
+      x-stoplight:
+        id: dc9b55fadcd90
+      type: object
+      properties:
+        registrant:
+          $ref: '#/components/schemas/Registrant'
+        companyDetails:
+          $ref: '#/components/schemas/CompanyDetails'
+        shareSeries:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShareSeries'
+        companyAddress:
+          $ref: '#/components/schemas/CompanyAddress'
+        managingDirectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManagingDirector'
+        boardMembers:
+          type: array
+          items:
+            $ref: '#/components/schemas/BoardMember'
+        auditorDetails:
+          $ref: '#/components/schemas/Auditor'
     BeneficialOwnerShareSeries:
       title: BeneficialOwnerShareSeries
       x-stoplight:
@@ -597,7 +609,19 @@ components:
       type: object
       properties:
         signingRights:
-          $ref: '#/components/schemas/SigningRights'
+          type: array
+          items:
+            $ref: '#/components/schemas/SigningRights'
+    SignatoryRightsWriteRequest:
+      title: SignatoryRightsWriteRequest
+      x-stoplight:
+        id: fy54mgc8miwbm
+      type: object
+      properties:
+        businessId:
+          type: string
+        data:
+          $ref: '#/components/schemas/SignatoryRightsResponse'
     BeneficialOwnersResponse:
       title: BeneficialOwnersResponse
       x-stoplight:
@@ -606,11 +630,23 @@ components:
       description: Beneficial Owners response model
       properties:
         shareSeries:
-          $ref: '#/components/schemas/BeneficialOwnerShareSeries'
+          type: array
+          items:
+            $ref: '#/components/schemas/BeneficialOwnerShareSeries'
         shareholders:
           type: array
           items:
             $ref: '#/components/schemas/Shareholder'
+    BeneficialOwnersWriteRequest:
+      title: BeneficialOwnersWriteRequest
+      x-stoplight:
+        id: se5qn1v79fs6v
+      type: object
+      properties:
+        businessId:
+          type: string
+        data:
+          $ref: '#/components/schemas/BeneficialOwnersResponse'
     ListCompaniesResponse:
       title: ListCompaniesResponse
       x-stoplight:
@@ -628,26 +664,6 @@ components:
           type: string
         key:
           type: string
-    SignatoryRightsWriteRequest:
-      title: SignatoryRightsWriteRequest
-      x-stoplight:
-        id: fy54mgc8miwbm
-      type: object
-      properties:
-        businessId:
-          type: string
-        signatoryRights:
-          $ref: '#/components/schemas/SignatoryRightsResponse'
-    BeneficialOwnersWriteRequest:
-      title: BeneficialOwnersWriteRequest
-      x-stoplight:
-        id: se5qn1v79fs6v
-      type: object
-      properties:
-        businessId:
-          type: string
-        beneficialOwners:
-          $ref: '#/components/schemas/BeneficialOwnersResponse'
     ListUserCompaniesResponse:
       title: ListUserCompaniesResponse
       x-stoplight:

@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "\"1264254-5\"",
+							"raw": "\"7578457-5\"",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -46,7 +46,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"registrant\": {\n    \"givenName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"string\",\n    \"phoneNumber\": \"string\"\n  },\n  \"companyDetails\": {\n    \"name\": \"string\",\n    \"alternativeName\": \"string\",\n    \"foundingDate\": \"2023-02-22T12:26:30.543Z\",\n    \"industrySector\": \"string\",\n    \"shareCapital\": 0,\n    \"settlementDeposit\": 0,\n    \"settlementDate\": \"2023-02-22T12:26:30.543Z\",\n    \"countryOfResidence\": \"string\"\n  },\n  \"shareSeries\": [\n    {\n      \"shareSeriesClass\": \"string\",\n      \"numberOfShares\": 0,\n      \"shareValues\": 0\n    }\n  ],\n  \"companyAddress\": {\n    \"fullAddress\": \"string\",\n    \"thoroughfare\": \"string\",\n    \"locatorDesignator\": \"string\",\n    \"locatorName\": \"string\",\n    \"addressArea\": \"string\",\n    \"postCode\": \"string\",\n    \"postName\": \"string\",\n    \"poBox\": \"string\",\n    \"adminUnitLevel1\": \"string\",\n    \"adminUnitLevel2\": \"string\"\n  },\n  \"managingDirectors\": [\n    {\n      \"role\": \"string\",\n      \"givenName\": \"string\",\n      \"middleNames\": \"string\",\n      \"lastName\": \"string\",\n      \"dateOfBirth\": \"2023-02-22T12:26:30.543Z\",\n      \"nationality\": \"string\"\n    }\n  ],\n  \"boardMembers\": [\n    {\n      \"role\": \"string\",\n      \"givenName\": \"string\",\n      \"middleNames\": \"string\",\n      \"lastName\": \"string\",\n      \"dateOfBirth\": \"2023-02-22T12:26:30.543Z\",\n      \"nationality\": \"string\"\n    }\n  ],\n  \"auditor\": {\n    \"companyName\": \"string\",\n    \"nationalIdentifier\": \"string\"\n  }\n}",
+							"raw": "{\n  \"registrant\": {\n    \"givenName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"john.doe@test.fi\",\n    \"phoneNumber\": \"+358501234567\"\n  },\n  \"companyDetails\": {\n    \"name\": \"Digital company X\",\n    \"alternativeName\": \"Digital company Y\",\n    \"foundingDate\": \"2022-01-01\",\n    \"industrySector\": \"62.01\",\n    \"shareCapital\": 1000,\n    \"capitalCurrency\": \"EUR\",\n    \"settlementDeposit\": 1000,\n    \"depositCurrency\": \"EUR\",\n    \"settlementDate\": \"2022-02-01\",\n    \"countryOfResidence\": \"USA\"\n  },\n  \"shareSeries\": [\n    {\n      \"shareSeriesClass\": \"A\",\n      \"numberOfShares\": 100,\n      \"shareValue\": 10,\n      \"shareValueCurrency\": \"EUR\"\n    }\n  ],\n  \"companyAddress\": {\n    \"fullAddress\": \"Tietotie 4 A 7, 00100 Helsinki, Finland\",\n    \"thoroughfare\": \"Avenue des Champs-Élysées\",\n    \"locatorDesignator\": \"Flat 3, 17 or 3 A 4\",\n    \"locatorName\": \"Shumann, Berlaymont building\",\n    \"addressArea\": \"Montmartre (in Paris)\",\n    \"postCode\": \"75000\",\n    \"postName\": \"Paris\",\n    \"poBox\": \"9383\",\n    \"adminUnitLevel_1\": \"USA\",\n    \"adminUnitLevel_2\": \"Lapland\"\n  },\n  \"managingDirectors\": [\n    {\n      \"role\": \"director\",\n      \"givenName\": \"Mary\",\n      \"middleNames\": \"Juliet Olive\",\n      \"lastName\": \"Deo\",\n      \"dateOfBirth\": \"1976-04-16\",\n      \"nationality\": \"USA\"\n    }\n  ],\n  \"boardMembers\": [\n    {\n      \"role\": \"member\",\n      \"givenName\": \"Mary\",\n      \"middleNames\": \"Juliet Olive\",\n      \"lastName\": \"Deo\",\n      \"dateOfBirth\": \"1976-04-16\",\n      \"nationality\": \"USA\"\n    }\n  ],\n  \"auditorDetails\": {\n    \"companyName\": \"Auditor company X\",\n    \"nationalIdentifier\": \"2464491-9\",\n    \"givenName\": \"Jane\",\n    \"lastName\": \"Doe\"\n  }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -78,7 +78,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "\"1264254-5\"",
+							"raw": "\"7578457-5\"",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -109,7 +109,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"businessId\": \"1264254-5\",\n    \"beneficialOwners\": {\n        \"shareSeries\": {\n            \"shareSeriesClass\": \"string\",\n            \"numberOfShares\": 0,\n            \"votesPerShare\": 0\n        },\n        \"shareholders\": {\n            \"name\": \"string\",\n            \"ownerships\": [\n                {\n                    \"shareSeries\": \"string\",\n                    \"quantity\": 0\n                }\n            ]\n        }\n    }\n}",
+							"raw": "{\n    \"businessId\": \"7578457-5\",\n    \"data\": {\n        \"shareSeries\": [\n            {\n                \"shareSeriesClass\": \"A\",\n                \"numberOfShares\": 1000,\n                \"votesPerShare\": 1\n            }\n        ],\n        \"shareholder\": [\n            {\n                \"name\": \"Lars Lindberg | Company Ltd\",\n                \"shareOwnership\": [\n                    {\n                        \"shareSeriesClass\": \"B\",\n                        \"quantity\": 20\n                    }\n                ]\n            }\n        ]\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -141,7 +141,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "\"1264254-5\"",
+							"raw": "\"7578457-5\"",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -172,7 +172,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"businessId\": \"1264254-5\",\n    \"signatoryRights\": {\n        \"signingRights\": {\n            \"personalId\": \"string\",\n            \"givenName\": \"string\",\n            \"middleNames\": \"string\",\n            \"lastName\": \"string\",\n            \"dateOfBirth\": \"2019-08-24T14:15:22Z\",\n            \"nationality\": \"str\",\n            \"fullAddress\": \"string\",\n            \"thoroughfare\": \"string\",\n            \"locatorDesignator\": \"string\",\n            \"locatorName\": \"string\",\n            \"addressArea\": \"string\",\n            \"postCode\": \"string\",\n            \"postName\": \"string\",\n            \"poBox\": \"string\",\n            \"adminUnitLevel1\": \"str\",\n            \"adminUnitLevel2\": \"string\"\n        }\n    }\n}",
+							"raw": "{\n    \"businessId\": \"7578457-5\",\n    \"data\": {\n        \"signingRights\": [\n            {\n                \"role\": \"chairperson\",\n                \"personalId\": \"1129955131\",\n                \"givenName\": \"Mary\",\n                \"middleNames\": \"Juliet Olive\",\n                \"lastName\": \"Deo\",\n                \"dateOfBirth\": \"1976-04-16\",\n                \"nationality\": \"USA\",\n                \"fullAddress\": \"Tietotie 4 A 7, 00100 Helsinki, Finland\",\n                \"thoroughfare\": \"Avenue des Champs-Élysées\",\n                \"locatorDesignator\": \"Flat 3, 17 or 3 A 4\",\n                \"locatorName\": \"Shumann, Berlaymont building\",\n                \"addressArea\": \"Montmartre (in Paris)\",\n                \"postCode\": \"75000\",\n                \"postName\": \"Paris\",\n                \"poBox\": \"9383\",\n                \"adminUnitLevel_1\": \"USA\",\n                \"adminUnitLevel_2\": \"Lapland\"\n            }\n        ]\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -282,7 +282,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"registrant\": {\n    \"givenName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"string\",\n    \"phoneNumber\": \"string\"\n  },\n  \"companyDetails\": {\n    \"name\": \"string\",\n    \"alternativeName\": \"string\",\n    \"foundingDate\": \"2023-02-22T12:26:30.543Z\",\n    \"industrySector\": \"string\",\n    \"shareCapital\": 0,\n    \"settlementDeposit\": 0,\n    \"settlementDate\": \"2023-02-22T12:26:30.543Z\",\n    \"countryOfResidence\": \"string\"\n  },\n  \"shareSeries\": [\n    {\n      \"shareSeriesClass\": \"string\",\n      \"numberOfShares\": 0,\n      \"shareValues\": 0\n    }\n  ],\n  \"companyAddress\": {\n    \"fullAddress\": \"string\",\n    \"thoroughfare\": \"string\",\n    \"locatorDesignator\": \"string\",\n    \"locatorName\": \"string\",\n    \"addressArea\": \"string\",\n    \"postCode\": \"string\",\n    \"postName\": \"string\",\n    \"poBox\": \"string\",\n    \"adminUnitLevel1\": \"string\",\n    \"adminUnitLevel2\": \"string\"\n  },\n  \"managingDirectors\": [\n    {\n      \"role\": \"string\",\n      \"givenName\": \"string\",\n      \"middleNames\": \"string\",\n      \"lastName\": \"string\",\n      \"dateOfBirth\": \"2023-02-22T12:26:30.543Z\",\n      \"nationality\": \"string\"\n    }\n  ],\n  \"boardMembers\": [\n    {\n      \"role\": \"string\",\n      \"givenName\": \"string\",\n      \"middleNames\": \"string\",\n      \"lastName\": \"string\",\n      \"dateOfBirth\": \"2023-02-22T12:26:30.543Z\",\n      \"nationality\": \"string\"\n    }\n  ],\n  \"auditor\": {\n    \"companyName\": \"string\",\n    \"nationalIdentifier\": \"string\"\n  }\n}",
+					"raw": "{\n  \"registrant\": {\n    \"givenName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"email\": \"john.doe@test.fi\",\n    \"phoneNumber\": \"+358501234567\"\n  },\n  \"companyDetails\": {\n    \"name\": \"Digital company X\",\n    \"alternativeName\": \"Digital company Y\",\n    \"foundingDate\": \"2022-01-01\",\n    \"industrySector\": \"62.01\",\n    \"shareCapital\": 1000,\n    \"capitalCurrency\": \"EUR\",\n    \"settlementDeposit\": 1000,\n    \"depositCurrency\": \"EUR\",\n    \"settlementDate\": \"2022-02-01\",\n    \"countryOfResidence\": \"USA\"\n  },\n  \"shareSeries\": [\n    {\n      \"shareSeriesClass\": \"A\",\n      \"numberOfShares\": 100,\n      \"shareValue\": 10,\n      \"shareValueCurrency\": \"EUR\"\n    }\n  ],\n  \"companyAddress\": {\n    \"fullAddress\": \"Tietotie 4 A 7, 00100 Helsinki, Finland\",\n    \"thoroughfare\": \"Avenue des Champs-Élysées\",\n    \"locatorDesignator\": \"Flat 3, 17 or 3 A 4\",\n    \"locatorName\": \"Shumann, Berlaymont building\",\n    \"addressArea\": \"Montmartre (in Paris)\",\n    \"postCode\": \"75000\",\n    \"postName\": \"Paris\",\n    \"poBox\": \"9383\",\n    \"adminUnitLevel_1\": \"USA\",\n    \"adminUnitLevel_2\": \"Lapland\"\n  },\n  \"managingDirectors\": [\n    {\n      \"role\": \"director\",\n      \"givenName\": \"Mary\",\n      \"middleNames\": \"Juliet Olive\",\n      \"lastName\": \"Deo\",\n      \"dateOfBirth\": \"1976-04-16\",\n      \"nationality\": \"USA\"\n    }\n  ],\n  \"boardMembers\": [\n    {\n      \"role\": \"member\",\n      \"givenName\": \"Mary\",\n      \"middleNames\": \"Juliet Olive\",\n      \"lastName\": \"Deo\",\n      \"dateOfBirth\": \"1976-04-16\",\n      \"nationality\": \"USA\"\n    }\n  ],\n  \"auditorDetails\": {\n    \"companyName\": \"Auditor company X\",\n    \"nationalIdentifier\": \"2464491-9\",\n    \"givenName\": \"Jane\",\n    \"lastName\": \"Doe\"\n  }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -330,7 +330,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"registrant\": {\n    \"givenName\": \"string\",\n    \"lastName\": \"string\",\n    \"email\": \"string\",\n    \"phoneNumber\": \"string\"\n  },\n  \"companyDetails\": {\n    \"name\": \"string\",\n    \"alternativeName\": \"string\",\n    \"foundingDate\": \"2023-02-22T12:26:30.543Z\",\n    \"industrySector\": \"string\",\n    \"shareCapital\": 0,\n    \"settlementDeposit\": 0,\n    \"settlementDate\": \"2023-02-22T12:26:30.543Z\",\n    \"countryOfResidence\": \"string\"\n  },\n  \"shareSeries\": [\n    {\n      \"shareSeriesClass\": \"string\",\n      \"numberOfShares\": 0,\n      \"shareValues\": 0\n    }\n  ],\n  \"companyAddress\": {\n    \"fullAddress\": \"string\",\n    \"thoroughfare\": \"string\",\n    \"locatorDesignator\": \"string\",\n    \"locatorName\": \"string\",\n    \"addressArea\": \"string\",\n    \"postCode\": \"string\",\n    \"postName\": \"string\",\n    \"poBox\": \"string\",\n    \"adminUnitLevel1\": \"string\",\n    \"adminUnitLevel2\": \"string\"\n  },\n  \"managingDirectors\": [\n    {\n      \"role\": \"string\",\n      \"givenName\": \"string\",\n      \"middleNames\": \"string\",\n      \"lastName\": \"string\",\n      \"dateOfBirth\": \"2023-02-22T12:26:30.543Z\",\n      \"nationality\": \"string\"\n    }\n  ],\n  \"boardMembers\": [\n    {\n      \"role\": \"string\",\n      \"givenName\": \"string\",\n      \"middleNames\": \"string\",\n      \"lastName\": \"string\",\n      \"dateOfBirth\": \"2023-02-22T12:26:30.543Z\",\n      \"nationality\": \"string\"\n    }\n  ],\n  \"auditor\": {\n    \"companyName\": \"string\",\n    \"nationalIdentifier\": \"string\"\n  }\n}",
+					"raw": "{\n  \"registrant\": {\n    \"givenName\": \"Jane\",\n    \"lastName\": \"Doe\",\n    \"email\": \"john.doe@test.fi\",\n    \"phoneNumber\": \"+358501234567\"\n  },\n  \"companyDetails\": {\n    \"name\": \"Digital company X\",\n    \"alternativeName\": \"Digital company Y\",\n    \"foundingDate\": \"2022-01-01\",\n    \"industrySector\": \"62.01\",\n    \"shareCapital\": 1000,\n    \"capitalCurrency\": \"EUR\",\n    \"settlementDeposit\": 1000,\n    \"depositCurrency\": \"EUR\",\n    \"settlementDate\": \"2022-02-01\",\n    \"countryOfResidence\": \"USA\"\n  },\n  \"shareSeries\": [\n    {\n      \"shareSeriesClass\": \"A\",\n      \"numberOfShares\": 100,\n      \"shareValue\": 10,\n      \"shareValueCurrency\": \"EUR\"\n    }\n  ],\n  \"companyAddress\": {\n    \"fullAddress\": \"Tietotie 4 A 7, 00100 Helsinki, Finland\",\n    \"thoroughfare\": \"Avenue des Champs-Élysées\",\n    \"locatorDesignator\": \"Flat 3, 17 or 3 A 4\",\n    \"locatorName\": \"Shumann, Berlaymont building\",\n    \"addressArea\": \"Montmartre (in Paris)\",\n    \"postCode\": \"75000\",\n    \"postName\": \"Paris\",\n    \"poBox\": \"9383\",\n    \"adminUnitLevel_1\": \"USA\",\n    \"adminUnitLevel_2\": \"Lapland\"\n  },\n  \"managingDirectors\": [\n    {\n      \"role\": \"director\",\n      \"givenName\": \"Mary\",\n      \"middleNames\": \"Juliet Olive\",\n      \"lastName\": \"Deo\",\n      \"dateOfBirth\": \"1976-04-16\",\n      \"nationality\": \"USA\"\n    }\n  ],\n  \"boardMembers\": [\n    {\n      \"role\": \"member\",\n      \"givenName\": \"Mary\",\n      \"middleNames\": \"Juliet Olive\",\n      \"lastName\": \"Deo\",\n      \"dateOfBirth\": \"1976-04-16\",\n      \"nationality\": \"USA\"\n    }\n  ],\n  \"auditorDetails\": {\n    \"companyName\": \"Auditor company X\",\n    \"nationalIdentifier\": \"2464491-9\",\n    \"givenName\": \"Jane\",\n    \"lastName\": \"Doe\"\n  }\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -422,7 +422,7 @@
 		},
 		{
 			"key": "business_id",
-			"value": "",
+			"value": "7578457-5",
 			"type": "default"
 		}
 	]

@@ -41,8 +41,8 @@ namespace PrhApi.Models.CodeGen.Model
         /// <param name="companyAddress">companyAddress.</param>
         /// <param name="managingDirectors">managingDirectors.</param>
         /// <param name="boardMembers">boardMembers.</param>
-        /// <param name="auditor">auditor.</param>
-        public EstablishmentResponse(Registrant registrant = default(Registrant), CompanyDetails companyDetails = default(CompanyDetails), List<ShareSeries> shareSeries = default(List<ShareSeries>), CompanyAddress companyAddress = default(CompanyAddress), List<ManagingDirector> managingDirectors = default(List<ManagingDirector>), List<BoardMember> boardMembers = default(List<BoardMember>), Auditor auditor = default(Auditor))
+        /// <param name="auditorDetails">auditorDetails.</param>
+        public EstablishmentResponse(Registrant registrant = default(Registrant), CompanyDetails companyDetails = default(CompanyDetails), List<ShareSeries> shareSeries = default(List<ShareSeries>), CompanyAddress companyAddress = default(CompanyAddress), List<ManagingDirector> managingDirectors = default(List<ManagingDirector>), List<BoardMember> boardMembers = default(List<BoardMember>), Auditor auditorDetails = default(Auditor))
         {
             this.Registrant = registrant;
             this.CompanyDetails = companyDetails;
@@ -50,7 +50,7 @@ namespace PrhApi.Models.CodeGen.Model
             this.CompanyAddress = companyAddress;
             this.ManagingDirectors = managingDirectors;
             this.BoardMembers = boardMembers;
-            this.Auditor = auditor;
+            this.AuditorDetails = auditorDetails;
         }
 
         /// <summary>
@@ -90,10 +90,10 @@ namespace PrhApi.Models.CodeGen.Model
         public List<BoardMember> BoardMembers { get; set; }
 
         /// <summary>
-        /// Gets or Sets Auditor
+        /// Gets or Sets AuditorDetails
         /// </summary>
-        [DataMember(Name = "auditor", EmitDefaultValue = false)]
-        public Auditor Auditor { get; set; }
+        [DataMember(Name = "auditorDetails", EmitDefaultValue = false)]
+        public Auditor AuditorDetails { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -109,7 +109,7 @@ namespace PrhApi.Models.CodeGen.Model
             sb.Append("  CompanyAddress: ").Append(CompanyAddress).Append("\n");
             sb.Append("  ManagingDirectors: ").Append(ManagingDirectors).Append("\n");
             sb.Append("  BoardMembers: ").Append(BoardMembers).Append("\n");
-            sb.Append("  Auditor: ").Append(Auditor).Append("\n");
+            sb.Append("  AuditorDetails: ").Append(AuditorDetails).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -179,9 +179,9 @@ namespace PrhApi.Models.CodeGen.Model
                     this.BoardMembers.SequenceEqual(input.BoardMembers)
                 ) && 
                 (
-                    this.Auditor == input.Auditor ||
-                    (this.Auditor != null &&
-                    this.Auditor.Equals(input.Auditor))
+                    this.AuditorDetails == input.AuditorDetails ||
+                    (this.AuditorDetails != null &&
+                    this.AuditorDetails.Equals(input.AuditorDetails))
                 );
         }
 
@@ -218,9 +218,9 @@ namespace PrhApi.Models.CodeGen.Model
                 {
                     hashCode = (hashCode * 59) + this.BoardMembers.GetHashCode();
                 }
-                if (this.Auditor != null)
+                if (this.AuditorDetails != null)
                 {
-                    hashCode = (hashCode * 59) + this.Auditor.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AuditorDetails.GetHashCode();
                 }
                 return hashCode;
             }
