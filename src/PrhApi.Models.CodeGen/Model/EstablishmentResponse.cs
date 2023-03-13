@@ -35,64 +35,104 @@ namespace PrhApi.Models.CodeGen.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="EstablishmentResponse" /> class.
         /// </summary>
-        /// <param name="registrant">registrant.</param>
-        /// <param name="companyDetails">companyDetails.</param>
-        /// <param name="shareSeries">shareSeries.</param>
-        /// <param name="companyAddress">companyAddress.</param>
-        /// <param name="managingDirectors">managingDirectors.</param>
-        /// <param name="boardMembers">boardMembers.</param>
-        /// <param name="auditorDetails">auditorDetails.</param>
+        [JsonConstructorAttribute]
+        protected EstablishmentResponse() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EstablishmentResponse" /> class.
+        /// </summary>
+        /// <param name="registrant">registrant (required).</param>
+        /// <param name="companyDetails">companyDetails (required).</param>
+        /// <param name="shareSeries">shareSeries (required).</param>
+        /// <param name="companyAddress">companyAddress (required).</param>
+        /// <param name="managingDirectors">managingDirectors (required).</param>
+        /// <param name="boardMembers">boardMembers (required).</param>
+        /// <param name="auditorDetails">auditorDetails (required).</param>
         public EstablishmentResponse(Registrant registrant = default(Registrant), CompanyDetails companyDetails = default(CompanyDetails), List<ShareSeries> shareSeries = default(List<ShareSeries>), CompanyAddress companyAddress = default(CompanyAddress), List<ManagingDirector> managingDirectors = default(List<ManagingDirector>), List<BoardMember> boardMembers = default(List<BoardMember>), Auditor auditorDetails = default(Auditor))
         {
+            // to ensure "registrant" is required (not null)
+            if (registrant == null)
+            {
+                throw new ArgumentNullException("registrant is a required property for EstablishmentResponse and cannot be null");
+            }
             this.Registrant = registrant;
+            // to ensure "companyDetails" is required (not null)
+            if (companyDetails == null)
+            {
+                throw new ArgumentNullException("companyDetails is a required property for EstablishmentResponse and cannot be null");
+            }
             this.CompanyDetails = companyDetails;
+            // to ensure "shareSeries" is required (not null)
+            if (shareSeries == null)
+            {
+                throw new ArgumentNullException("shareSeries is a required property for EstablishmentResponse and cannot be null");
+            }
             this.ShareSeries = shareSeries;
+            // to ensure "companyAddress" is required (not null)
+            if (companyAddress == null)
+            {
+                throw new ArgumentNullException("companyAddress is a required property for EstablishmentResponse and cannot be null");
+            }
             this.CompanyAddress = companyAddress;
+            // to ensure "managingDirectors" is required (not null)
+            if (managingDirectors == null)
+            {
+                throw new ArgumentNullException("managingDirectors is a required property for EstablishmentResponse and cannot be null");
+            }
             this.ManagingDirectors = managingDirectors;
+            // to ensure "boardMembers" is required (not null)
+            if (boardMembers == null)
+            {
+                throw new ArgumentNullException("boardMembers is a required property for EstablishmentResponse and cannot be null");
+            }
             this.BoardMembers = boardMembers;
+            // to ensure "auditorDetails" is required (not null)
+            if (auditorDetails == null)
+            {
+                throw new ArgumentNullException("auditorDetails is a required property for EstablishmentResponse and cannot be null");
+            }
             this.AuditorDetails = auditorDetails;
         }
 
         /// <summary>
         /// Gets or Sets Registrant
         /// </summary>
-        [DataMember(Name = "registrant", EmitDefaultValue = false)]
+        [DataMember(Name = "registrant", IsRequired = true, EmitDefaultValue = true)]
         public Registrant Registrant { get; set; }
 
         /// <summary>
         /// Gets or Sets CompanyDetails
         /// </summary>
-        [DataMember(Name = "companyDetails", EmitDefaultValue = false)]
+        [DataMember(Name = "companyDetails", IsRequired = true, EmitDefaultValue = true)]
         public CompanyDetails CompanyDetails { get; set; }
 
         /// <summary>
         /// Gets or Sets ShareSeries
         /// </summary>
-        [DataMember(Name = "shareSeries", EmitDefaultValue = false)]
+        [DataMember(Name = "shareSeries", IsRequired = true, EmitDefaultValue = true)]
         public List<ShareSeries> ShareSeries { get; set; }
 
         /// <summary>
         /// Gets or Sets CompanyAddress
         /// </summary>
-        [DataMember(Name = "companyAddress", EmitDefaultValue = false)]
+        [DataMember(Name = "companyAddress", IsRequired = true, EmitDefaultValue = true)]
         public CompanyAddress CompanyAddress { get; set; }
 
         /// <summary>
         /// Gets or Sets ManagingDirectors
         /// </summary>
-        [DataMember(Name = "managingDirectors", EmitDefaultValue = false)]
+        [DataMember(Name = "managingDirectors", IsRequired = true, EmitDefaultValue = true)]
         public List<ManagingDirector> ManagingDirectors { get; set; }
 
         /// <summary>
         /// Gets or Sets BoardMembers
         /// </summary>
-        [DataMember(Name = "boardMembers", EmitDefaultValue = false)]
+        [DataMember(Name = "boardMembers", IsRequired = true, EmitDefaultValue = true)]
         public List<BoardMember> BoardMembers { get; set; }
 
         /// <summary>
         /// Gets or Sets AuditorDetails
         /// </summary>
-        [DataMember(Name = "auditorDetails", EmitDefaultValue = false)]
+        [DataMember(Name = "auditorDetails", IsRequired = true, EmitDefaultValue = true)]
         public Auditor AuditorDetails { get; set; }
 
         /// <summary>

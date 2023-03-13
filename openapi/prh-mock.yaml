@@ -238,10 +238,7 @@ components:
   schemas:
     Auditor:
       type: object
-      x-examples:
-        Example 1:
-          companyName: ''
-          nationalIdentifier: ''
+      x-examples: {}
       properties:
         companyName:
           type: string
@@ -251,21 +248,13 @@ components:
           maxLength: 40
         givenName:
           type: string
+          maxLength: 250
         lastName:
           type: string
-      required:
-        - companyName
-        - nationalIdentifier
+          maxLength: 250
     BoardMember:
       type: object
-      x-examples:
-        Example 1:
-          boardMemberRole: CHAIRPERSON
-          givenName: string
-          middleNames: string
-          lastName: string
-          dateOfBirth: '2019-08-24T14:15:22Z'
-          nationality: str
+      x-examples: {}
       properties:
         role:
           type: string
@@ -294,18 +283,7 @@ components:
         - nationality
     CompanyAddress:
       type: object
-      x-examples:
-        Example 1:
-          fullAddress: ''
-          thoroughfare: ''
-          locatorDesignator: ''
-          locatorName: ''
-          addressArea: ''
-          postCode: ''
-          postName: ''
-          poBox: ''
-          adminUnitLevel1: ''
-          adminUnitLevel2: ''
+      x-examples: {}
       properties:
         fullAddress:
           type: string
@@ -331,27 +309,16 @@ components:
         poBox:
           type: string
           maxLength: 10
-        adminUnitLevel1:
+        adminUnitLevel_1:
           type: string
           minLength: 3
           maxLength: 3
-        adminUnitLevel2:
+        adminUnitLevel_2:
           type: string
           maxLength: 40
-      required:
-        - fullAddress
     CompanyDetails:
       type: object
-      x-examples:
-        Example 1:
-          name: ''
-          alternativeName: ''
-          foundingDate: ''
-          industrySector: ''
-          shareCapital: ''
-          settlementDeposit: ''
-          settlementDate: ''
-          countryOfResidence: ''
+      x-examples: {}
       properties:
         name:
           type: string
@@ -384,16 +351,10 @@ components:
         - foundingDate
         - industrySector
         - shareCapital
+        - capitalCurrency
     ManagingDirector:
       type: object
-      x-examples:
-        Example 1:
-          role: ''
-          givenName: ''
-          middleNames: ''
-          lastName: ''
-          dateOfBirth: ''
-          nationality: ''
+      x-examples: {}
       properties:
         role:
           type: string
@@ -435,12 +396,7 @@ components:
         - quantity
     Registrant:
       type: object
-      x-examples:
-        Example 1:
-          givenName: ''
-          lastName: ''
-          email: ''
-          phoneNumber: ''
+      x-examples: {}
       properties:
         givenName:
           type: string
@@ -460,11 +416,7 @@ components:
         - phoneNumber
     ShareSeries:
       type: object
-      x-examples:
-        Example 1:
-          shareSeriesClass: ''
-          numberOfShares: ''
-          shareValues: ''
+      x-examples: {}
       x-stoplight:
         id: 0233acac0402c
       properties:
@@ -472,14 +424,14 @@ components:
           type: string
         numberOfShares:
           type: integer
-        shareValues:
+        shareValue:
           type: number
         shareValueCurrency:
           type: string
       required:
         - shareSeriesClass
         - numberOfShares
-        - shareValues
+        - shareValue
     Shareholder:
       title: Shareholder
       x-stoplight:
@@ -489,7 +441,7 @@ components:
         name:
           type: string
           maxLength: 250
-        ownerships:
+        shareOwnership:
           type: array
           items:
             $ref: '#/components/schemas/Ownership'
@@ -546,11 +498,11 @@ components:
         poBox:
           type: string
           maxLength: 10
-        adminUnitLevel1:
+        adminUnitLevel_1:
           type: string
           minLength: 3
           maxLength: 3
-        adminUnitLevel2:
+        adminUnitLevel_2:
           type: string
           maxLength: 40
       required:
@@ -586,6 +538,14 @@ components:
             $ref: '#/components/schemas/BoardMember'
         auditorDetails:
           $ref: '#/components/schemas/Auditor'
+      required:
+        - registrant
+        - companyDetails
+        - shareSeries
+        - companyAddress
+        - managingDirectors
+        - boardMembers
+        - auditorDetails
     BeneficialOwnerShareSeries:
       title: BeneficialOwnerShareSeries
       x-stoplight:

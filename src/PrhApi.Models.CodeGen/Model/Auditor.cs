@@ -35,28 +35,13 @@ namespace PrhApi.Models.CodeGen.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Auditor" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected Auditor() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Auditor" /> class.
-        /// </summary>
-        /// <param name="companyName">companyName (required).</param>
-        /// <param name="nationalIdentifier">nationalIdentifier (required).</param>
+        /// <param name="companyName">companyName.</param>
+        /// <param name="nationalIdentifier">nationalIdentifier.</param>
         /// <param name="givenName">givenName.</param>
         /// <param name="lastName">lastName.</param>
         public Auditor(string companyName = default(string), string nationalIdentifier = default(string), string givenName = default(string), string lastName = default(string))
         {
-            // to ensure "companyName" is required (not null)
-            if (companyName == null)
-            {
-                throw new ArgumentNullException("companyName is a required property for Auditor and cannot be null");
-            }
             this.CompanyName = companyName;
-            // to ensure "nationalIdentifier" is required (not null)
-            if (nationalIdentifier == null)
-            {
-                throw new ArgumentNullException("nationalIdentifier is a required property for Auditor and cannot be null");
-            }
             this.NationalIdentifier = nationalIdentifier;
             this.GivenName = givenName;
             this.LastName = lastName;
@@ -65,13 +50,13 @@ namespace PrhApi.Models.CodeGen.Model
         /// <summary>
         /// Gets or Sets CompanyName
         /// </summary>
-        [DataMember(Name = "companyName", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "companyName", EmitDefaultValue = false)]
         public string CompanyName { get; set; }
 
         /// <summary>
         /// Gets or Sets NationalIdentifier
         /// </summary>
-        [DataMember(Name = "nationalIdentifier", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "nationalIdentifier", EmitDefaultValue = false)]
         public string NationalIdentifier { get; set; }
 
         /// <summary>
@@ -201,6 +186,18 @@ namespace PrhApi.Models.CodeGen.Model
             if (this.NationalIdentifier != null && this.NationalIdentifier.Length > 40)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for NationalIdentifier, length must be less than 40.", new [] { "NationalIdentifier" });
+            }
+
+            // GivenName (string) maxLength
+            if (this.GivenName != null && this.GivenName.Length > 250)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for GivenName, length must be less than 250.", new [] { "GivenName" });
+            }
+
+            // LastName (string) maxLength
+            if (this.LastName != null && this.LastName.Length > 250)
+            {
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LastName, length must be less than 250.", new [] { "LastName" });
             }
 
             yield break;

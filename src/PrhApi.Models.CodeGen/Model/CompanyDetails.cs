@@ -45,7 +45,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// <param name="foundingDate">foundingDate (required).</param>
         /// <param name="industrySector">industrySector (required).</param>
         /// <param name="shareCapital">shareCapital (required).</param>
-        /// <param name="capitalCurrency">capitalCurrency.</param>
+        /// <param name="capitalCurrency">capitalCurrency (required).</param>
         /// <param name="settlementDeposit">settlementDeposit.</param>
         /// <param name="depositCurrency">depositCurrency.</param>
         /// <param name="settlementDate">settlementDate.</param>
@@ -66,8 +66,13 @@ namespace PrhApi.Models.CodeGen.Model
             }
             this.IndustrySector = industrySector;
             this.ShareCapital = shareCapital;
-            this.AlternativeName = alternativeName;
+            // to ensure "capitalCurrency" is required (not null)
+            if (capitalCurrency == null)
+            {
+                throw new ArgumentNullException("capitalCurrency is a required property for CompanyDetails and cannot be null");
+            }
             this.CapitalCurrency = capitalCurrency;
+            this.AlternativeName = alternativeName;
             this.SettlementDeposit = settlementDeposit;
             this.DepositCurrency = depositCurrency;
             this.SettlementDate = settlementDate;
@@ -107,7 +112,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// <summary>
         /// Gets or Sets CapitalCurrency
         /// </summary>
-        [DataMember(Name = "capitalCurrency", EmitDefaultValue = false)]
+        [DataMember(Name = "capitalCurrency", IsRequired = true, EmitDefaultValue = true)]
         public string CapitalCurrency { get; set; }
 
         /// <summary>
