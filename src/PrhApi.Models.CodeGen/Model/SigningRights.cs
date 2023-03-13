@@ -47,7 +47,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// <param name="lastName">lastName (required).</param>
         /// <param name="dateOfBirth">dateOfBirth (required).</param>
         /// <param name="nationality">nationality (required).</param>
-        /// <param name="fullAddress">fullAddress (required).</param>
+        /// <param name="fullAddress">fullAddress.</param>
         /// <param name="thoroughfare">thoroughfare.</param>
         /// <param name="locatorDesignator">locatorDesignator.</param>
         /// <param name="locatorName">locatorName.</param>
@@ -84,14 +84,9 @@ namespace PrhApi.Models.CodeGen.Model
                 throw new ArgumentNullException("nationality is a required property for SigningRights and cannot be null");
             }
             this.Nationality = nationality;
-            // to ensure "fullAddress" is required (not null)
-            if (fullAddress == null)
-            {
-                throw new ArgumentNullException("fullAddress is a required property for SigningRights and cannot be null");
-            }
-            this.FullAddress = fullAddress;
             this.Role = role;
             this.PersonalId = personalId;
+            this.FullAddress = fullAddress;
             this.Thoroughfare = thoroughfare;
             this.LocatorDesignator = locatorDesignator;
             this.LocatorName = locatorName;
@@ -148,7 +143,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// <summary>
         /// Gets or Sets FullAddress
         /// </summary>
-        [DataMember(Name = "fullAddress", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "fullAddress", EmitDefaultValue = false)]
         public string FullAddress { get; set; }
 
         /// <summary>

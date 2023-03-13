@@ -511,7 +511,6 @@ components:
         - lastName
         - dateOfBirth
         - nationality
-        - fullAddress
     EstablishmentResponse:
       title: NonListedCompanyEstablishmentResponse
       x-stoplight:
