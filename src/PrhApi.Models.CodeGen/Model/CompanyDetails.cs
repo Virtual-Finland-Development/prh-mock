@@ -50,7 +50,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// <param name="depositCurrency">depositCurrency.</param>
         /// <param name="settlementDate">settlementDate.</param>
         /// <param name="countryOfResidence">countryOfResidence.</param>
-        public CompanyDetails(string name = default(string), string alternativeName = default(string), DateTime foundingDate = default(DateTime), string industrySector = default(string), decimal shareCapital = default(decimal), string capitalCurrency = default(string), decimal settlementDeposit = default(decimal), string depositCurrency = default(string), DateTime settlementDate = default(DateTime), string countryOfResidence = default(string))
+        public CompanyDetails(string name = default(string), string alternativeName = default(string), DateTime foundingDate = default(DateTime), string industrySector = default(string), decimal shareCapital = default(decimal), string capitalCurrency = default(string), decimal settlementDeposit = default(decimal), string depositCurrency = default(string), string settlementDate = default(string), string countryOfResidence = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -131,7 +131,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// Gets or Sets SettlementDate
         /// </summary>
         [DataMember(Name = "settlementDate", EmitDefaultValue = false)]
-        public DateTime SettlementDate { get; set; }
+        public string SettlementDate { get; set; }
 
         /// <summary>
         /// Gets or Sets CountryOfResidence

@@ -341,7 +341,6 @@ components:
           type: string
         settlementDate:
           type: string
-          format: date-time
         countryOfResidence:
           type: string
           maxLength: 3
