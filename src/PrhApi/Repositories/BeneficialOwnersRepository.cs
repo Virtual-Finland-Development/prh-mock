@@ -53,7 +53,7 @@ internal class BeneficialOwnersRepository : IBeneficialOwnersRepository
             BucketName = _bucket,
             Key = S3ObjectKey.BeneficialOwnerKeyFrom(userId, businessId),
             ContentType = "application/json",
-            ContentBody = JsonSerializer.Serialize(details.BeneficialOwners)
+            ContentBody = JsonSerializer.Serialize(details.Data)
         };
 
         try
@@ -68,7 +68,7 @@ internal class BeneficialOwnersRepository : IBeneficialOwnersRepository
             throw;
         }
 
-        return details.BeneficialOwners;
+        return details.Data;
     }
 
     private async Task<BeneficialOwnersResponse?> LoadWithObjectKey(string key)

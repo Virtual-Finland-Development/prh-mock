@@ -48,7 +48,7 @@ internal class SignatoryRightsRepository : ISignatoryRightsRepository
             BucketName = _bucket,
             Key = S3ObjectKey.SignatoryRightsKeyFrom(userId, businessId),
             ContentType = "application/json",
-            ContentBody = JsonSerializer.Serialize(details.SignatoryRights)
+            ContentBody = JsonSerializer.Serialize(details.Data)
         };
 
         try
@@ -63,7 +63,7 @@ internal class SignatoryRightsRepository : ISignatoryRightsRepository
             throw;
         }
 
-        return details.SignatoryRights;
+        return details.Data;
     }
 
     private async Task<SignatoryRightsResponse?> LoadWithObjectKey(string key)

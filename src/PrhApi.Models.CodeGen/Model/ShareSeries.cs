@@ -42,8 +42,9 @@ namespace PrhApi.Models.CodeGen.Model
         /// </summary>
         /// <param name="shareSeriesClass">shareSeriesClass (required).</param>
         /// <param name="numberOfShares">numberOfShares (required).</param>
-        /// <param name="shareValues">shareValues (required).</param>
-        public ShareSeries(string shareSeriesClass = default(string), int numberOfShares = default(int), decimal shareValues = default(decimal))
+        /// <param name="shareValue">shareValue (required).</param>
+        /// <param name="shareValueCurrency">shareValueCurrency.</param>
+        public ShareSeries(string shareSeriesClass = default(string), int numberOfShares = default(int), decimal shareValue = default(decimal), string shareValueCurrency = default(string))
         {
             // to ensure "shareSeriesClass" is required (not null)
             if (shareSeriesClass == null)
@@ -52,7 +53,8 @@ namespace PrhApi.Models.CodeGen.Model
             }
             this.ShareSeriesClass = shareSeriesClass;
             this.NumberOfShares = numberOfShares;
-            this.ShareValues = shareValues;
+            this.ShareValue = shareValue;
+            this.ShareValueCurrency = shareValueCurrency;
         }
 
         /// <summary>
@@ -68,10 +70,16 @@ namespace PrhApi.Models.CodeGen.Model
         public int NumberOfShares { get; set; }
 
         /// <summary>
-        /// Gets or Sets ShareValues
+        /// Gets or Sets ShareValue
         /// </summary>
-        [DataMember(Name = "shareValues", IsRequired = true, EmitDefaultValue = true)]
-        public decimal ShareValues { get; set; }
+        [DataMember(Name = "shareValue", IsRequired = true, EmitDefaultValue = true)]
+        public decimal ShareValue { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ShareValueCurrency
+        /// </summary>
+        [DataMember(Name = "shareValueCurrency", EmitDefaultValue = false)]
+        public string ShareValueCurrency { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -83,7 +91,8 @@ namespace PrhApi.Models.CodeGen.Model
             sb.Append("class ShareSeries {\n");
             sb.Append("  ShareSeriesClass: ").Append(ShareSeriesClass).Append("\n");
             sb.Append("  NumberOfShares: ").Append(NumberOfShares).Append("\n");
-            sb.Append("  ShareValues: ").Append(ShareValues).Append("\n");
+            sb.Append("  ShareValue: ").Append(ShareValue).Append("\n");
+            sb.Append("  ShareValueCurrency: ").Append(ShareValueCurrency).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -129,8 +138,13 @@ namespace PrhApi.Models.CodeGen.Model
                     this.NumberOfShares.Equals(input.NumberOfShares)
                 ) && 
                 (
-                    this.ShareValues == input.ShareValues ||
-                    this.ShareValues.Equals(input.ShareValues)
+                    this.ShareValue == input.ShareValue ||
+                    this.ShareValue.Equals(input.ShareValue)
+                ) && 
+                (
+                    this.ShareValueCurrency == input.ShareValueCurrency ||
+                    (this.ShareValueCurrency != null &&
+                    this.ShareValueCurrency.Equals(input.ShareValueCurrency))
                 );
         }
 
@@ -148,7 +162,11 @@ namespace PrhApi.Models.CodeGen.Model
                     hashCode = (hashCode * 59) + this.ShareSeriesClass.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.NumberOfShares.GetHashCode();
-                hashCode = (hashCode * 59) + this.ShareValues.GetHashCode();
+                hashCode = (hashCode * 59) + this.ShareValue.GetHashCode();
+                if (this.ShareValueCurrency != null)
+                {
+                    hashCode = (hashCode * 59) + this.ShareValueCurrency.GetHashCode();
+                }
                 return hashCode;
             }
         }

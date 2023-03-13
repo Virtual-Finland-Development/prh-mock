@@ -35,17 +35,27 @@ namespace PrhApi.Models.CodeGen.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SignatoryRightsResponse" /> class.
         /// </summary>
-        /// <param name="signingRights">signingRights.</param>
-        public SignatoryRightsResponse(SigningRights signingRights = default(SigningRights))
+        [JsonConstructorAttribute]
+        protected SignatoryRightsResponse() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SignatoryRightsResponse" /> class.
+        /// </summary>
+        /// <param name="signingRights">signingRights (required).</param>
+        public SignatoryRightsResponse(List<SigningRights> signingRights = default(List<SigningRights>))
         {
+            // to ensure "signingRights" is required (not null)
+            if (signingRights == null)
+            {
+                throw new ArgumentNullException("signingRights is a required property for SignatoryRightsResponse and cannot be null");
+            }
             this.SigningRights = signingRights;
         }
 
         /// <summary>
         /// Gets or Sets SigningRights
         /// </summary>
-        [DataMember(Name = "signingRights", EmitDefaultValue = false)]
-        public SigningRights SigningRights { get; set; }
+        [DataMember(Name = "signingRights", IsRequired = true, EmitDefaultValue = true)]
+        public List<SigningRights> SigningRights { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -93,8 +103,9 @@ namespace PrhApi.Models.CodeGen.Model
             return 
                 (
                     this.SigningRights == input.SigningRights ||
-                    (this.SigningRights != null &&
-                    this.SigningRights.Equals(input.SigningRights))
+                    this.SigningRights != null &&
+                    input.SigningRights != null &&
+                    this.SigningRights.SequenceEqual(input.SigningRights)
                 );
         }
 

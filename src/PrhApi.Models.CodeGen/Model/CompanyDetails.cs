@@ -45,10 +45,12 @@ namespace PrhApi.Models.CodeGen.Model
         /// <param name="foundingDate">foundingDate (required).</param>
         /// <param name="industrySector">industrySector (required).</param>
         /// <param name="shareCapital">shareCapital (required).</param>
+        /// <param name="capitalCurrency">capitalCurrency (required).</param>
         /// <param name="settlementDeposit">settlementDeposit.</param>
+        /// <param name="depositCurrency">depositCurrency.</param>
         /// <param name="settlementDate">settlementDate.</param>
         /// <param name="countryOfResidence">countryOfResidence.</param>
-        public CompanyDetails(string name = default(string), string alternativeName = default(string), DateTime foundingDate = default(DateTime), string industrySector = default(string), decimal shareCapital = default(decimal), decimal settlementDeposit = default(decimal), DateTime settlementDate = default(DateTime), string countryOfResidence = default(string))
+        public CompanyDetails(string name = default(string), string alternativeName = default(string), DateTime foundingDate = default(DateTime), string industrySector = default(string), decimal shareCapital = default(decimal), string capitalCurrency = default(string), decimal settlementDeposit = default(decimal), string depositCurrency = default(string), DateTime? settlementDate = default(DateTime?), string countryOfResidence = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -64,8 +66,15 @@ namespace PrhApi.Models.CodeGen.Model
             }
             this.IndustrySector = industrySector;
             this.ShareCapital = shareCapital;
+            // to ensure "capitalCurrency" is required (not null)
+            if (capitalCurrency == null)
+            {
+                throw new ArgumentNullException("capitalCurrency is a required property for CompanyDetails and cannot be null");
+            }
+            this.CapitalCurrency = capitalCurrency;
             this.AlternativeName = alternativeName;
             this.SettlementDeposit = settlementDeposit;
+            this.DepositCurrency = depositCurrency;
             this.SettlementDate = settlementDate;
             this.CountryOfResidence = countryOfResidence;
         }
@@ -101,16 +110,28 @@ namespace PrhApi.Models.CodeGen.Model
         public decimal ShareCapital { get; set; }
 
         /// <summary>
+        /// Gets or Sets CapitalCurrency
+        /// </summary>
+        [DataMember(Name = "capitalCurrency", IsRequired = true, EmitDefaultValue = true)]
+        public string CapitalCurrency { get; set; }
+
+        /// <summary>
         /// Gets or Sets SettlementDeposit
         /// </summary>
         [DataMember(Name = "settlementDeposit", EmitDefaultValue = false)]
         public decimal SettlementDeposit { get; set; }
 
         /// <summary>
+        /// Gets or Sets DepositCurrency
+        /// </summary>
+        [DataMember(Name = "depositCurrency", EmitDefaultValue = false)]
+        public string DepositCurrency { get; set; }
+
+        /// <summary>
         /// Gets or Sets SettlementDate
         /// </summary>
-        [DataMember(Name = "settlementDate", EmitDefaultValue = false)]
-        public DateTime SettlementDate { get; set; }
+        [DataMember(Name = "settlementDate", EmitDefaultValue = true)]
+        public DateTime? SettlementDate { get; set; }
 
         /// <summary>
         /// Gets or Sets CountryOfResidence
@@ -131,7 +152,9 @@ namespace PrhApi.Models.CodeGen.Model
             sb.Append("  FoundingDate: ").Append(FoundingDate).Append("\n");
             sb.Append("  IndustrySector: ").Append(IndustrySector).Append("\n");
             sb.Append("  ShareCapital: ").Append(ShareCapital).Append("\n");
+            sb.Append("  CapitalCurrency: ").Append(CapitalCurrency).Append("\n");
             sb.Append("  SettlementDeposit: ").Append(SettlementDeposit).Append("\n");
+            sb.Append("  DepositCurrency: ").Append(DepositCurrency).Append("\n");
             sb.Append("  SettlementDate: ").Append(SettlementDate).Append("\n");
             sb.Append("  CountryOfResidence: ").Append(CountryOfResidence).Append("\n");
             sb.Append("}\n");
@@ -194,8 +217,18 @@ namespace PrhApi.Models.CodeGen.Model
                     this.ShareCapital.Equals(input.ShareCapital)
                 ) && 
                 (
+                    this.CapitalCurrency == input.CapitalCurrency ||
+                    (this.CapitalCurrency != null &&
+                    this.CapitalCurrency.Equals(input.CapitalCurrency))
+                ) && 
+                (
                     this.SettlementDeposit == input.SettlementDeposit ||
                     this.SettlementDeposit.Equals(input.SettlementDeposit)
+                ) && 
+                (
+                    this.DepositCurrency == input.DepositCurrency ||
+                    (this.DepositCurrency != null &&
+                    this.DepositCurrency.Equals(input.DepositCurrency))
                 ) && 
                 (
                     this.SettlementDate == input.SettlementDate ||
@@ -235,7 +268,15 @@ namespace PrhApi.Models.CodeGen.Model
                     hashCode = (hashCode * 59) + this.IndustrySector.GetHashCode();
                 }
                 hashCode = (hashCode * 59) + this.ShareCapital.GetHashCode();
+                if (this.CapitalCurrency != null)
+                {
+                    hashCode = (hashCode * 59) + this.CapitalCurrency.GetHashCode();
+                }
                 hashCode = (hashCode * 59) + this.SettlementDeposit.GetHashCode();
+                if (this.DepositCurrency != null)
+                {
+                    hashCode = (hashCode * 59) + this.DepositCurrency.GetHashCode();
+                }
                 if (this.SettlementDate != null)
                 {
                     hashCode = (hashCode * 59) + this.SettlementDate.GetHashCode();

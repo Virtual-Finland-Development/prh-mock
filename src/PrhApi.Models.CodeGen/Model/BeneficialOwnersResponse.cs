@@ -37,7 +37,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// </summary>
         /// <param name="shareSeries">shareSeries.</param>
         /// <param name="shareholders">shareholders.</param>
-        public BeneficialOwnersResponse(BeneficialOwnerShareSeries shareSeries = default(BeneficialOwnerShareSeries), List<Shareholder> shareholders = default(List<Shareholder>))
+        public BeneficialOwnersResponse(List<BeneficialOwnerShareSeries> shareSeries = default(List<BeneficialOwnerShareSeries>), List<Shareholder> shareholders = default(List<Shareholder>))
         {
             this.ShareSeries = shareSeries;
             this.Shareholders = shareholders;
@@ -47,7 +47,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// Gets or Sets ShareSeries
         /// </summary>
         [DataMember(Name = "shareSeries", EmitDefaultValue = false)]
-        public BeneficialOwnerShareSeries ShareSeries { get; set; }
+        public List<BeneficialOwnerShareSeries> ShareSeries { get; set; }
 
         /// <summary>
         /// Gets or Sets Shareholders
@@ -102,8 +102,9 @@ namespace PrhApi.Models.CodeGen.Model
             return 
                 (
                     this.ShareSeries == input.ShareSeries ||
-                    (this.ShareSeries != null &&
-                    this.ShareSeries.Equals(input.ShareSeries))
+                    this.ShareSeries != null &&
+                    input.ShareSeries != null &&
+                    this.ShareSeries.SequenceEqual(input.ShareSeries)
                 ) && 
                 (
                     this.Shareholders == input.Shareholders ||

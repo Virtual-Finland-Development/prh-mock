@@ -36,11 +36,11 @@ namespace PrhApi.Models.CodeGen.Model
         /// Initializes a new instance of the <see cref="SignatoryRightsWriteRequest" /> class.
         /// </summary>
         /// <param name="businessId">businessId.</param>
-        /// <param name="signatoryRights">signatoryRights.</param>
-        public SignatoryRightsWriteRequest(string businessId = default(string), SignatoryRightsResponse signatoryRights = default(SignatoryRightsResponse))
+        /// <param name="data">data.</param>
+        public SignatoryRightsWriteRequest(string businessId = default(string), SignatoryRightsResponse data = default(SignatoryRightsResponse))
         {
             this.BusinessId = businessId;
-            this.SignatoryRights = signatoryRights;
+            this.Data = data;
         }
 
         /// <summary>
@@ -50,10 +50,10 @@ namespace PrhApi.Models.CodeGen.Model
         public string BusinessId { get; set; }
 
         /// <summary>
-        /// Gets or Sets SignatoryRights
+        /// Gets or Sets Data
         /// </summary>
-        [DataMember(Name = "signatoryRights", EmitDefaultValue = false)]
-        public SignatoryRightsResponse SignatoryRights { get; set; }
+        [DataMember(Name = "data", EmitDefaultValue = false)]
+        public SignatoryRightsResponse Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -64,7 +64,7 @@ namespace PrhApi.Models.CodeGen.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class SignatoryRightsWriteRequest {\n");
             sb.Append("  BusinessId: ").Append(BusinessId).Append("\n");
-            sb.Append("  SignatoryRights: ").Append(SignatoryRights).Append("\n");
+            sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -106,9 +106,9 @@ namespace PrhApi.Models.CodeGen.Model
                     this.BusinessId.Equals(input.BusinessId))
                 ) && 
                 (
-                    this.SignatoryRights == input.SignatoryRights ||
-                    (this.SignatoryRights != null &&
-                    this.SignatoryRights.Equals(input.SignatoryRights))
+                    this.Data == input.Data ||
+                    (this.Data != null &&
+                    this.Data.Equals(input.Data))
                 );
         }
 
@@ -125,9 +125,9 @@ namespace PrhApi.Models.CodeGen.Model
                 {
                     hashCode = (hashCode * 59) + this.BusinessId.GetHashCode();
                 }
-                if (this.SignatoryRights != null)
+                if (this.Data != null)
                 {
-                    hashCode = (hashCode * 59) + this.SignatoryRights.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Data.GetHashCode();
                 }
                 return hashCode;
             }
