@@ -41,8 +41,8 @@ namespace PrhApi.Models.CodeGen.Model
         /// Initializes a new instance of the <see cref="Shareholder" /> class.
         /// </summary>
         /// <param name="name">name (required).</param>
-        /// <param name="ownerships">ownerships.</param>
-        public Shareholder(string name = default(string), List<Ownership> ownerships = default(List<Ownership>))
+        /// <param name="shareOwnership">shareOwnership.</param>
+        public Shareholder(string name = default(string), List<Ownership> shareOwnership = default(List<Ownership>))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -50,7 +50,7 @@ namespace PrhApi.Models.CodeGen.Model
                 throw new ArgumentNullException("name is a required property for Shareholder and cannot be null");
             }
             this.Name = name;
-            this.Ownerships = ownerships;
+            this.ShareOwnership = shareOwnership;
         }
 
         /// <summary>
@@ -60,10 +60,10 @@ namespace PrhApi.Models.CodeGen.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets Ownerships
+        /// Gets or Sets ShareOwnership
         /// </summary>
-        [DataMember(Name = "ownerships", EmitDefaultValue = false)]
-        public List<Ownership> Ownerships { get; set; }
+        [DataMember(Name = "shareOwnership", EmitDefaultValue = false)]
+        public List<Ownership> ShareOwnership { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -74,7 +74,7 @@ namespace PrhApi.Models.CodeGen.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class Shareholder {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Ownerships: ").Append(Ownerships).Append("\n");
+            sb.Append("  ShareOwnership: ").Append(ShareOwnership).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -116,10 +116,10 @@ namespace PrhApi.Models.CodeGen.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Ownerships == input.Ownerships ||
-                    this.Ownerships != null &&
-                    input.Ownerships != null &&
-                    this.Ownerships.SequenceEqual(input.Ownerships)
+                    this.ShareOwnership == input.ShareOwnership ||
+                    this.ShareOwnership != null &&
+                    input.ShareOwnership != null &&
+                    this.ShareOwnership.SequenceEqual(input.ShareOwnership)
                 );
         }
 
@@ -136,9 +136,9 @@ namespace PrhApi.Models.CodeGen.Model
                 {
                     hashCode = (hashCode * 59) + this.Name.GetHashCode();
                 }
-                if (this.Ownerships != null)
+                if (this.ShareOwnership != null)
                 {
-                    hashCode = (hashCode * 59) + this.Ownerships.GetHashCode();
+                    hashCode = (hashCode * 59) + this.ShareOwnership.GetHashCode();
                 }
                 return hashCode;
             }

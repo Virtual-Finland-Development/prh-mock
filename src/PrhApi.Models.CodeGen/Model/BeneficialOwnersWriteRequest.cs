@@ -36,11 +36,11 @@ namespace PrhApi.Models.CodeGen.Model
         /// Initializes a new instance of the <see cref="BeneficialOwnersWriteRequest" /> class.
         /// </summary>
         /// <param name="businessId">businessId.</param>
-        /// <param name="beneficialOwners">beneficialOwners.</param>
-        public BeneficialOwnersWriteRequest(string businessId = default(string), BeneficialOwnersResponse beneficialOwners = default(BeneficialOwnersResponse))
+        /// <param name="data">data.</param>
+        public BeneficialOwnersWriteRequest(string businessId = default(string), BeneficialOwnersResponse data = default(BeneficialOwnersResponse))
         {
             this.BusinessId = businessId;
-            this.BeneficialOwners = beneficialOwners;
+            this.Data = data;
         }
 
         /// <summary>
@@ -50,10 +50,10 @@ namespace PrhApi.Models.CodeGen.Model
         public string BusinessId { get; set; }
 
         /// <summary>
-        /// Gets or Sets BeneficialOwners
+        /// Gets or Sets Data
         /// </summary>
-        [DataMember(Name = "beneficialOwners", EmitDefaultValue = false)]
-        public BeneficialOwnersResponse BeneficialOwners { get; set; }
+        [DataMember(Name = "data", EmitDefaultValue = false)]
+        public BeneficialOwnersResponse Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -64,7 +64,7 @@ namespace PrhApi.Models.CodeGen.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class BeneficialOwnersWriteRequest {\n");
             sb.Append("  BusinessId: ").Append(BusinessId).Append("\n");
-            sb.Append("  BeneficialOwners: ").Append(BeneficialOwners).Append("\n");
+            sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -106,9 +106,9 @@ namespace PrhApi.Models.CodeGen.Model
                     this.BusinessId.Equals(input.BusinessId))
                 ) && 
                 (
-                    this.BeneficialOwners == input.BeneficialOwners ||
-                    (this.BeneficialOwners != null &&
-                    this.BeneficialOwners.Equals(input.BeneficialOwners))
+                    this.Data == input.Data ||
+                    (this.Data != null &&
+                    this.Data.Equals(input.Data))
                 );
         }
 
@@ -125,9 +125,9 @@ namespace PrhApi.Models.CodeGen.Model
                 {
                     hashCode = (hashCode * 59) + this.BusinessId.GetHashCode();
                 }
-                if (this.BeneficialOwners != null)
+                if (this.Data != null)
                 {
-                    hashCode = (hashCode * 59) + this.BeneficialOwners.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Data.GetHashCode();
                 }
                 return hashCode;
             }
