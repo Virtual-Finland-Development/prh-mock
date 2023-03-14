@@ -1,4 +1,4 @@
-version: '3.9'
+version: "3.9"
 
 services:
   api:
@@ -10,8 +10,10 @@ services:
       - ASPNETCORE_URLS=http://0.0.0.0:80
       - AWS_PROFILE=${AWS_PROFILE:-default}
       - AWS_REGION=eu-north-1
+      - AuthGwBaseAddress=${AuthGwBaseAddress:-http://host.docker.internal:4078}
     volumes:
       - $HOME/.aws:/root/.aws:ro
     ports:
-      - '5059:80'
-      
+      - "5059:80"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

@@ -82,13 +82,16 @@ return await Deployment.RunAsync(() =>
             Role = Output.Format($"{role.Name}"),
             PolicyArn = s3BucketPolicy.Arn
         });
-    
+
     var lambdaRolePolicyAttachment = new RolePolicyAttachment($"{projectName}-lambda-role-attachment-{environment}",
         new RolePolicyAttachmentArgs
         {
             Role = Output.Format($"{role.Name}"),
             PolicyArn = ManagedPolicy.AWSLambdaBasicExecutionRole.ToString()
         });
+
+    var authGwStackReference = new StackReference($"{Pulumi.Deployment.Instance.OrganizationName}/authentication-gw/{environment}");
+    var authenticationGwEndpointUrl = authGwStackReference.GetOutput("endpoint");
 
     var lambdaFunction = new Function($"{projectName}-{environment}", new FunctionArgs
     {
@@ -102,14 +105,17 @@ return await Deployment.RunAsync(() =>
             Variables =
             {
                 { "ASPNETCORE_ENVIRONMENT", environment },
-                { "PrhBucketName", bucket.BucketName }
+                { "PrhBucketName", bucket.BucketName },
+                {
+                    "AuthGwBaseAddress", Output.Format($"{authenticationGwEndpointUrl}")
+                },
             }
         },
         Code = new FileArchive(artifactPath),
         Tags = tags
     });
 
-    
+
     var functionUrl = new FunctionUrl($"{projectName}-function-url-{environment}", new FunctionUrlArgs
     {
         FunctionName = lambdaFunction.Arn,
@@ -117,16 +123,16 @@ return await Deployment.RunAsync(() =>
     });
 
     var command = new Command($"{projectName}-add-permissions-command-{environment}", new CommandArgs
-        {
-            Create = Output.Format(
+    {
+        Create = Output.Format(
                 $"aws lambda add-permission --function-name {lambdaFunction.Arn} --action lambda:InvokeFunctionUrl --principal '*' --function-url-auth-type NONE --statement-id FunctionUrlAllowAccess")
-        }, new CustomResourceOptions
-        {
-            DeleteBeforeReplace = true,
-            DependsOn = new InputList<Resource> { lambdaFunction }
-        }
+    }, new CustomResourceOptions
+    {
+        DeleteBeforeReplace = true,
+        DependsOn = new InputList<Resource> { lambdaFunction }
+    }
     );
-    
+
 
     // Export the name of the bucket
     return new Dictionary<string, object?>
