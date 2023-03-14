@@ -36,11 +36,11 @@ namespace PrhApi.Models.CodeGen.Model
         /// Initializes a new instance of the <see cref="BeneficialOwnersResponse" /> class.
         /// </summary>
         /// <param name="shareSeries">shareSeries.</param>
-        /// <param name="shareholders">shareholders.</param>
-        public BeneficialOwnersResponse(List<BeneficialOwnerShareSeries> shareSeries = default(List<BeneficialOwnerShareSeries>), List<Shareholder> shareholders = default(List<Shareholder>))
+        /// <param name="shareholder">shareholder.</param>
+        public BeneficialOwnersResponse(List<BeneficialOwnerShareSeries> shareSeries = default(List<BeneficialOwnerShareSeries>), List<Shareholder> shareholder = default(List<Shareholder>))
         {
             this.ShareSeries = shareSeries;
-            this.Shareholders = shareholders;
+            this.Shareholder = shareholder;
         }
 
         /// <summary>
@@ -50,10 +50,10 @@ namespace PrhApi.Models.CodeGen.Model
         public List<BeneficialOwnerShareSeries> ShareSeries { get; set; }
 
         /// <summary>
-        /// Gets or Sets Shareholders
+        /// Gets or Sets Shareholder
         /// </summary>
-        [DataMember(Name = "shareholders", EmitDefaultValue = false)]
-        public List<Shareholder> Shareholders { get; set; }
+        [DataMember(Name = "shareholder", EmitDefaultValue = false)]
+        public List<Shareholder> Shareholder { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -64,7 +64,7 @@ namespace PrhApi.Models.CodeGen.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class BeneficialOwnersResponse {\n");
             sb.Append("  ShareSeries: ").Append(ShareSeries).Append("\n");
-            sb.Append("  Shareholders: ").Append(Shareholders).Append("\n");
+            sb.Append("  Shareholder: ").Append(Shareholder).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -107,10 +107,10 @@ namespace PrhApi.Models.CodeGen.Model
                     this.ShareSeries.SequenceEqual(input.ShareSeries)
                 ) && 
                 (
-                    this.Shareholders == input.Shareholders ||
-                    this.Shareholders != null &&
-                    input.Shareholders != null &&
-                    this.Shareholders.SequenceEqual(input.Shareholders)
+                    this.Shareholder == input.Shareholder ||
+                    this.Shareholder != null &&
+                    input.Shareholder != null &&
+                    this.Shareholder.SequenceEqual(input.Shareholder)
                 );
         }
 
@@ -127,9 +127,9 @@ namespace PrhApi.Models.CodeGen.Model
                 {
                     hashCode = (hashCode * 59) + this.ShareSeries.GetHashCode();
                 }
-                if (this.Shareholders != null)
+                if (this.Shareholder != null)
                 {
-                    hashCode = (hashCode * 59) + this.Shareholders.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Shareholder.GetHashCode();
                 }
                 return hashCode;
             }

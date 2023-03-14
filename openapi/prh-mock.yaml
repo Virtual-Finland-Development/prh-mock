@@ -610,7 +610,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/BeneficialOwnerShareSeries'
-        shareholders:
+        shareholder:
           type: array
           items:
             $ref: '#/components/schemas/Shareholder'
