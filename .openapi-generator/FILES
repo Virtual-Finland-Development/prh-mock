@@ -2,11 +2,13 @@ src/PrhApi.Models.CodeGen/Client/OpenAPIDateConverter.cs
 src/PrhApi.Models.CodeGen/Model/AbstractOpenAPISchema.cs
 src/PrhApi.Models.CodeGen/Model/Auditor.cs
 src/PrhApi.Models.CodeGen/Model/BeneficialOwnerShareSeries.cs
+src/PrhApi.Models.CodeGen/Model/BeneficialOwnersRequest.cs
 src/PrhApi.Models.CodeGen/Model/BeneficialOwnersResponse.cs
 src/PrhApi.Models.CodeGen/Model/BeneficialOwnersWriteRequest.cs
 src/PrhApi.Models.CodeGen/Model/BoardMember.cs
 src/PrhApi.Models.CodeGen/Model/CompanyAddress.cs
 src/PrhApi.Models.CodeGen/Model/CompanyDetails.cs
+src/PrhApi.Models.CodeGen/Model/EstablishmentRequest.cs
 src/PrhApi.Models.CodeGen/Model/EstablishmentResponse.cs
 src/PrhApi.Models.CodeGen/Model/ManagingDirector.cs
 src/PrhApi.Models.CodeGen/Model/MinimalCompanyDetails.cs
@@ -14,6 +16,7 @@ src/PrhApi.Models.CodeGen/Model/Ownership.cs
 src/PrhApi.Models.CodeGen/Model/Registrant.cs
 src/PrhApi.Models.CodeGen/Model/ShareSeries.cs
 src/PrhApi.Models.CodeGen/Model/Shareholder.cs
+src/PrhApi.Models.CodeGen/Model/SignatoryRightsRequest.cs
 src/PrhApi.Models.CodeGen/Model/SignatoryRightsResponse.cs
 src/PrhApi.Models.CodeGen/Model/SignatoryRightsWriteRequest.cs
 src/PrhApi.Models.CodeGen/Model/SigningRights.cs

@@ -10,14 +10,14 @@ public static class ProductizerEndpoints
     public static void MapProductizerEndpoints(this WebApplication app)
     {
         app.MapPost("draft/NSG/Agent/LegalEntity/NonListedCompany/Establishment",
-            async ([FromBody] string businessId, [FromServices] ICompanyDetailsService service,
+            async ([FromBody] EstablishmentRequest request, [FromServices] ICompanyDetailsService service,
                 [FromServices] IAuthenticationGatewayService authenticationGatewayService, HttpContext context) =>
             {
                 await authenticationGatewayService.VerifyTokens(context.Request.Headers);
 
-                var company = await service.LoadCompany(businessId);
+                var company = await service.LoadCompany(request.NationalIdentifier);
                 return company is null
-                    ? Results.NotFound($"Could not find company with businessId {businessId}")
+                    ? Results.NotFound($"Could not find company with businessId {request.NationalIdentifier}")
                     : Results.Ok(company);
             }).Produces<EstablishmentResponse>().Produces(404);
 
@@ -41,17 +41,17 @@ public static class ProductizerEndpoints
             }).Produces<EstablishmentResponse>().Produces<string>(400);
 
         app.MapPost("draft/NSG/Agent/LegalEntity/NonListedCompany/BeneficialOwners",
-            async ([FromBody] string businessId, [FromServices] IBeneficialOwnersService service,
+            async ([FromBody] BeneficialOwnersRequest request, [FromServices] IBeneficialOwnersService service,
                 [FromServices] IAuthenticationGatewayService authService,
                 HttpContext context) =>
             {
                 await authService.VerifyTokens(context.Request.Headers);
                 var userId = TokenExtensions.ParseFromBearerToken(context.Request.Headers.GetBearerTokenValue());
 
-                var result = await service.Load(userId, businessId, default);
+                var result = await service.Load(userId, request.NationalIdentifier, default);
 
                 return result is null
-                    ? Results.NotFound($"Could not find beneficial owner data for company {businessId}")
+                    ? Results.NotFound($"Could not find beneficial owner data for company {request.NationalIdentifier}")
                     : Results.Ok(result);
             }).Produces<BeneficialOwnersResponse>().Produces(404);
 
@@ -69,16 +69,16 @@ public static class ProductizerEndpoints
             .Produces<BeneficialOwnersResponse>();
 
         app.MapPost("draft/NSG/Agent/LegalEntity/NonListedCompany/SignatoryRights",
-            async ([FromBody] string businessId, [FromServices] ISignatoryRightsService service,
+            async ([FromBody] SignatoryRightsRequest request, [FromServices] ISignatoryRightsService service,
                 [FromServices] IAuthenticationGatewayService authService, HttpContext context) =>
             {
                 await authService.VerifyTokens(context.Request.Headers);
                 var userId = TokenExtensions.ParseFromBearerToken(context.Request.Headers.GetBearerTokenValue());
 
-                var data = await service.Load(userId, businessId, default);
+                var data = await service.Load(userId, request.NationalIdentifier, default);
 
                 return data is null
-                    ? Results.NotFound($"Could not find signatory rights data for company {businessId}")
+                    ? Results.NotFound($"Could not find signatory rights data for company {request.NationalIdentifier}")
                     : Results.Ok(data);
             }).Produces<SignatoryRightsResponse>().Produces(404);
 

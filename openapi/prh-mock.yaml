@@ -26,6 +26,11 @@ paths:
       description: Get non listed company establishment details
       tags:
         - productizer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EstablishmentRequest'
   /NonListedCompany/Establishment/Write:
     post:
       summary: ''
@@ -55,6 +60,11 @@ paths:
       tags:
         - productizer
       description: Get company beneficial owners details
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BeneficialOwnersRequest'
   /NonListedCompany/BeneficialOwners/Write:
     post:
       summary: ''
@@ -89,6 +99,11 @@ paths:
       tags:
         - productizer
       description: Get company signatory rights details
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignatoryRightsRequest'
   /NonListedCompany/SignatoryRights/Write:
     post:
       summary: ''
@@ -643,3 +658,27 @@ components:
           type: string
         data:
           $ref: '#/components/schemas/EstablishmentResponse'
+    EstablishmentRequest:
+      title: EstablishmentRequest
+      x-stoplight:
+        id: tveojix46fexp
+      type: object
+      properties:
+        nationalIdentifier:
+          type: string
+    SignatoryRightsRequest:
+      title: SignatoryRightsRequest
+      x-stoplight:
+        id: frbvf1r0ik0b1
+      type: object
+      properties:
+        nationalIdentifier:
+          type: string
+    BeneficialOwnersRequest:
+      title: BeneficialOwnersRequest
+      x-stoplight:
+        id: 8m410gif68mdq
+      type: object
+      properties:
+        nationalIdentifier:
+          type: string
