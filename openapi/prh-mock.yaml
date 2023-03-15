@@ -123,7 +123,7 @@ paths:
             examples:
               Example 1:
                 value:
-                  businessId: string
+                  nationalIdentifier: string
                   signatoryRights:
                     signingRights:
                       personalId: string
@@ -159,14 +159,13 @@ paths:
                 $ref: '#/components/schemas/ListCompaniesResponse'
       operationId: get-companies
       description: List companies
-  '/companies/{businessId}':
+  '/companies/{nationalIdentifier}':
     parameters:
       - schema:
           type: string
-        name: businessId
+        name: nationalIdentifier
         in: path
         required: true
-        description: Y-tunnus
     get:
       summary: Your GET endpoint
       tags:
@@ -174,7 +173,7 @@ paths:
       responses:
         '200':
           description: OK
-      operationId: get-companies-businessId
+      operationId: get-companies-nationalIdentifier
       description: Get company establishment details
   '/users/{userId}/companies':
     parameters:
@@ -217,7 +216,7 @@ paths:
         description: Request body for creating new company
       tags:
         - prh-api
-  '/users/{userId}/companies/{businessId}':
+  '/users/{userId}/companies/{nationalIdentifier}':
     parameters:
       - schema:
           type: string
@@ -227,13 +226,12 @@ paths:
         description: User identifier in Guid format
       - schema:
           type: string
-        name: businessId
+        name: nationalIdentifier
         in: path
         required: true
-        description: Y-tunnus
     patch:
       summary: ''
-      operationId: patch-users-userId-companies-businessId
+      operationId: patch-users-userId-companies-nationalIdentifier
       responses:
         '200':
           description: OK
@@ -242,7 +240,7 @@ paths:
         - prh-api
     delete:
       summary: ''
-      operationId: delete-users-userId-companies-businessId
+      operationId: delete-users-userId-companies-nationalIdentifier
       responses:
         '200':
           description: OK
@@ -590,7 +588,7 @@ components:
         id: fy54mgc8miwbm
       type: object
       properties:
-        businessId:
+        nationalIdentifier:
           type: string
         data:
           $ref: '#/components/schemas/SignatoryRightsResponse'
@@ -615,7 +613,7 @@ components:
         id: se5qn1v79fs6v
       type: object
       properties:
-        businessId:
+        nationalIdentifier:
           type: string
         data:
           $ref: '#/components/schemas/BeneficialOwnersResponse'
@@ -632,7 +630,7 @@ components:
         id: 1280a7kxfvy2c
       type: object
       properties:
-        businessId:
+        nationalIdentifier:
           type: string
         key:
           type: string
@@ -649,7 +647,7 @@ components:
         id: ygvn0zlu2b2ee
       type: object
       properties:
-        businessId:
+        nationalIdentifier:
           type: string
         data:
           $ref: '#/components/schemas/EstablishmentResponse'

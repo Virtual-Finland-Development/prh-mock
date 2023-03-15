@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nationalIdentifier\": \"1054829-9\"\n}",
+							"raw": "{\n    \"nationalIdentifier\": \"7364422-9\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -78,7 +78,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nationalIdentifier\": \"1054829-9\"\n}",
+							"raw": "{\n    \"nationalIdentifier\": \"7364422-9\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -109,7 +109,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"businessId\": \"1054829-9\",\n    \"data\": {\n        \"shareSeries\": [\n            {\n                \"shareSeriesClass\": \"A\",\n                \"numberOfShares\": 1000,\n                \"votesPerShare\": 1\n            }\n        ],\n        \"shareholder\": [\n            {\n                \"name\": \"Lars Lindberg | Company Ltd\",\n                \"shareOwnership\": [\n                    {\n                        \"shareSeriesClass\": \"B\",\n                        \"quantity\": 20\n                    }\n                ]\n            }\n        ]\n    }\n}",
+							"raw": "{\n    \"nationalIdentifier\": \"7364422-9\",\n    \"data\": {\n        \"shareSeries\": [\n            {\n                \"shareSeriesClass\": \"A\",\n                \"numberOfShares\": 1000,\n                \"votesPerShare\": 1\n            }\n        ],\n        \"shareholder\": [\n            {\n                \"name\": \"Lars Lindberg | Company Ltd\",\n                \"shareOwnership\": [\n                    {\n                        \"shareSeriesClass\": \"B\",\n                        \"quantity\": 20\n                    }\n                ]\n            }\n        ]\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -141,7 +141,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"nationalIdentifier\": \"1054829-9\"\n}",
+							"raw": "{\n    \"nationalIdentifier\": \"7364422-9\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -172,7 +172,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"businessId\": \"1054829-9\",\n    \"data\": {\n        \"signingRights\": [\n            {\n                \"role\": \"chairperson\",\n                \"personalId\": \"1129955131\",\n                \"givenName\": \"Mary\",\n                \"middleNames\": \"Juliet Olive\",\n                \"lastName\": \"Deo\",\n                \"dateOfBirth\": \"1976-04-15\",\n                \"nationality\": \"USA\",\n                \"fullAddress\": \"Tietotie 4 A 7, 00100 Helsinki, Finland\",\n                \"thoroughfare\": \"Avenue des Champs-Élysées\",\n                \"locatorDesignator\": \"Flat 3\",\n                \"locatorName\": \"Shumann, Berlaymont building\",\n                \"addressArea\": \"Montmartre (in Paris)\",\n                \"postCode\": \"75000\",\n                \"postName\": \"Paris\",\n                \"poBox\": \"9383\",\n                \"adminUnitLevel_1\": \"USA\",\n                \"adminUnitLevel_2\": \"Lapland\"\n            }\n        ]\n    }\n}",
+							"raw": "{\n    \"nationalIdentifier\": \"7364422-9\",\n    \"data\": {\n        \"signingRights\": [\n            {\n                \"role\": \"chairperson\",\n                \"personalId\": \"1129955131\",\n                \"givenName\": \"Mary\",\n                \"middleNames\": \"Juliet Olive\",\n                \"lastName\": \"Deo\",\n                \"dateOfBirth\": \"1976-04-15\",\n                \"nationality\": \"USA\",\n                \"fullAddress\": \"Tietotie 4 A 7, 00100 Helsinki, Finland\",\n                \"thoroughfare\": \"Avenue des Champs-Élysées\",\n                \"locatorDesignator\": \"Flat 3\",\n                \"locatorName\": \"Shumann, Berlaymont building\",\n                \"addressArea\": \"Montmartre (in Paris)\",\n                \"postCode\": \"75000\",\n                \"postName\": \"Paris\",\n                \"poBox\": \"9383\",\n                \"adminUnitLevel_1\": \"USA\",\n                \"adminUnitLevel_2\": \"Lapland\"\n            }\n        ]\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -205,13 +205,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{host}}/companies/{{business_id}}",
+					"raw": "{{host}}/companies/{{national_identifier}}",
 					"host": [
 						"{{host}}"
 					],
 					"path": [
 						"companies",
-						"{{business_id}}"
+						"{{national_identifier}}"
 					]
 				}
 			},
@@ -309,7 +309,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{host}}/users/{{user_id}}/companies/{{business_id}}",
+					"raw": "{{host}}/users/{{user_id}}/companies/{{national_identifier}}",
 					"host": [
 						"{{host}}"
 					],
@@ -317,7 +317,7 @@
 						"users",
 						"{{user_id}}",
 						"companies",
-						"{{business_id}}"
+						"{{national_identifier}}"
 					]
 				}
 			},
@@ -338,7 +338,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{host}}/users/{{user_id}}/companies/{{business_id}}",
+					"raw": "{{host}}/users/{{user_id}}/companies/{{national_identifier}}",
 					"host": [
 						"{{host}}"
 					],
@@ -346,7 +346,7 @@
 						"users",
 						"{{user_id}}",
 						"companies",
-						"{{business_id}}"
+						"{{national_identifier}}"
 					]
 				}
 			},
@@ -421,7 +421,7 @@
 			"type": "default"
 		},
 		{
-			"key": "business_id",
+			"key": "national_identifier",
 			"value": "7578457-5",
 			"type": "default"
 		}
