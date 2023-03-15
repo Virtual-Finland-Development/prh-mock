@@ -62,7 +62,7 @@ public static class ProductizerEndpoints
                     await authService.VerifyTokens(context.Request.Headers);
                     var userId = TokenExtensions.ParseFromBearerToken(context.Request.Headers.GetBearerTokenValue());
 
-                    var data = await service.SaveOrUpdate(userId, payload.BusinessId, payload, default);
+                    var data = await service.SaveOrUpdate(userId, payload.NationalIdentifier, payload, default);
 
                     return data;
                 })
@@ -89,7 +89,7 @@ public static class ProductizerEndpoints
                 await authService.VerifyTokens(context.Request.Headers);
                 var userId = TokenExtensions.ParseFromBearerToken(context.Request.Headers.GetBearerTokenValue());
 
-                var result = await service.SaveOrUpdate(userId, payload.BusinessId, payload, default);
+                var result = await service.SaveOrUpdate(userId, payload.NationalIdentifier, payload, default);
 
                 return result;
             }).Produces<SignatoryRightsResponse>();

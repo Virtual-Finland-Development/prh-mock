@@ -35,19 +35,19 @@ namespace PrhApi.Models.CodeGen.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MinimalCompanyDetails" /> class.
         /// </summary>
-        /// <param name="businessId">businessId.</param>
+        /// <param name="nationalIdentifier">nationalIdentifier.</param>
         /// <param name="key">key.</param>
-        public MinimalCompanyDetails(string businessId = default(string), string key = default(string))
+        public MinimalCompanyDetails(string nationalIdentifier = default(string), string key = default(string))
         {
-            this.BusinessId = businessId;
+            this.NationalIdentifier = nationalIdentifier;
             this.Key = key;
         }
 
         /// <summary>
-        /// Gets or Sets BusinessId
+        /// Gets or Sets NationalIdentifier
         /// </summary>
-        [DataMember(Name = "businessId", EmitDefaultValue = false)]
-        public string BusinessId { get; set; }
+        [DataMember(Name = "nationalIdentifier", EmitDefaultValue = false)]
+        public string NationalIdentifier { get; set; }
 
         /// <summary>
         /// Gets or Sets Key
@@ -63,7 +63,7 @@ namespace PrhApi.Models.CodeGen.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class MinimalCompanyDetails {\n");
-            sb.Append("  BusinessId: ").Append(BusinessId).Append("\n");
+            sb.Append("  NationalIdentifier: ").Append(NationalIdentifier).Append("\n");
             sb.Append("  Key: ").Append(Key).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -101,9 +101,9 @@ namespace PrhApi.Models.CodeGen.Model
             }
             return 
                 (
-                    this.BusinessId == input.BusinessId ||
-                    (this.BusinessId != null &&
-                    this.BusinessId.Equals(input.BusinessId))
+                    this.NationalIdentifier == input.NationalIdentifier ||
+                    (this.NationalIdentifier != null &&
+                    this.NationalIdentifier.Equals(input.NationalIdentifier))
                 ) && 
                 (
                     this.Key == input.Key ||
@@ -121,9 +121,9 @@ namespace PrhApi.Models.CodeGen.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.BusinessId != null)
+                if (this.NationalIdentifier != null)
                 {
-                    hashCode = (hashCode * 59) + this.BusinessId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.NationalIdentifier.GetHashCode();
                 }
                 if (this.Key != null)
                 {

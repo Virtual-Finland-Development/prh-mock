@@ -92,7 +92,7 @@ public class CompanyEstablishmentS3Repository : ICompanyEstablishmentRepository
             
             companies.Add(new UserCompany
             {
-                BusinessId = S3ObjectKey.GetBusinessIdFromS3ObjectKey(key),
+                NationalIdentifier = S3ObjectKey.GetBusinessIdFromS3ObjectKey(key),
                 Data = company
             });
         }
@@ -110,7 +110,7 @@ public class CompanyEstablishmentS3Repository : ICompanyEstablishmentRepository
 
         var result = response.S3Objects.Select(o => new MinimalCompanyDetails
         {
-            BusinessId = S3ObjectKey.GetBusinessIdFromS3ObjectKey(o.Key),
+            NationalIdentifier = S3ObjectKey.GetBusinessIdFromS3ObjectKey(o.Key),
             Key = o.Key
         }).ToList();
 
