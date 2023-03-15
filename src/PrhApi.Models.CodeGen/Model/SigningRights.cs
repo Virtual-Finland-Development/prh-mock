@@ -57,7 +57,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// <param name="poBox">poBox.</param>
         /// <param name="adminUnitLevel_1">adminUnitLevel1.</param>
         /// <param name="adminUnitLevel_2">adminUnitLevel2.</param>
-        public SigningRights(string role = default(string), string personalId = default(string), string givenName = default(string), string middleNames = default(string), string lastName = default(string), DateTime dateOfBirth = default(DateTime), string nationality = default(string), string fullAddress = default(string), string thoroughfare = default(string), string locatorDesignator = default(string), string locatorName = default(string), string addressArea = default(string), string postCode = default(string), string postName = default(string), string poBox = default(string), string adminUnitLevel_1 = default(string), string adminUnitLevel_2 = default(string))
+        public SigningRights(string role = default(string), string personalId = default(string), string givenName = default(string), string middleNames = default(string), string lastName = default(string), string dateOfBirth = default(string), string nationality = default(string), string fullAddress = default(string), string thoroughfare = default(string), string locatorDesignator = default(string), string locatorName = default(string), string addressArea = default(string), string postCode = default(string), string postName = default(string), string poBox = default(string), string adminUnitLevel_1 = default(string), string adminUnitLevel_2 = default(string))
         {
             // to ensure "givenName" is required (not null)
             if (givenName == null)
@@ -77,6 +77,11 @@ namespace PrhApi.Models.CodeGen.Model
                 throw new ArgumentNullException("lastName is a required property for SigningRights and cannot be null");
             }
             this.LastName = lastName;
+            // to ensure "dateOfBirth" is required (not null)
+            if (dateOfBirth == null)
+            {
+                throw new ArgumentNullException("dateOfBirth is a required property for SigningRights and cannot be null");
+            }
             this.DateOfBirth = dateOfBirth;
             // to ensure "nationality" is required (not null)
             if (nationality == null)
@@ -132,7 +137,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// Gets or Sets DateOfBirth
         /// </summary>
         [DataMember(Name = "dateOfBirth", IsRequired = true, EmitDefaultValue = true)]
-        public DateTime DateOfBirth { get; set; }
+        public string DateOfBirth { get; set; }
 
         /// <summary>
         /// Gets or Sets Nationality

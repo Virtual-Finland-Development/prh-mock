@@ -46,7 +46,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// <param name="lastName">lastName (required).</param>
         /// <param name="dateOfBirth">dateOfBirth (required).</param>
         /// <param name="nationality">nationality (required).</param>
-        public ManagingDirector(string role = default(string), string givenName = default(string), string middleNames = default(string), string lastName = default(string), DateTime dateOfBirth = default(DateTime), string nationality = default(string))
+        public ManagingDirector(string role = default(string), string givenName = default(string), string middleNames = default(string), string lastName = default(string), string dateOfBirth = default(string), string nationality = default(string))
         {
             // to ensure "role" is required (not null)
             if (role == null)
@@ -72,6 +72,11 @@ namespace PrhApi.Models.CodeGen.Model
                 throw new ArgumentNullException("lastName is a required property for ManagingDirector and cannot be null");
             }
             this.LastName = lastName;
+            // to ensure "dateOfBirth" is required (not null)
+            if (dateOfBirth == null)
+            {
+                throw new ArgumentNullException("dateOfBirth is a required property for ManagingDirector and cannot be null");
+            }
             this.DateOfBirth = dateOfBirth;
             // to ensure "nationality" is required (not null)
             if (nationality == null)
@@ -109,7 +114,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// Gets or Sets DateOfBirth
         /// </summary>
         [DataMember(Name = "dateOfBirth", IsRequired = true, EmitDefaultValue = true)]
-        public DateTime DateOfBirth { get; set; }
+        public string DateOfBirth { get; set; }
 
         /// <summary>
         /// Gets or Sets Nationality

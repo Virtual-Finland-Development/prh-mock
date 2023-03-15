@@ -284,7 +284,6 @@ components:
           maxLength: 250
         dateOfBirth:
           type: string
-          format: date-time
         nationality:
           type: string
           minLength: 3
@@ -343,7 +342,6 @@ components:
           maxLength: 250
         foundingDate:
           type: string
-          format: date-time
         industrySector:
           type: string
         shareCapital:
@@ -356,7 +354,6 @@ components:
           type: string
         settlementDate:
           type: string
-          format: date-time
           nullable: true
         countryOfResidence:
           type: string
@@ -385,7 +382,6 @@ components:
           maxLength: 250
         dateOfBirth:
           type: string
-          format: date-time
         nationality:
           type: string
           minLength: 3
@@ -485,7 +481,6 @@ components:
           maxLength: 250
         dateOfBirth:
           type: string
-          format: date-time
         nationality:
           type: string
           minLength: 3
