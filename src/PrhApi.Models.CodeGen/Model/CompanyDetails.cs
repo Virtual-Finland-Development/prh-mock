@@ -50,7 +50,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// <param name="depositCurrency">depositCurrency.</param>
         /// <param name="settlementDate">settlementDate.</param>
         /// <param name="countryOfResidence">countryOfResidence.</param>
-        public CompanyDetails(string name = default(string), string alternativeName = default(string), DateTime foundingDate = default(DateTime), string industrySector = default(string), decimal shareCapital = default(decimal), string capitalCurrency = default(string), decimal settlementDeposit = default(decimal), string depositCurrency = default(string), DateTime? settlementDate = default(DateTime?), string countryOfResidence = default(string))
+        public CompanyDetails(string name = default(string), string alternativeName = default(string), string foundingDate = default(string), string industrySector = default(string), decimal shareCapital = default(decimal), string capitalCurrency = default(string), decimal settlementDeposit = default(decimal), string depositCurrency = default(string), string settlementDate = default(string), string countryOfResidence = default(string))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -58,6 +58,11 @@ namespace PrhApi.Models.CodeGen.Model
                 throw new ArgumentNullException("name is a required property for CompanyDetails and cannot be null");
             }
             this.Name = name;
+            // to ensure "foundingDate" is required (not null)
+            if (foundingDate == null)
+            {
+                throw new ArgumentNullException("foundingDate is a required property for CompanyDetails and cannot be null");
+            }
             this.FoundingDate = foundingDate;
             // to ensure "industrySector" is required (not null)
             if (industrySector == null)
@@ -95,7 +100,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// Gets or Sets FoundingDate
         /// </summary>
         [DataMember(Name = "foundingDate", IsRequired = true, EmitDefaultValue = true)]
-        public DateTime FoundingDate { get; set; }
+        public string FoundingDate { get; set; }
 
         /// <summary>
         /// Gets or Sets IndustrySector
@@ -131,7 +136,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// Gets or Sets SettlementDate
         /// </summary>
         [DataMember(Name = "settlementDate", EmitDefaultValue = true)]
-        public DateTime? SettlementDate { get; set; }
+        public string SettlementDate { get; set; }
 
         /// <summary>
         /// Gets or Sets CountryOfResidence
