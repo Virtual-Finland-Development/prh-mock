@@ -93,6 +93,13 @@ return await Deployment.RunAsync(() =>
     var authGwStackReference = new StackReference($"{Pulumi.Deployment.Instance.OrganizationName}/authentication-gw/{environment}");
     var authenticationGwEndpointUrl = authGwStackReference.GetOutput("endpoint");
 
+    var aspnetCoreEnvironment = environment;
+    var isDev = environment == "dev";
+    if (isDev)
+    {
+        aspnetCoreEnvironment = "Development";
+    }
+
     var lambdaFunction = new Function($"{projectName}-{environment}", new FunctionArgs
     {
         Role = role.Arn,
@@ -104,7 +111,7 @@ return await Deployment.RunAsync(() =>
         {
             Variables =
             {
-                { "ASPNETCORE_ENVIRONMENT", environment },
+                { "ASPNETCORE_ENVIRONMENT", aspnetCoreEnvironment },
                 { "PrhBucketName", bucket.BucketName },
                 {
                     "AuthGwBaseAddress", Output.Format($"{authenticationGwEndpointUrl}")
