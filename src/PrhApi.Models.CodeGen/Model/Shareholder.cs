@@ -41,7 +41,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// Initializes a new instance of the <see cref="Shareholder" /> class.
         /// </summary>
         /// <param name="name">name (required).</param>
-        /// <param name="shareOwnership">shareOwnership.</param>
+        /// <param name="shareOwnership">shareOwnership (required).</param>
         public Shareholder(string name = default(string), List<Ownership> shareOwnership = default(List<Ownership>))
         {
             // to ensure "name" is required (not null)
@@ -50,6 +50,11 @@ namespace PrhApi.Models.CodeGen.Model
                 throw new ArgumentNullException("name is a required property for Shareholder and cannot be null");
             }
             this.Name = name;
+            // to ensure "shareOwnership" is required (not null)
+            if (shareOwnership == null)
+            {
+                throw new ArgumentNullException("shareOwnership is a required property for Shareholder and cannot be null");
+            }
             this.ShareOwnership = shareOwnership;
         }
 
@@ -62,7 +67,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// <summary>
         /// Gets or Sets ShareOwnership
         /// </summary>
-        [DataMember(Name = "shareOwnership", EmitDefaultValue = false)]
+        [DataMember(Name = "shareOwnership", IsRequired = true, EmitDefaultValue = true)]
         public List<Ownership> ShareOwnership { get; set; }
 
         /// <summary>

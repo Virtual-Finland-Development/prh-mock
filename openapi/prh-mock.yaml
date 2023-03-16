@@ -457,6 +457,7 @@ components:
             $ref: '#/components/schemas/Ownership'
       required:
         - name
+        - shareOwnership
     SigningRights:
       title: SigningRights
       x-stoplight:
