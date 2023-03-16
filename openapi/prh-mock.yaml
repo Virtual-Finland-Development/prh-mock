@@ -607,6 +607,9 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Shareholder'
+      required:
+        - shareSeries
+        - shareholder
     BeneficialOwnersWriteRequest:
       title: BeneficialOwnersWriteRequest
       x-stoplight:

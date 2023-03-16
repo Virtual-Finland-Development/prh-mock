@@ -35,24 +35,39 @@ namespace PrhApi.Models.CodeGen.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="BeneficialOwnersResponse" /> class.
         /// </summary>
-        /// <param name="shareSeries">shareSeries.</param>
-        /// <param name="shareholder">shareholder.</param>
+        [JsonConstructorAttribute]
+        protected BeneficialOwnersResponse() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BeneficialOwnersResponse" /> class.
+        /// </summary>
+        /// <param name="shareSeries">shareSeries (required).</param>
+        /// <param name="shareholder">shareholder (required).</param>
         public BeneficialOwnersResponse(List<BeneficialOwnerShareSeries> shareSeries = default(List<BeneficialOwnerShareSeries>), List<Shareholder> shareholder = default(List<Shareholder>))
         {
+            // to ensure "shareSeries" is required (not null)
+            if (shareSeries == null)
+            {
+                throw new ArgumentNullException("shareSeries is a required property for BeneficialOwnersResponse and cannot be null");
+            }
             this.ShareSeries = shareSeries;
+            // to ensure "shareholder" is required (not null)
+            if (shareholder == null)
+            {
+                throw new ArgumentNullException("shareholder is a required property for BeneficialOwnersResponse and cannot be null");
+            }
             this.Shareholder = shareholder;
         }
 
         /// <summary>
         /// Gets or Sets ShareSeries
         /// </summary>
-        [DataMember(Name = "shareSeries", EmitDefaultValue = false)]
+        [DataMember(Name = "shareSeries", IsRequired = true, EmitDefaultValue = true)]
         public List<BeneficialOwnerShareSeries> ShareSeries { get; set; }
 
         /// <summary>
         /// Gets or Sets Shareholder
         /// </summary>
-        [DataMember(Name = "shareholder", EmitDefaultValue = false)]
+        [DataMember(Name = "shareholder", IsRequired = true, EmitDefaultValue = true)]
         public List<Shareholder> Shareholder { get; set; }
 
         /// <summary>
