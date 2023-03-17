@@ -2,6 +2,7 @@ using Amazon.S3;
 using PrhApi.Endpoints;
 using PrhApi.Repositories;
 using PrhApi.Services;
+using PrhApi.Utils;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,7 +37,7 @@ builder.Services.AddAWSLambdaHosting(LambdaEventSource.HttpApi);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+if (VirtualFinlandEnvironments.IsDevelopment(app.Environment) || VirtualFinlandEnvironments.IsStaging(app.Environment))
 {
     app.UseSwagger();
     app.UseSwaggerUI();
