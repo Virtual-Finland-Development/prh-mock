@@ -98,8 +98,8 @@ public class CompanyDetailsService : ICompanyDetailsService
                 PostCode = company.CompanyAddress.PostCode,
                 PostName = company.CompanyAddress.PostName,
                 PoBox = company.CompanyAddress.PoBox,
-                AdminUnitLevel1 = company.CompanyAddress.AdminUnitLevel1 ?? "FI",
-                AdminUnitLevel2 = company.CompanyAddress.AdminUnitLevel2
+                AdminUnitLevel1 = company.CompanyAddress.AdminUnitLevel_1 ?? "FI",
+                AdminUnitLevel2 = company.CompanyAddress.AdminUnitLevel_2
             },
         };
 
@@ -132,8 +132,8 @@ public class CompanyDetailsService : ICompanyDetailsService
         existingCompany.CompanyAddress.PostCode = details.CompanyAddress.PostCode;
         existingCompany.CompanyAddress.PostName = details.CompanyAddress.PostName;
         existingCompany.CompanyAddress.PoBox = details.CompanyAddress.PoBox;
-        existingCompany.CompanyAddress.AdminUnitLevel1 = details.CompanyAddress.AdminUnitLevel1;
-        existingCompany.CompanyAddress.AdminUnitLevel2 = details.CompanyAddress.AdminUnitLevel2;
+        existingCompany.CompanyAddress.AdminUnitLevel_1 = details.CompanyAddress.AdminUnitLevel_1;
+        existingCompany.CompanyAddress.AdminUnitLevel_2 = details.CompanyAddress.AdminUnitLevel_2;
 
         existingCompany.ManagingDirectors = details.ManagingDirectors;
 

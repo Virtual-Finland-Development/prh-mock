@@ -55,9 +55,9 @@ namespace PrhApi.Models.CodeGen.Model
         /// <param name="postCode">postCode.</param>
         /// <param name="postName">postName.</param>
         /// <param name="poBox">poBox.</param>
-        /// <param name="adminUnitLevel1">adminUnitLevel1.</param>
-        /// <param name="adminUnitLevel2">adminUnitLevel2.</param>
-        public SigningRights(string role = default(string), string personalId = default(string), string givenName = default(string), string middleNames = default(string), string lastName = default(string), string dateOfBirth = default(string), string nationality = default(string), string fullAddress = default(string), string thoroughfare = default(string), string locatorDesignator = default(string), string locatorName = default(string), string addressArea = default(string), string postCode = default(string), string postName = default(string), string poBox = default(string), string adminUnitLevel1 = default(string), string adminUnitLevel2 = default(string))
+        /// <param name="adminUnitLevel_1">adminUnitLevel1.</param>
+        /// <param name="adminUnitLevel_2">adminUnitLevel2.</param>
+        public SigningRights(string role = default(string), string personalId = default(string), string givenName = default(string), string middleNames = default(string), string lastName = default(string), string dateOfBirth = default(string), string nationality = default(string), string fullAddress = default(string), string thoroughfare = default(string), string locatorDesignator = default(string), string locatorName = default(string), string addressArea = default(string), string postCode = default(string), string postName = default(string), string poBox = default(string), string adminUnitLevel_1 = default(string), string adminUnitLevel_2 = default(string))
         {
             // to ensure "givenName" is required (not null)
             if (givenName == null)
@@ -99,8 +99,8 @@ namespace PrhApi.Models.CodeGen.Model
             this.PostCode = postCode;
             this.PostName = postName;
             this.PoBox = poBox;
-            this.AdminUnitLevel1 = adminUnitLevel1;
-            this.AdminUnitLevel2 = adminUnitLevel2;
+            this.AdminUnitLevel_1 = adminUnitLevel_1;
+            this.AdminUnitLevel_2 = adminUnitLevel_2;
         }
 
         /// <summary>
@@ -197,13 +197,13 @@ namespace PrhApi.Models.CodeGen.Model
         /// Gets or Sets AdminUnitLevel1
         /// </summary>
         [DataMember(Name = "adminUnitLevel_1", EmitDefaultValue = false)]
-        public string AdminUnitLevel1 { get; set; }
+        public string AdminUnitLevel_1 { get; set; }
 
         /// <summary>
         /// Gets or Sets AdminUnitLevel2
         /// </summary>
         [DataMember(Name = "adminUnitLevel_2", EmitDefaultValue = false)]
-        public string AdminUnitLevel2 { get; set; }
+        public string AdminUnitLevel_2 { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -228,8 +228,8 @@ namespace PrhApi.Models.CodeGen.Model
             sb.Append("  PostCode: ").Append(PostCode).Append("\n");
             sb.Append("  PostName: ").Append(PostName).Append("\n");
             sb.Append("  PoBox: ").Append(PoBox).Append("\n");
-            sb.Append("  AdminUnitLevel1: ").Append(AdminUnitLevel1).Append("\n");
-            sb.Append("  AdminUnitLevel2: ").Append(AdminUnitLevel2).Append("\n");
+            sb.Append("  AdminUnitLevel1: ").Append(AdminUnitLevel_1).Append("\n");
+            sb.Append("  AdminUnitLevel2: ").Append(AdminUnitLevel_2).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -341,14 +341,14 @@ namespace PrhApi.Models.CodeGen.Model
                     this.PoBox.Equals(input.PoBox))
                 ) && 
                 (
-                    this.AdminUnitLevel1 == input.AdminUnitLevel1 ||
-                    (this.AdminUnitLevel1 != null &&
-                    this.AdminUnitLevel1.Equals(input.AdminUnitLevel1))
+                    this.AdminUnitLevel_1 == input.AdminUnitLevel_1 ||
+                    (this.AdminUnitLevel_1 != null &&
+                    this.AdminUnitLevel_1.Equals(input.AdminUnitLevel_1))
                 ) && 
                 (
-                    this.AdminUnitLevel2 == input.AdminUnitLevel2 ||
-                    (this.AdminUnitLevel2 != null &&
-                    this.AdminUnitLevel2.Equals(input.AdminUnitLevel2))
+                    this.AdminUnitLevel_2 == input.AdminUnitLevel_2 ||
+                    (this.AdminUnitLevel_2 != null &&
+                    this.AdminUnitLevel_2.Equals(input.AdminUnitLevel_2))
                 );
         }
 
@@ -421,13 +421,13 @@ namespace PrhApi.Models.CodeGen.Model
                 {
                     hashCode = (hashCode * 59) + this.PoBox.GetHashCode();
                 }
-                if (this.AdminUnitLevel1 != null)
+                if (this.AdminUnitLevel_1 != null)
                 {
-                    hashCode = (hashCode * 59) + this.AdminUnitLevel1.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AdminUnitLevel_1.GetHashCode();
                 }
-                if (this.AdminUnitLevel2 != null)
+                if (this.AdminUnitLevel_2 != null)
                 {
-                    hashCode = (hashCode * 59) + this.AdminUnitLevel2.GetHashCode();
+                    hashCode = (hashCode * 59) + this.AdminUnitLevel_2.GetHashCode();
                 }
                 return hashCode;
             }
@@ -525,19 +525,19 @@ namespace PrhApi.Models.CodeGen.Model
             }
 
             // AdminUnitLevel1 (string) maxLength
-            if (this.AdminUnitLevel1 != null && this.AdminUnitLevel1.Length > 3)
+            if (this.AdminUnitLevel_1 != null && this.AdminUnitLevel_1.Length > 3)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AdminUnitLevel1, length must be less than 3.", new [] { "AdminUnitLevel1" });
             }
 
             // AdminUnitLevel1 (string) minLength
-            if (this.AdminUnitLevel1 != null && this.AdminUnitLevel1.Length < 3)
+            if (this.AdminUnitLevel_1 != null && this.AdminUnitLevel_1.Length < 3)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AdminUnitLevel1, length must be greater than 3.", new [] { "AdminUnitLevel1" });
             }
 
             // AdminUnitLevel2 (string) maxLength
-            if (this.AdminUnitLevel2 != null && this.AdminUnitLevel2.Length > 40)
+            if (this.AdminUnitLevel_2 != null && this.AdminUnitLevel_2.Length > 40)
             {
                 yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AdminUnitLevel2, length must be less than 40.", new [] { "AdminUnitLevel2" });
             }
