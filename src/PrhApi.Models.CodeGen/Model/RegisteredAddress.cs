@@ -10,19 +10,11 @@
 
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using OpenAPIDateConverter = PrhApi.Models.CodeGen.Client.OpenAPIDateConverter;
 
 namespace PrhApi.Models.CodeGen.Model
 {
@@ -36,7 +28,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// Initializes a new instance of the <see cref="RegisteredAddress" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected RegisteredAddress() { }
+        public RegisteredAddress() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="RegisteredAddress" /> class.
         /// </summary>
@@ -212,57 +204,57 @@ namespace PrhApi.Models.CodeGen.Model
             {
                 return false;
             }
-            return 
+            return
                 (
                     this.FullAddress == input.FullAddress ||
                     (this.FullAddress != null &&
                     this.FullAddress.Equals(input.FullAddress))
-                ) && 
+                ) &&
                 (
                     this.Thoroughfare == input.Thoroughfare ||
                     (this.Thoroughfare != null &&
                     this.Thoroughfare.Equals(input.Thoroughfare))
-                ) && 
+                ) &&
                 (
                     this.LocatorDesignator == input.LocatorDesignator ||
                     (this.LocatorDesignator != null &&
                     this.LocatorDesignator.Equals(input.LocatorDesignator))
-                ) && 
+                ) &&
                 (
                     this.LocatorName == input.LocatorName ||
                     (this.LocatorName != null &&
                     this.LocatorName.Equals(input.LocatorName))
-                ) && 
+                ) &&
                 (
                     this.AddressArea == input.AddressArea ||
                     (this.AddressArea != null &&
                     this.AddressArea.Equals(input.AddressArea))
-                ) && 
+                ) &&
                 (
                     this.PostCode == input.PostCode ||
                     (this.PostCode != null &&
                     this.PostCode.Equals(input.PostCode))
-                ) && 
+                ) &&
                 (
                     this.PostName == input.PostName ||
                     (this.PostName != null &&
                     this.PostName.Equals(input.PostName))
-                ) && 
+                ) &&
                 (
                     this.PoBox == input.PoBox ||
                     (this.PoBox != null &&
                     this.PoBox.Equals(input.PoBox))
-                ) && 
+                ) &&
                 (
                     this.AdminUnitLevel1 == input.AdminUnitLevel1 ||
                     (this.AdminUnitLevel1 != null &&
                     this.AdminUnitLevel1.Equals(input.AdminUnitLevel1))
-                ) && 
+                ) &&
                 (
                     this.AdminUnitLevel2 == input.AdminUnitLevel2 ||
                     (this.AdminUnitLevel2 != null &&
                     this.AdminUnitLevel2.Equals(input.AdminUnitLevel2))
-                ) && 
+                ) &&
                 (
                     this.AddressId == input.AddressId ||
                     (this.AddressId != null &&
@@ -337,133 +329,133 @@ namespace PrhApi.Models.CodeGen.Model
             // FullAddress (string) maxLength
             if (this.FullAddress != null && this.FullAddress.Length > 250)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FullAddress, length must be less than 250.", new [] { "FullAddress" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FullAddress, length must be less than 250.", new[] { "FullAddress" });
             }
 
             // FullAddress (string) minLength
             if (this.FullAddress != null && this.FullAddress.Length < 1)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FullAddress, length must be greater than 1.", new [] { "FullAddress" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for FullAddress, length must be greater than 1.", new[] { "FullAddress" });
             }
 
             // Thoroughfare (string) maxLength
             if (this.Thoroughfare != null && this.Thoroughfare.Length > 40)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Thoroughfare, length must be less than 40.", new [] { "Thoroughfare" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Thoroughfare, length must be less than 40.", new[] { "Thoroughfare" });
             }
 
             // Thoroughfare (string) minLength
             if (this.Thoroughfare != null && this.Thoroughfare.Length < 1)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Thoroughfare, length must be greater than 1.", new [] { "Thoroughfare" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Thoroughfare, length must be greater than 1.", new[] { "Thoroughfare" });
             }
 
             // LocatorDesignator (string) maxLength
             if (this.LocatorDesignator != null && this.LocatorDesignator.Length > 10)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LocatorDesignator, length must be less than 10.", new [] { "LocatorDesignator" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LocatorDesignator, length must be less than 10.", new[] { "LocatorDesignator" });
             }
 
             // LocatorDesignator (string) minLength
             if (this.LocatorDesignator != null && this.LocatorDesignator.Length < 1)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LocatorDesignator, length must be greater than 1.", new [] { "LocatorDesignator" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LocatorDesignator, length must be greater than 1.", new[] { "LocatorDesignator" });
             }
 
             // LocatorName (string) maxLength
             if (this.LocatorName != null && this.LocatorName.Length > 40)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LocatorName, length must be less than 40.", new [] { "LocatorName" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LocatorName, length must be less than 40.", new[] { "LocatorName" });
             }
 
             // LocatorName (string) minLength
             if (this.LocatorName != null && this.LocatorName.Length < 1)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LocatorName, length must be greater than 1.", new [] { "LocatorName" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for LocatorName, length must be greater than 1.", new[] { "LocatorName" });
             }
 
             // AddressArea (string) maxLength
             if (this.AddressArea != null && this.AddressArea.Length > 40)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressArea, length must be less than 40.", new [] { "AddressArea" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressArea, length must be less than 40.", new[] { "AddressArea" });
             }
 
             // AddressArea (string) minLength
             if (this.AddressArea != null && this.AddressArea.Length < 1)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressArea, length must be greater than 1.", new [] { "AddressArea" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressArea, length must be greater than 1.", new[] { "AddressArea" });
             }
 
             // PostCode (string) maxLength
             if (this.PostCode != null && this.PostCode.Length > 10)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PostCode, length must be less than 10.", new [] { "PostCode" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PostCode, length must be less than 10.", new[] { "PostCode" });
             }
 
             // PostCode (string) minLength
             if (this.PostCode != null && this.PostCode.Length < 1)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PostCode, length must be greater than 1.", new [] { "PostCode" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PostCode, length must be greater than 1.", new[] { "PostCode" });
             }
 
             // PostName (string) maxLength
             if (this.PostName != null && this.PostName.Length > 40)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PostName, length must be less than 40.", new [] { "PostName" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PostName, length must be less than 40.", new[] { "PostName" });
             }
 
             // PostName (string) minLength
             if (this.PostName != null && this.PostName.Length < 1)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PostName, length must be greater than 1.", new [] { "PostName" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PostName, length must be greater than 1.", new[] { "PostName" });
             }
 
             // PoBox (string) maxLength
             if (this.PoBox != null && this.PoBox.Length > 10)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PoBox, length must be less than 10.", new [] { "PoBox" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PoBox, length must be less than 10.", new[] { "PoBox" });
             }
 
             // PoBox (string) minLength
             if (this.PoBox != null && this.PoBox.Length < 1)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PoBox, length must be greater than 1.", new [] { "PoBox" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PoBox, length must be greater than 1.", new[] { "PoBox" });
             }
 
             // AdminUnitLevel1 (string) maxLength
             if (this.AdminUnitLevel1 != null && this.AdminUnitLevel1.Length > 2)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AdminUnitLevel1, length must be less than 2.", new [] { "AdminUnitLevel1" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AdminUnitLevel1, length must be less than 2.", new[] { "AdminUnitLevel1" });
             }
 
             // AdminUnitLevel1 (string) minLength
             if (this.AdminUnitLevel1 != null && this.AdminUnitLevel1.Length < 2)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AdminUnitLevel1, length must be greater than 2.", new [] { "AdminUnitLevel1" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AdminUnitLevel1, length must be greater than 2.", new[] { "AdminUnitLevel1" });
             }
 
             // AdminUnitLevel2 (string) maxLength
             if (this.AdminUnitLevel2 != null && this.AdminUnitLevel2.Length > 40)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AdminUnitLevel2, length must be less than 40.", new [] { "AdminUnitLevel2" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AdminUnitLevel2, length must be less than 40.", new[] { "AdminUnitLevel2" });
             }
 
             // AdminUnitLevel2 (string) minLength
             if (this.AdminUnitLevel2 != null && this.AdminUnitLevel2.Length < 1)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AdminUnitLevel2, length must be greater than 1.", new [] { "AdminUnitLevel2" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AdminUnitLevel2, length must be greater than 1.", new[] { "AdminUnitLevel2" });
             }
 
             // AddressId (string) maxLength
             if (this.AddressId != null && this.AddressId.Length > 40)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressId, length must be less than 40.", new [] { "AddressId" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressId, length must be less than 40.", new[] { "AddressId" });
             }
 
             // AddressId (string) minLength
             if (this.AddressId != null && this.AddressId.Length < 1)
             {
-                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressId, length must be greater than 1.", new [] { "AddressId" });
+                yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AddressId, length must be greater than 1.", new[] { "AddressId" });
             }
 
             yield break;

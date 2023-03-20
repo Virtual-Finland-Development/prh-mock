@@ -82,24 +82,26 @@ public class CompanyDetailsService : ICompanyDetailsService
         var company = await _repository.LoadWithBusinessId(businessId);
         if (company is null) return null;
 
-        var basicInformation = new BasicInformationResponse(
-            company.CompanyDetails.Name,
-            "FI_OY",
-            LegalStatus.NORMAL,
-            DateTime.Parse(company.CompanyDetails.FoundingDate),
-            new RegisteredAddress(
-                company.CompanyAddress.FullAddress,
-                company.CompanyAddress.Thoroughfare,
-                company.CompanyAddress.LocatorDesignator,
-                company.CompanyAddress.LocatorName,
-                company.CompanyAddress.AddressArea,
-                company.CompanyAddress.PostCode,
-                company.CompanyAddress.PostName,
-                company.CompanyAddress.PoBox,
-                company.CompanyAddress.AdminUnitLevel1 ?? string.Empty,
-                company.CompanyAddress.AdminUnitLevel2
-            )
-        );
+        var basicInformation = new BasicInformationResponse()
+        {
+            Name = company.CompanyDetails.Name,
+            LegalForm = "FI_OY",
+            LegalStatus = LegalStatus.NORMAL,
+            RegistrationDate = DateTime.Parse(company.CompanyDetails.FoundingDate),
+            RegisteredAddress = new RegisteredAddress()
+            {
+                FullAddress = company.CompanyAddress.FullAddress,
+                Thoroughfare = company.CompanyAddress.Thoroughfare,
+                LocatorDesignator = company.CompanyAddress.LocatorDesignator,
+                LocatorName = company.CompanyAddress.LocatorName,
+                AddressArea = company.CompanyAddress.AddressArea,
+                PostCode = company.CompanyAddress.PostCode,
+                PostName = company.CompanyAddress.PostName,
+                PoBox = company.CompanyAddress.PoBox,
+                AdminUnitLevel1 = company.CompanyAddress.AdminUnitLevel1 ?? string.Empty,
+                AdminUnitLevel2 = company.CompanyAddress.AdminUnitLevel2
+            },
+        };
 
         return basicInformation;
     }
