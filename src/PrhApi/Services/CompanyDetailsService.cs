@@ -100,6 +100,7 @@ public class CompanyDetailsService : ICompanyDetailsService
                 PoBox = company.CompanyAddress.PoBox ?? "-",
                 AdminUnitLevel1 = company.CompanyAddress.AdminUnitLevel_1 ?? "FI",
                 AdminUnitLevel2 = company.CompanyAddress.AdminUnitLevel_2 ?? "-",
+                AddressId = "-", // Simulated value
             },
         };
 
