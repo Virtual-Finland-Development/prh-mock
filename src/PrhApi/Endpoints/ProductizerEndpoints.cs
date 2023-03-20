@@ -97,11 +97,11 @@ public static class ProductizerEndpoints
         app.MapPost("draft/NSG/Agent/BasicInformation",
             async ([FromBody] BasicInformationRequest request, [FromServices] ICompanyDetailsService service, HttpContext context) =>
             {
-                var company = await service.LoadCompanyBasicInformation(request.NationalIdentifier);
-                if (company is null)
+                var companyBasicInfo = await service.LoadCompanyBasicInformation(request.NationalIdentifier);
+                if (companyBasicInfo is null)
                     return Results.NotFound($"Could not find company with businessId {request.NationalIdentifier}");
 
-                return Results.Ok(company);
+                return Results.Ok(companyBasicInfo);
             }).Produces<BasicInformationResponse>().Produces(404);
     }
 }
