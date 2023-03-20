@@ -43,7 +43,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// Initializes a new instance of the <see cref="BasicInformationResponse" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected BasicInformationResponse() { }
+        public BasicInformationResponse() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="BasicInformationResponse" /> class.
         /// </summary>

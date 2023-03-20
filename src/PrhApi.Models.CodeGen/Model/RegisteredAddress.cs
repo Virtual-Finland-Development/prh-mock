@@ -36,7 +36,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// Initializes a new instance of the <see cref="RegisteredAddress" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected RegisteredAddress() { }
+        public RegisteredAddress() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="RegisteredAddress" /> class.
         /// </summary>
