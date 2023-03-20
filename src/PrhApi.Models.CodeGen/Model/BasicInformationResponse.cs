@@ -10,10 +10,17 @@
 
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using OpenAPIDateConverter = PrhApi.Models.CodeGen.Client.OpenAPIDateConverter;
 
@@ -36,7 +43,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// Initializes a new instance of the <see cref="BasicInformationResponse" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public BasicInformationResponse() { }
+        protected BasicInformationResponse() { }
         /// <summary>
         /// Initializes a new instance of the <see cref="BasicInformationResponse" /> class.
         /// </summary>
@@ -145,26 +152,26 @@ namespace PrhApi.Models.CodeGen.Model
             {
                 return false;
             }
-            return
+            return 
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
-                ) &&
+                ) && 
                 (
                     this.LegalForm == input.LegalForm ||
                     (this.LegalForm != null &&
                     this.LegalForm.Equals(input.LegalForm))
-                ) &&
+                ) && 
                 (
                     this.LegalStatus == input.LegalStatus ||
                     this.LegalStatus.Equals(input.LegalStatus)
-                ) &&
+                ) && 
                 (
                     this.RegistrationDate == input.RegistrationDate ||
                     (this.RegistrationDate != null &&
                     this.RegistrationDate.Equals(input.RegistrationDate))
-                ) &&
+                ) && 
                 (
                     this.RegisteredAddress == input.RegisteredAddress ||
                     (this.RegisteredAddress != null &&
