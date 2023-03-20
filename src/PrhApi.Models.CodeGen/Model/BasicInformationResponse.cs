@@ -52,7 +52,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// <param name="legalStatus">Status of the legal entity (required).</param>
         /// <param name="registrationDate">Official registration date of the legal entity in the national trade registry (required).</param>
         /// <param name="registeredAddress">registeredAddress (required).</param>
-        public BasicInformationResponse(string name = default(string), string legalForm = default(string), string legalStatus = default(string), DateTime registrationDate = default(DateTime), RegisteredAddress registeredAddress = default(RegisteredAddress))
+        public BasicInformationResponse(string name = default(string), string legalForm = default(string), string legalStatus = default(string), string registrationDate = default(string), RegisteredAddress registeredAddress = default(RegisteredAddress))
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -97,7 +97,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// <value>Official registration date of the legal entity in the national trade registry</value>
         [DataMember(Name = "registrationDate", IsRequired = true, EmitDefaultValue = true)]
         [JsonConverter(typeof(OpenAPIDateConverter))]
-        public DateTime RegistrationDate { get; set; }
+        public string RegistrationDate { get; set; }
 
         /// <summary>
         /// Gets or Sets RegisteredAddress

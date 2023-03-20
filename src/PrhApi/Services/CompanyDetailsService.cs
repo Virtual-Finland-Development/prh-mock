@@ -87,10 +87,10 @@ public class CompanyDetailsService : ICompanyDetailsService
             Name = company.CompanyDetails.Name,
             LegalForm = "FI_OY", // Simulated value
             LegalStatus = "NORMAL", // Simulated value
-            RegistrationDate = DateTime.Parse(company.CompanyDetails.FoundingDate),
+            RegistrationDate = company.CompanyDetails.FoundingDate,
             RegisteredAddress = new RegisteredAddress()
             {
-                FullAddress = company.CompanyAddress.FullAddress,
+                FullAddress = company.CompanyAddress.FullAddress, // Might need to be defaulted to a non-null value
                 Thoroughfare = company.CompanyAddress.Thoroughfare,
                 LocatorDesignator = company.CompanyAddress.LocatorDesignator,
                 LocatorName = company.CompanyAddress.LocatorName,
@@ -98,7 +98,7 @@ public class CompanyDetailsService : ICompanyDetailsService
                 PostCode = company.CompanyAddress.PostCode,
                 PostName = company.CompanyAddress.PostName,
                 PoBox = company.CompanyAddress.PoBox,
-                AdminUnitLevel1 = company.CompanyAddress.AdminUnitLevel1 ?? string.Empty,
+                AdminUnitLevel1 = company.CompanyAddress.AdminUnitLevel1 ?? "FI",
                 AdminUnitLevel2 = company.CompanyAddress.AdminUnitLevel2
             },
         };
