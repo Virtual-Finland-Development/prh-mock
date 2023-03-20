@@ -85,8 +85,8 @@ public class CompanyDetailsService : ICompanyDetailsService
         var basicInformation = new BasicInformationResponse()
         {
             Name = company.CompanyDetails.Name,
-            LegalForm = "FI_OY",
-            LegalStatus = LegalStatus.NORMAL,
+            LegalForm = "FI_OY", // Simulated value
+            LegalStatus = "NORMAL", // Simulated value
             RegistrationDate = DateTime.Parse(company.CompanyDetails.FoundingDate),
             RegisteredAddress = new RegisteredAddress()
             {

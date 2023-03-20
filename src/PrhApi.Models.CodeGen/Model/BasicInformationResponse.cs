@@ -31,7 +31,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// </summary>
         /// <value>Status of the legal entity</value>
         [DataMember(Name = "legalStatus", IsRequired = true, EmitDefaultValue = true)]
-        public LegalStatus LegalStatus { get; set; }
+        public string LegalStatus { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="BasicInformationResponse" /> class.
         /// </summary>
@@ -45,7 +45,7 @@ namespace PrhApi.Models.CodeGen.Model
         /// <param name="legalStatus">Status of the legal entity (required).</param>
         /// <param name="registrationDate">Official registration date of the legal entity in the national trade registry (required).</param>
         /// <param name="registeredAddress">registeredAddress (required).</param>
-        public BasicInformationResponse(string name = default(string), string legalForm = default(string), LegalStatus legalStatus = default(LegalStatus), DateTime registrationDate = default(DateTime), RegisteredAddress registeredAddress = default(RegisteredAddress))
+        public BasicInformationResponse(string name = default(string), string legalForm = default(string), string legalStatus = default(string), DateTime registrationDate = default(DateTime), RegisteredAddress registeredAddress = default(RegisteredAddress))
         {
             // to ensure "name" is required (not null)
             if (name == null)
