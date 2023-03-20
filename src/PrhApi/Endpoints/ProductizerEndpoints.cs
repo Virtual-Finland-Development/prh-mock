@@ -26,7 +26,7 @@ public static class ProductizerEndpoints
                 [FromServices] IAuthenticationGatewayService authenticationGatewayService, HttpContext context) =>
             {
                 await authenticationGatewayService.VerifyTokens(context.Request.Headers);
-                
+
                 var bearerTokenValue = context.Request.Headers.GetBearerTokenValue();
                 var userId = TokenExtensions.ParseFromBearerToken(bearerTokenValue);
 
@@ -93,5 +93,15 @@ public static class ProductizerEndpoints
 
                 return result;
             }).Produces<SignatoryRightsResponse>();
+
+        app.MapPost("draft/NSG/Agent/BasicInformation",
+            async ([FromBody] BasicInformationRequest request, [FromServices] ICompanyDetailsService service, HttpContext context) =>
+            {
+                var company = await service.LoadCompanyBasicInformation(request.NationalIdentifier);
+                if (company is null)
+                    return Results.NotFound($"Could not find company with businessId {request.NationalIdentifier}");
+
+                return Results.Ok(company);
+            }).Produces<BasicInformationResponse>().Produces(404);
     }
 }

@@ -9,5 +9,6 @@ public interface ICompanyDetailsService
     Task<string> SaveOrUpdateCompany(string userId, string businessId, EstablishmentResponse details);
     Task<List<UserCompany>> GetUserCompanies(string userId);
     Task<List<MinimalCompanyDetails>> LoadCompanies();
+    Task<BasicInformationResponse?> LoadCompanyBasicInformation(string businessId);
     Task DeleteCompany(string userId, string businessId);
 }

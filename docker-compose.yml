@@ -6,7 +6,7 @@ services:
       dockerfile: PrhApi/Dockerfile
       context: ./src
     environment:
-      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_ENVIRONMENT=dev
       - ASPNETCORE_URLS=http://0.0.0.0:80
       - AWS_PROFILE=${AWS_PROFILE:-default}
       - AWS_REGION=eu-north-1

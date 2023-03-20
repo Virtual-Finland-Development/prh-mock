@@ -1,6 +1,9 @@
+api/openapi.yaml
 src/PrhApi.Models.CodeGen/Client/OpenAPIDateConverter.cs
 src/PrhApi.Models.CodeGen/Model/AbstractOpenAPISchema.cs
 src/PrhApi.Models.CodeGen/Model/Auditor.cs
+src/PrhApi.Models.CodeGen/Model/BasicInformationRequest.cs
+src/PrhApi.Models.CodeGen/Model/BasicInformationResponse.cs
 src/PrhApi.Models.CodeGen/Model/BeneficialOwnerShareSeries.cs
 src/PrhApi.Models.CodeGen/Model/BeneficialOwnersRequest.cs
 src/PrhApi.Models.CodeGen/Model/BeneficialOwnersResponse.cs
@@ -10,9 +13,11 @@ src/PrhApi.Models.CodeGen/Model/CompanyAddress.cs
 src/PrhApi.Models.CodeGen/Model/CompanyDetails.cs
 src/PrhApi.Models.CodeGen/Model/EstablishmentRequest.cs
 src/PrhApi.Models.CodeGen/Model/EstablishmentResponse.cs
+src/PrhApi.Models.CodeGen/Model/LegalStatus.cs
 src/PrhApi.Models.CodeGen/Model/ManagingDirector.cs
 src/PrhApi.Models.CodeGen/Model/MinimalCompanyDetails.cs
 src/PrhApi.Models.CodeGen/Model/Ownership.cs
+src/PrhApi.Models.CodeGen/Model/RegisteredAddress.cs
 src/PrhApi.Models.CodeGen/Model/Registrant.cs
 src/PrhApi.Models.CodeGen/Model/ShareSeries.cs
 src/PrhApi.Models.CodeGen/Model/Shareholder.cs

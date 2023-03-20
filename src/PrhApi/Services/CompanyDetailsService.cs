@@ -77,6 +77,33 @@ public class CompanyDetailsService : ICompanyDetailsService
         return companies;
     }
 
+    public async Task<BasicInformationResponse?> LoadCompanyBasicInformation(string businessId)
+    {
+        var company = await _repository.LoadWithBusinessId(businessId);
+        if (company is null) return null;
+
+        var basicInformation = new BasicInformationResponse(
+            company.CompanyDetails.Name,
+            "FI_OY",
+            LegalStatus.NORMAL,
+            DateTime.Parse(company.CompanyDetails.FoundingDate),
+            new RegisteredAddress(
+                company.CompanyAddress.FullAddress,
+                company.CompanyAddress.Thoroughfare,
+                company.CompanyAddress.LocatorDesignator,
+                company.CompanyAddress.LocatorName,
+                company.CompanyAddress.AddressArea,
+                company.CompanyAddress.PostCode,
+                company.CompanyAddress.PostName,
+                company.CompanyAddress.PoBox,
+                company.CompanyAddress.AdminUnitLevel1 ?? string.Empty,
+                company.CompanyAddress.AdminUnitLevel2
+            )
+        );
+
+        return basicInformation;
+    }
+
     private void UpdateValues(EstablishmentResponse existingCompany, EstablishmentResponse details)
     {
         existingCompany.Registrant.GivenName = details.Registrant.GivenName;
@@ -103,8 +130,8 @@ public class CompanyDetailsService : ICompanyDetailsService
         existingCompany.CompanyAddress.PostCode = details.CompanyAddress.PostCode;
         existingCompany.CompanyAddress.PostName = details.CompanyAddress.PostName;
         existingCompany.CompanyAddress.PoBox = details.CompanyAddress.PoBox;
-        existingCompany.CompanyAddress.AdminUnitLevel_1 = details.CompanyAddress.AdminUnitLevel_1;
-        existingCompany.CompanyAddress.AdminUnitLevel_2 = details.CompanyAddress.AdminUnitLevel_2;
+        existingCompany.CompanyAddress.AdminUnitLevel1 = details.CompanyAddress.AdminUnitLevel1;
+        existingCompany.CompanyAddress.AdminUnitLevel2 = details.CompanyAddress.AdminUnitLevel2;
 
         existingCompany.ManagingDirectors = details.ManagingDirectors;
 
