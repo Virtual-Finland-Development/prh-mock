@@ -17,7 +17,7 @@ public static class ProductizerEndpoints
 
                 var company = await service.LoadCompany(request.NationalIdentifier);
                 return company is null
-                    ? Results.NotFound($"Could not find company with businessId {request.NationalIdentifier}")
+                    ? Results.NotFound($"Could not find company with national identifier: {request.NationalIdentifier}")
                     : Results.Ok(company);
             }).Produces<EstablishmentResponse>().Produces(404);
 
@@ -99,7 +99,7 @@ public static class ProductizerEndpoints
             {
                 var companyBasicInfo = await service.LoadCompanyBasicInformation(request.NationalIdentifier);
                 if (companyBasicInfo is null)
-                    return Results.NotFound($"Could not find company with businessId {request.NationalIdentifier}");
+                    return Results.NotFound($"Could not find company with national identifier: {request.NationalIdentifier}");
 
                 return Results.Ok(companyBasicInfo);
             }).Produces<BasicInformationResponse>().Produces(404);
