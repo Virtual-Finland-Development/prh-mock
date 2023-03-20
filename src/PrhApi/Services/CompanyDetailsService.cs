@@ -90,7 +90,7 @@ public class CompanyDetailsService : ICompanyDetailsService
             RegistrationDate = company.CompanyDetails.FoundingDate,
             RegisteredAddress = new RegisteredAddress()
             {
-                FullAddress = company.CompanyAddress.FullAddress ?? "-",
+                FullAddress = company.CompanyAddress.FullAddress ?? "-", // Non-zero length strings are required by the schema
                 Thoroughfare = company.CompanyAddress.Thoroughfare ?? "-",
                 LocatorDesignator = company.CompanyAddress.LocatorDesignator ?? "-",
                 LocatorName = company.CompanyAddress.LocatorName ?? "-",
