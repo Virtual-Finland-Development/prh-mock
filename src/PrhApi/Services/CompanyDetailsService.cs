@@ -77,6 +77,35 @@ public class CompanyDetailsService : ICompanyDetailsService
         return companies;
     }
 
+    public async Task<BasicInformationResponse?> LoadCompanyBasicInformation(string businessId)
+    {
+        var company = await _repository.LoadWithBusinessId(businessId);
+        if (company is null) return null;
+
+        var basicInformation = new BasicInformationResponse()
+        {
+            Name = company.CompanyDetails.Name,
+            LegalForm = "FI_OY", // Simulated value
+            LegalStatus = "NORMAL", // Simulated value
+            RegistrationDate = company.CompanyDetails.FoundingDate,
+            RegisteredAddress = new RegisteredAddress()
+            {
+                FullAddress = company.CompanyAddress.FullAddress, // Might need to be defaulted to a non-null value
+                Thoroughfare = company.CompanyAddress.Thoroughfare,
+                LocatorDesignator = company.CompanyAddress.LocatorDesignator,
+                LocatorName = company.CompanyAddress.LocatorName,
+                AddressArea = company.CompanyAddress.AddressArea,
+                PostCode = company.CompanyAddress.PostCode,
+                PostName = company.CompanyAddress.PostName,
+                PoBox = company.CompanyAddress.PoBox,
+                AdminUnitLevel1 = company.CompanyAddress.AdminUnitLevel_1 ?? "FI",
+                AdminUnitLevel2 = company.CompanyAddress.AdminUnitLevel_2
+            },
+        };
+
+        return basicInformation;
+    }
+
     private void UpdateValues(EstablishmentResponse existingCompany, EstablishmentResponse details)
     {
         existingCompany.Registrant.GivenName = details.Registrant.GivenName;
