@@ -576,12 +576,12 @@ components:
         id: 2mzvgigao2mou
       type: object
       properties:
-        signingRights:
+        signatoryRights:
           type: array
           items:
             $ref: '#/components/schemas/SigningRights'
       required:
-        - signingRights
+        - signatoryRights
     SignatoryRightsWriteRequest:
       title: SignatoryRightsWriteRequest
       x-stoplight:
@@ -603,7 +603,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/BeneficialOwnerShareSeries'
-        shareholder:
+        shareholders:
           type: array
           items:
             $ref: '#/components/schemas/Shareholder'
