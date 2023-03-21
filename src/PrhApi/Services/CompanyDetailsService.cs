@@ -98,8 +98,8 @@ public class CompanyDetailsService : ICompanyDetailsService
                 PostCode = company.CompanyAddress.PostCode,
                 PostName = company.CompanyAddress.PostName,
                 PoBox = company.CompanyAddress.PoBox,
-                AdminUnitLevel1 = company.CompanyAddress.AdminUnitLevel_1 ?? "FI",
-                AdminUnitLevel2 = company.CompanyAddress.AdminUnitLevel_2
+                AdminUnitLevel1 = company.CompanyAddress.AdminUnitLevel1 ?? "FI",
+                AdminUnitLevel2 = company.CompanyAddress.AdminUnitLevel2
             },
         };
 
