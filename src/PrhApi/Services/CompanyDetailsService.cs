@@ -90,16 +90,17 @@ public class CompanyDetailsService : ICompanyDetailsService
             RegistrationDate = company.CompanyDetails.FoundingDate,
             RegisteredAddress = new RegisteredAddress()
             {
-                FullAddress = company.CompanyAddress.FullAddress, // Might need to be defaulted to a non-null value
-                Thoroughfare = company.CompanyAddress.Thoroughfare,
-                LocatorDesignator = company.CompanyAddress.LocatorDesignator,
-                LocatorName = company.CompanyAddress.LocatorName,
-                AddressArea = company.CompanyAddress.AddressArea,
-                PostCode = company.CompanyAddress.PostCode,
-                PostName = company.CompanyAddress.PostName,
-                PoBox = company.CompanyAddress.PoBox,
-                AdminUnitLevel1 = company.CompanyAddress.AdminUnitLevel_1 ?? "FI",
-                AdminUnitLevel2 = company.CompanyAddress.AdminUnitLevel_2
+                FullAddress = company.CompanyAddress.FullAddress ?? "-", // Non-zero length strings are required by the schema
+                Thoroughfare = company.CompanyAddress.Thoroughfare ?? "-",
+                LocatorDesignator = company.CompanyAddress.LocatorDesignator ?? "-",
+                LocatorName = company.CompanyAddress.LocatorName ?? "-",
+                AddressArea = company.CompanyAddress.AddressArea ?? "-",
+                PostCode = company.CompanyAddress.PostCode ?? "-",
+                PostName = company.CompanyAddress.PostName ?? "-",
+                PoBox = company.CompanyAddress.PoBox ?? "-",
+                AdminUnitLevel_1 = company.CompanyAddress.AdminUnitLevel_1 ?? "FI",
+                AdminUnitLevel_2 = company.CompanyAddress.AdminUnitLevel_2 ?? "-",
+                AddressId = "-", // Simulated value
             },
         };
 
