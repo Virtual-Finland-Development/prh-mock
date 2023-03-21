@@ -40,22 +40,22 @@ namespace PrhApi.Models.CodeGen.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SignatoryRightsResponse" /> class.
         /// </summary>
-        /// <param name="signingRights">signingRights (required).</param>
-        public SignatoryRightsResponse(List<SigningRights> signingRights = default(List<SigningRights>))
+        /// <param name="signatoryRights">signatoryRights (required).</param>
+        public SignatoryRightsResponse(List<SigningRights> signatoryRights = default(List<SigningRights>))
         {
-            // to ensure "signingRights" is required (not null)
-            if (signingRights == null)
+            // to ensure "signatoryRights" is required (not null)
+            if (signatoryRights == null)
             {
-                throw new ArgumentNullException("signingRights is a required property for SignatoryRightsResponse and cannot be null");
+                throw new ArgumentNullException("signatoryRights is a required property for SignatoryRightsResponse and cannot be null");
             }
-            this.SigningRights = signingRights;
+            this.SignatoryRights = signatoryRights;
         }
 
         /// <summary>
-        /// Gets or Sets SigningRights
+        /// Gets or Sets SignatoryRights
         /// </summary>
-        [DataMember(Name = "signingRights", IsRequired = true, EmitDefaultValue = true)]
-        public List<SigningRights> SigningRights { get; set; }
+        [DataMember(Name = "signatoryRights", IsRequired = true, EmitDefaultValue = true)]
+        public List<SigningRights> SignatoryRights { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -65,7 +65,7 @@ namespace PrhApi.Models.CodeGen.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class SignatoryRightsResponse {\n");
-            sb.Append("  SigningRights: ").Append(SigningRights).Append("\n");
+            sb.Append("  SignatoryRights: ").Append(SignatoryRights).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -102,10 +102,10 @@ namespace PrhApi.Models.CodeGen.Model
             }
             return 
                 (
-                    this.SigningRights == input.SigningRights ||
-                    this.SigningRights != null &&
-                    input.SigningRights != null &&
-                    this.SigningRights.SequenceEqual(input.SigningRights)
+                    this.SignatoryRights == input.SignatoryRights ||
+                    this.SignatoryRights != null &&
+                    input.SignatoryRights != null &&
+                    this.SignatoryRights.SequenceEqual(input.SignatoryRights)
                 );
         }
 
@@ -118,9 +118,9 @@ namespace PrhApi.Models.CodeGen.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.SigningRights != null)
+                if (this.SignatoryRights != null)
                 {
-                    hashCode = (hashCode * 59) + this.SigningRights.GetHashCode();
+                    hashCode = (hashCode * 59) + this.SignatoryRights.GetHashCode();
                 }
                 return hashCode;
             }
