@@ -17,7 +17,7 @@ public static class ProductizerEndpoints
 
                 var company = await service.LoadCompany(request.NationalIdentifier);
                 return company is null
-                    ? Results.NotFound($"Could not find company with businessId {request.NationalIdentifier}")
+                    ? Results.NotFound($"Could not find company with national identifier: {request.NationalIdentifier}")
                     : Results.Ok(company);
             }).Produces<EstablishmentResponse>().Produces(404);
 
@@ -26,7 +26,7 @@ public static class ProductizerEndpoints
                 [FromServices] IAuthenticationGatewayService authenticationGatewayService, HttpContext context) =>
             {
                 await authenticationGatewayService.VerifyTokens(context.Request.Headers);
-                
+
                 var bearerTokenValue = context.Request.Headers.GetBearerTokenValue();
                 var userId = TokenExtensions.ParseFromBearerToken(bearerTokenValue);
 
@@ -93,5 +93,15 @@ public static class ProductizerEndpoints
 
                 return result;
             }).Produces<SignatoryRightsResponse>();
+
+        app.MapPost("draft/NSG/Agent/BasicInformation",
+            async ([FromBody] BasicInformationRequest request, [FromServices] ICompanyDetailsService service, HttpContext context) =>
+            {
+                var companyBasicInfo = await service.LoadCompanyBasicInformation(request.NationalIdentifier);
+                if (companyBasicInfo is null)
+                    return Results.NotFound($"Could not find company with national identifier: {request.NationalIdentifier}");
+
+                return Results.Ok(companyBasicInfo);
+            }).Produces<BasicInformationResponse>().Produces(404);
     }
 }
