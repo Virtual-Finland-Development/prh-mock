@@ -1,0 +1,61 @@
+{
+    "SignatoryRights": [
+        {
+            "Role": "Chairman",
+            "PersonalId": "2254365789",
+            "GivenName": "James",
+            "MiddleNames": "Michael Jack",
+            "LastName": "Jaatinen",
+            "DateOfBirth": "1978-15-06",
+            "Nationality": "USA",
+            "FullAddress": "106 Doyers Street, Apartment 20, New York NY 10014, USA",
+            "Thoroughfare": null,
+            "LocatorDesignator": null,
+            "LocatorName": null,
+            "AddressArea": null,
+            "PostCode": null,
+            "PostName": null,
+            "PoBox": null,
+            "AdminUnitLevel1": null,
+            "AdminUnitLevel2": null
+        },
+        {
+            "Role": "Member",
+            "PersonalId": "8954365766",
+            "GivenName": "Mina",
+            "MiddleNames": "Julia Maria",
+            "LastName": "Leef",
+            "DateOfBirth": "1966-22-10",
+            "Nationality": "SWE",
+            "FullAddress": "Skogsgatan 31, 582 20 Lingköping, SWE",
+            "Thoroughfare": null,
+            "LocatorDesignator": null,
+            "LocatorName": null,
+            "AddressArea": null,
+            "PostCode": null,
+            "PostName": null,
+            "PoBox": null,
+            "AdminUnitLevel1": null,
+            "AdminUnitLevel2": null
+        },
+        {
+            "Role": "Member",
+            "PersonalId": "7654365766",
+            "GivenName": "Yost",
+            "MiddleNames": "Rudolf",
+            "LastName": "Robinson",
+            "DateOfBirth": "1980-11-11",
+            "Nationality": "BRA",
+            "FullAddress": "Haanvuorentie 4 A 3, 22345 Helsinki, FIN",
+            "Thoroughfare": null,
+            "LocatorDesignator": null,
+            "LocatorName": null,
+            "AddressArea": null,
+            "PostCode": null,
+            "PostName": null,
+            "PoBox": null,
+            "AdminUnitLevel1": null,
+            "AdminUnitLevel2": null
+        }
+    ]
+}

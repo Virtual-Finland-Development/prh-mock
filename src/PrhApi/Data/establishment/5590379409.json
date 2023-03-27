@@ -1,0 +1,66 @@
+{
+    "Registrant": {
+        "GivenName": "Nola",
+        "LastName": "Abdiel",
+        "Email": "-",
+        "PhoneNumber": "-"
+    },
+    "CompanyDetails": {
+        "Name": "56N Software AB",
+        "AlternativeName": null,
+        "FoundingDate": "2015-12-01",
+        "IndustrySector": "42.1",
+        "ShareCapital": 200,
+        "CapitalCurrency": "EUR",
+        "SettlementDeposit": 5000,
+        "DepositCurrency": "EUR",
+        "SettlementDate": null,
+        "CountryOfResidence": null
+    },
+    "ShareSeries": [
+        {
+            "ShareSeriesClass": "A",
+            "NumberOfShares": 5,
+            "ShareValue": 10,
+            "ShareValueCurrency": "EUR"
+        }
+    ],
+    "CompanyAddress": {
+        "FullAddress": "Pipeline Nordic Box 135 115 41 STOCKHOLM",
+        "Thoroughfare": "Box 135",
+        "LocatorDesignator": "37",
+        "LocatorName": null,
+        "AddressArea": null,
+        "PostCode": "115 41",
+        "PostName": "STOCKHOLM",
+        "PoBox": null,
+        "AdminUnitLevel1": "SWE",
+        "AdminUnitLevel2": null
+    },
+    "ManagingDirectors": [
+        {
+            "Role": "director",
+            "GivenName": "Nola",
+            "MiddleNames": "Kaley",
+            "LastName": "Abdiel",
+            "DateOfBirth": "2009-12-21",
+            "Nationality": "FIN"
+        }
+    ],
+    "BoardMembers": [
+        {
+            "Role": "chairperson",
+            "GivenName": "Dalia",
+            "MiddleNames": "Alexis",
+            "LastName": "Hugo",
+            "DateOfBirth": "2021-12-25",
+            "Nationality": "FIN"
+        }
+    ],
+    "AuditorDetails": {
+        "CompanyName": null,
+        "NationalIdentifier": null,
+        "GivenName": null,
+        "LastName": null
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "ShareSeries": [
+        {
+            "ShareSeriesClass": "A",
+            "NumberOfShares": 8000,
+            "VotesPerShare": 1
+        }
+    ],
+    "Shareholders": [
+        {
+            "Name": "Mina Leef",
+            "ShareOwnership": [
+                {
+                    "ShareSeriesClass": "A",
+                    "Quantity": 5000
+                }
+            ]
+        },
+        {
+            "Name": "Diamond investors Ltd",
+            "ShareOwnership": [
+                {
+                    "ShareSeriesClass": "A",
+                    "Quantity": 2000
+                }
+            ]
+        },
+        {
+            "Name": "James Jaatinen",
+            "ShareOwnership": [
+                {
+                    "ShareSeriesClass": "A",
+                    "Quantity": 1000
+                }
+            ]
+        }
+    ]
+}
