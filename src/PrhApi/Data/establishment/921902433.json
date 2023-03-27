@@ -1,0 +1,66 @@
+{
+    "Registrant": {
+        "GivenName": "Dalia",
+        "LastName": "Hugo",
+        "Email": "-",
+        "PhoneNumber": "-"
+    },
+    "CompanyDetails": {
+        "Name": "ARC SOFTWARE AS",
+        "AlternativeName": null,
+        "FoundingDate": "2018-12-18",
+        "IndustrySector": "42.1",
+        "ShareCapital": 200,
+        "CapitalCurrency": "EUR",
+        "SettlementDeposit": 5000,
+        "DepositCurrency": "EUR",
+        "SettlementDate": null,
+        "CountryOfResidence": null
+    },
+    "ShareSeries": [
+        {
+            "ShareSeriesClass": "A",
+            "NumberOfShares": 5,
+            "ShareValue": 10,
+            "ShareValueCurrency": "EUR"
+        }
+    ],
+    "CompanyAddress": {
+        "FullAddress": "Elveveien 32 3262 LARVIK 3805 LARVIK NO Norge",
+        "Thoroughfare": "Elveveien 32",
+        "LocatorDesignator": "37",
+        "LocatorName": null,
+        "AddressArea": null,
+        "PostCode": "3262",
+        "PostName": "LARVIK",
+        "PoBox": null,
+        "AdminUnitLevel1": null,
+        "AdminUnitLevel2": null
+    },
+    "ManagingDirectors": [
+        {
+            "Role": "director",
+            "GivenName": "Nola",
+            "MiddleNames": "Kaley",
+            "LastName": "Abdiel",
+            "DateOfBirth": "2009-12-21",
+            "Nationality": "FIN"
+        }
+    ],
+    "BoardMembers": [
+        {
+            "Role": "chairperson",
+            "GivenName": "Dalia",
+            "MiddleNames": "Alexis",
+            "LastName": "Hugo",
+            "DateOfBirth": "2021-12-25",
+            "Nationality": "FIN"
+        }
+    ],
+    "AuditorDetails": {
+        "CompanyName": null,
+        "NationalIdentifier": null,
+        "GivenName": null,
+        "LastName": null
+    }
+}

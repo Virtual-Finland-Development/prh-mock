@@ -1,0 +1,70 @@
+{
+    "ShareSeries": [
+        {
+            "ShareSeriesClass": "A",
+            "NumberOfShares": 7000,
+            "VotesPerShare": 10
+        },
+        {
+            "ShareSeriesClass": "B",
+            "NumberOfShares": 4000,
+            "VotesPerShare": 1
+        }
+    ],
+    "Shareholders": [
+        {
+            "Name": "James Jaatinen",
+            "ShareOwnership": [
+                {
+                    "ShareSeriesClass": "A",
+                    "Quantity": 4000
+                }
+            ]
+        },
+        {
+            "Name": "Mike Olsen",
+            "ShareOwnership": [
+                {
+                    "ShareSeriesClass": "A",
+                    "Quantity": 2000
+                }
+            ]
+        },
+        {
+            "Name": "Brenda Taylor",
+            "ShareOwnership": [
+                {
+                    "ShareSeriesClass": "A",
+                    "Quantity": 1000
+                }
+            ]
+        },
+        {
+            "Name": "Future Ventures Ltd",
+            "ShareOwnership": [
+                {
+                    "ShareSeriesClass": "B",
+                    "Quantity": 2000
+                }
+            ]
+        },
+        {
+            "Name": "Olli Amber",
+            "ShareOwnership": [
+                {
+                    "ShareSeriesClass": "B",
+                    "Quantity": 1000
+                }
+            ]
+        },
+        {
+            "Name": "Alli Umber",
+            "ShareOwnership": [
+                {
+                    "ShareSeriesClass": "B",
+                    "Quantity": 1000
+                }
+            ]
+        }
+    ]
+}

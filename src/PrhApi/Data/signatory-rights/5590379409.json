@@ -1,0 +1,42 @@
+{
+    "SignatoryRights": [
+        {
+            "Role": "Chairman",
+            "PersonalId": "2254365789",
+            "GivenName": "James",
+            "MiddleNames": "Michael Jack",
+            "LastName": "Jaatinen",
+            "DateOfBirth": "1978-15-06",
+            "Nationality": "USA",
+            "FullAddress": "106 Doyers Street, Apartment 20, New York NY 10014, USA",
+            "Thoroughfare": null,
+            "LocatorDesignator": null,
+            "LocatorName": null,
+            "AddressArea": null,
+            "PostCode": null,
+            "PostName": null,
+            "PoBox": null,
+            "AdminUnitLevel1": null,
+            "AdminUnitLevel2": null
+        },
+        {
+            "Role": "Director",
+            "PersonalId": "2254365789",
+            "GivenName": "Olf",
+            "MiddleNames": "Jonathan",
+            "LastName": "Andersen",
+            "DateOfBirth": "1969-03-23",
+            "Nationality": "NOR",
+            "FullAddress": "Storgata 6, NO-72345 Trondheim, NOR",
+            "Thoroughfare": null,
+            "LocatorDesignator": null,
+            "LocatorName": null,
+            "AddressArea": null,
+            "PostCode": null,
+            "PostName": null,
+            "PoBox": null,
+            "AdminUnitLevel1": null,
+            "AdminUnitLevel2": null
+        }
+    ]
+}
