@@ -61,6 +61,21 @@ internal class DummyDataRepository : IDummyDataRepository
         }
     }
 
+    public string ResolveAdminUnitLevel(string businessId)
+    {
+        switch (FormatBusinessIdInput(businessId))
+        {
+            case "0522908-2":
+                return "FIN";
+            case "921902433":
+                return "NOR";
+            case "5590379409":
+                return "SWE";
+            default:
+                return "FIN";
+        }
+    }
+
     private string FormatBusinessIdInput(string businessId)
     {
         return businessId.Replace(" ", "");
