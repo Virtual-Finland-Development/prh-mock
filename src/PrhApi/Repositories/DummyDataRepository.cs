@@ -45,7 +45,7 @@ internal class DummyDataRepository : IDummyDataRepository
 
     public BeneficialOwnersResponse? ReadBeneficialOwners(string businessId)
     {
-        using var reader = new StreamReader($"Data/beneficial-owners/{FormatBusinessIdInput(businessId)}.json");
+        using var reader = new StreamReader($"Data/beneficial-owner/{FormatBusinessIdInput(businessId)}.json");
         var contents = reader.ReadToEnd();
 
         var responseObject = JsonSerializer.Deserialize<BeneficialOwnersResponse>(contents);
