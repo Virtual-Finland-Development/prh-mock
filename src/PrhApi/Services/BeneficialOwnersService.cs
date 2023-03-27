@@ -34,7 +34,7 @@ internal class BeneficialOwnersService : IBeneficialOwnersService
     {
         if (_dummyDataRepository.IsDummyBusinessId(businessId))
         {
-            throw new Exception("Cannot save dummy data");
+            throw new ArgumentException($"Business id {businessId} is reserved for dummy data");
         }
         return await _repository.SaveAsync(userId, businessId, data, cancellationToken);
     }

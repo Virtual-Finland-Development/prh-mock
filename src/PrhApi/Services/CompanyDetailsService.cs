@@ -40,7 +40,7 @@ public class CompanyDetailsService : ICompanyDetailsService
     {
         if (_dummyDataRepository.IsDummyBusinessId(businessId))
         {
-            throw new Exception("Cannot save dummy data");
+            throw new ArgumentException($"Business id {businessId} is reserved for dummy data");
         }
 
         var existingCompany = await _repository.LoadWithBusinessId(businessId);
