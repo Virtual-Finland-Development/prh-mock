@@ -34,7 +34,7 @@
         "PostCode": "115 41",
         "PostName": "STOCKHOLM",
         "PoBox": null,
-        "AdminUnitLevel1": null,
+        "AdminUnitLevel1": "SWE",
         "AdminUnitLevel2": null
     },
     "ManagingDirectors": [

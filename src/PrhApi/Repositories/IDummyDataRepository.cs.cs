@@ -8,5 +8,4 @@ public interface IDummyDataRepository
     public BeneficialOwnersResponse? ReadBeneficialOwners(string businessId);
     public SignatoryRightsResponse? ReadSignatoryRights(string businessId);
     public string ResolveLegalForm(string businessId);
-    public string ResolveAdminUnitLevel(string businessId);
 }

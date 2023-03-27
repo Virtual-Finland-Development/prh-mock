@@ -5,16 +5,33 @@ namespace PrhApi.Repositories;
 
 internal class DummyDataRepository : IDummyDataRepository
 {
-    private readonly List<string> _dummyBusinessIds;
+    private readonly List<DummyCompany> _dummyCompanies;
 
     public DummyDataRepository()
     {
-        _dummyBusinessIds = new List<string> { "0522908-2", "921902433", "5590379409" };
+        _dummyCompanies = new List<DummyCompany>
+        {
+            new DummyCompany
+            {
+                BusinessId = "0522908-2",
+                LegalForm = "FI_OY",
+            },
+            new DummyCompany
+            {
+                BusinessId = "921902433",
+                LegalForm = "NO_AS",
+            },
+            new DummyCompany
+            {
+                BusinessId = "5590379409",
+                LegalForm = "SE_AB",
+            }
+        };
     }
 
     public bool IsDummyBusinessId(string businessId)
     {
-        return _dummyBusinessIds.Contains(FormatBusinessIdInput(businessId));
+        return _dummyCompanies.Any(x => x.BusinessId == FormatBusinessIdInput(businessId));
     }
 
     public EstablishmentResponse? ReadEstablishment(string businessId)
@@ -46,36 +63,22 @@ internal class DummyDataRepository : IDummyDataRepository
 
     public string ResolveLegalForm(string businessId)
     {
-        switch (FormatBusinessIdInput(businessId))
+        var dummyCompany = _dummyCompanies.FirstOrDefault(x => x.BusinessId == FormatBusinessIdInput(businessId));
+        if (dummyCompany != null)
         {
-            case "0522908-2":
-                return "FI_OY";
-            case "921902433":
-                return "NO_AS";
-            case "5590379409":
-                return "SE_AB";
-            default:
-                return "FI_OY";
+            return dummyCompany.LegalForm;
         }
-    }
-
-    public string ResolveAdminUnitLevel(string businessId)
-    {
-        switch (FormatBusinessIdInput(businessId))
-        {
-            case "0522908-2":
-                return "FIN";
-            case "921902433":
-                return "NOR";
-            case "5590379409":
-                return "SWE";
-            default:
-                return "FIN";
-        }
+        return "FI_OY";
     }
 
     private string FormatBusinessIdInput(string businessId)
     {
         return businessId.Replace(" ", "");
+    }
+
+    private class DummyCompany
+    {
+        public string BusinessId { get; set; } = string.Empty;
+        public string LegalForm { get; set; } = string.Empty;
     }
 }
