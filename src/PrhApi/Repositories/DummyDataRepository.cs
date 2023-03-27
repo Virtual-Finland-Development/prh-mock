@@ -46,6 +46,21 @@ internal class DummyDataRepository : IDummyDataRepository
         return responseObject;
     }
 
+    public string ResolveLegalForm(string businessId)
+    {
+        switch (FormatBusinessIdInput(businessId))
+        {
+            case "0522908-2":
+                return "FI_OY";
+            case "921902433":
+                return "NO_AS";
+            case "5590379409":
+                return "SE_AB";
+            default:
+                return "FI_OY";
+        }
+    }
+
     private string FormatBusinessIdInput(string businessId)
     {
         return businessId.Replace(" ", "");

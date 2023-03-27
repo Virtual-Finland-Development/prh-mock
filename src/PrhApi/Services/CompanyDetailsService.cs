@@ -90,28 +90,37 @@ public class CompanyDetailsService : ICompanyDetailsService
 
     public async Task<BasicInformationResponse?> LoadCompanyBasicInformation(string businessId)
     {
-        var company = _dummyDataRepository.IsDummyBusinessId(businessId) ? _dummyDataRepository.ReadEstablishment(businessId) : await _repository.LoadWithBusinessId(businessId);
+        EstablishmentResponse? company;
+        if (_dummyDataRepository.IsDummyBusinessId(businessId))
+        {
+            company = _dummyDataRepository.ReadEstablishment(businessId);
+        }
+        else
+        {
+            company = await _repository.LoadWithBusinessId(businessId);
+        }
+
         if (company is null) return null;
 
         var basicInformation = new BasicInformationResponse()
         {
             Name = company.CompanyDetails.Name,
-            LegalForm = "FI_OY", // Simulated value
+            LegalForm = _dummyDataRepository.ResolveLegalForm(businessId), // Simulated value
             LegalStatus = "NORMAL", // Simulated value
             RegistrationDate = company.CompanyDetails.FoundingDate,
             RegisteredAddress = new RegisteredAddress()
             {
-                FullAddress = company.CompanyAddress.FullAddress ?? "-", // Non-zero length strings are required by the schema
-                Thoroughfare = company.CompanyAddress.Thoroughfare ?? "-",
-                LocatorDesignator = company.CompanyAddress.LocatorDesignator ?? "-",
-                LocatorName = company.CompanyAddress.LocatorName ?? "-",
-                AddressArea = company.CompanyAddress.AddressArea ?? "-",
-                PostCode = company.CompanyAddress.PostCode ?? "-",
-                PostName = company.CompanyAddress.PostName ?? "-",
-                PoBox = company.CompanyAddress.PoBox ?? "-",
-                AdminUnitLevel_1 = company.CompanyAddress.AdminUnitLevel1 ?? "FIN",
-                AdminUnitLevel_2 = company.CompanyAddress.AdminUnitLevel2 ?? "-",
-                AddressId = "-", // Simulated value
+                FullAddress = company.CompanyAddress.FullAddress ?? "", // Non-zero length strings are required by the schema
+                Thoroughfare = company.CompanyAddress.Thoroughfare ?? "",
+                LocatorDesignator = company.CompanyAddress.LocatorDesignator ?? "",
+                LocatorName = company.CompanyAddress.LocatorName ?? "",
+                AddressArea = company.CompanyAddress.AddressArea ?? "",
+                PostCode = company.CompanyAddress.PostCode ?? "",
+                PostName = company.CompanyAddress.PostName ?? "",
+                PoBox = company.CompanyAddress.PoBox ?? "",
+                AdminUnitLevel_1 = company.CompanyAddress.AdminUnitLevel1 ?? "",
+                AdminUnitLevel_2 = company.CompanyAddress.AdminUnitLevel2 ?? "",
+                AddressId = "", // Simulated value
             },
         };
 

@@ -7,4 +7,5 @@ public interface IDummyDataRepository
     public EstablishmentResponse? ReadEstablishment(string businessId);
     public BeneficialOwnersResponse? ReadBeneficialOwners(string businessId);
     public SignatoryRightsResponse? ReadSignatoryRights(string businessId);
+    public string ResolveLegalForm(string businessId);
 }
