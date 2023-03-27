@@ -6,11 +6,9 @@ namespace PrhApi.Repositories;
 internal class DummyDataRepository : IDummyDataRepository
 {
     private readonly List<string> _dummyBusinessIds;
-    private readonly ILogger<DummyDataRepository> _logger;
 
-    public DummyDataRepository(ILogger<DummyDataRepository> logger)
+    public DummyDataRepository()
     {
-        _logger = logger;
         _dummyBusinessIds = new List<string> { "0522908-2", "921902433", "5590379409" };
     }
 
