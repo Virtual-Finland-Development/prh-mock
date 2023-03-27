@@ -16,6 +16,8 @@ builder.Services.AddSingleton<ISignatoryRightsRepository, SignatoryRightsReposit
 builder.Services.AddSingleton<IBeneficialOwnersService, BeneficialOwnersService>();
 builder.Services.AddSingleton<IBeneficialOwnersRepository, BeneficialOwnersRepository>();
 
+builder.Services.AddSingleton<IDummyDataRepository, DummyDataRepository>();
+
 builder.Services.AddSingleton<IAuthenticationGatewayService, AuthenticationGatewayService>();
 builder.Services.AddSingleton<AmazonS3Client>();
 

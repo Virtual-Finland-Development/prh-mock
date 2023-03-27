@@ -8,15 +8,21 @@ public class CompanyDetailsService : ICompanyDetailsService
 {
     private readonly ILogger<CompanyDetailsService> _logger;
     private readonly ICompanyEstablishmentRepository _repository;
+    private readonly IDummyDataRepository _dummyDataRepository;
 
-    public CompanyDetailsService(ICompanyEstablishmentRepository repository, ILogger<CompanyDetailsService> logger)
+    public CompanyDetailsService(ICompanyEstablishmentRepository repository, IDummyDataRepository dummyDataRepository, ILogger<CompanyDetailsService> logger)
     {
         _repository = repository;
+        _dummyDataRepository = dummyDataRepository;
         _logger = logger;
     }
 
     public async Task<EstablishmentResponse?> LoadCompany(string businessId)
     {
+        if (_dummyDataRepository.IsDummyBusinessId(businessId))
+        {
+            return _dummyDataRepository.ReadEstablishment(businessId);
+        }
         var details = await _repository.LoadWithBusinessId(businessId);
         return details;
     }
@@ -24,7 +30,7 @@ public class CompanyDetailsService : ICompanyDetailsService
     public async Task<string> CreateCompany(string userId, EstablishmentResponse details)
     {
         var businessId = FinnishBusinessId.Generate();
-        while (await _repository.LoadWithBusinessId(businessId) is not null) businessId = FinnishBusinessId.Generate();
+        while (_dummyDataRepository.IsDummyBusinessId(businessId) || await _repository.LoadWithBusinessId(businessId) is not null) businessId = FinnishBusinessId.Generate();
 
         var result = await _repository.Save(userId, businessId, details);
         return result;
@@ -32,6 +38,11 @@ public class CompanyDetailsService : ICompanyDetailsService
 
     public async Task<string> SaveOrUpdateCompany(string userId, string businessId, EstablishmentResponse details)
     {
+        if (_dummyDataRepository.IsDummyBusinessId(businessId))
+        {
+            throw new Exception("Cannot save dummy data");
+        }
+
         var existingCompany = await _repository.LoadWithBusinessId(businessId);
         if (existingCompany is not null)
         {
@@ -79,7 +90,7 @@ public class CompanyDetailsService : ICompanyDetailsService
 
     public async Task<BasicInformationResponse?> LoadCompanyBasicInformation(string businessId)
     {
-        var company = await _repository.LoadWithBusinessId(businessId);
+        var company = _dummyDataRepository.IsDummyBusinessId(businessId) ? _dummyDataRepository.ReadEstablishment(businessId) : await _repository.LoadWithBusinessId(businessId);
         if (company is null) return null;
 
         var basicInformation = new BasicInformationResponse()
