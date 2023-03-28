@@ -1,12 +1,12 @@
 {
     "SignatoryRights": [
         {
-            "Role": "Chairman",
+            "Role": "chairperson",
             "PersonalId": "2254365789",
             "GivenName": "James",
             "MiddleNames": "Michael Jack",
             "LastName": "Jaatinen",
-            "DateOfBirth": "1978-15-06",
+            "DateOfBirth": "1978-06-15",
             "Nationality": "USA",
             "FullAddress": "106 Doyers Street, Apartment 20, New York NY 10014, USA",
             "Thoroughfare": null,
@@ -20,7 +20,7 @@
             "AdminUnitLevel2": null
         },
         {
-            "Role": "Director",
+            "Role": "director",
             "PersonalId": "2254365789",
             "GivenName": "Olf",
             "MiddleNames": "Jonathan",

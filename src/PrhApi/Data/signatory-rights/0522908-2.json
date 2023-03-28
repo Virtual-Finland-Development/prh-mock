@@ -1,12 +1,12 @@
 {
     "SignatoryRights": [
         {
-            "Role": "Chairman",
+            "Role": "chairperson",
             "PersonalId": "2254365789",
             "GivenName": "James",
             "MiddleNames": "Michael Jack",
             "LastName": "Jaatinen",
-            "DateOfBirth": "1978-15-06",
+            "DateOfBirth": "1978-06-15",
             "Nationality": "USA",
             "FullAddress": "106 Doyers Street, Apartment 20, New York NY 10014, USA",
             "Thoroughfare": null,
@@ -20,12 +20,12 @@
             "AdminUnitLevel2": null
         },
         {
-            "Role": "Member",
+            "Role": "board member",
             "PersonalId": "8954365766",
             "GivenName": "Mina",
             "MiddleNames": "Julia Maria",
             "LastName": "Leef",
-            "DateOfBirth": "1966-22-10",
+            "DateOfBirth": "1966-10-22",
             "Nationality": "SWE",
             "FullAddress": "Skogsgatan 31, 582 20 Lingköping, SWE",
             "Thoroughfare": null,
@@ -39,7 +39,7 @@
             "AdminUnitLevel2": null
         },
         {
-            "Role": "Member",
+            "Role": "board member",
             "PersonalId": "7654365766",
             "GivenName": "Yost",
             "MiddleNames": "Rudolf",
