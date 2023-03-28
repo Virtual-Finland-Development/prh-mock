@@ -29,42 +29,6 @@
                     "Quantity": 2000
                 }
             ]
-        },
-        {
-            "Name": "Brenda Taylor",
-            "ShareOwnership": [
-                {
-                    "ShareSeriesClass": "A",
-                    "Quantity": 1000
-                }
-            ]
-        },
-        {
-            "Name": "Future Ventures Ltd",
-            "ShareOwnership": [
-                {
-                    "ShareSeriesClass": "B",
-                    "Quantity": 2000
-                }
-            ]
-        },
-        {
-            "Name": "Olli Amber",
-            "ShareOwnership": [
-                {
-                    "ShareSeriesClass": "B",
-                    "Quantity": 1000
-                }
-            ]
-        },
-        {
-            "Name": "Alli Umber",
-            "ShareOwnership": [
-                {
-                    "ShareSeriesClass": "B",
-                    "Quantity": 1000
-                }
-            ]
         }
     ]
 }

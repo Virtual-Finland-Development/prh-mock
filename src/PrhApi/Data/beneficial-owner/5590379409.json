@@ -16,7 +16,7 @@
             "Name": "James Jaatinen",
             "ShareOwnership": [
                 {
-                    "ShareSeriesClass": "B",
+                    "ShareSeriesClass": "A",
                     "Quantity": 4000
                 }
             ]
@@ -25,48 +25,8 @@
             "Name": "Mike Olsen",
             "ShareOwnership": [
                 {
-                    "ShareSeriesClass": "B",
+                    "ShareSeriesClass": "A",
                     "Quantity": 2000
-                }
-            ]
-        },
-        {
-            "Name": "Brenda Taylor",
-            "ShareOwnership": [
-                {
-                    "ShareSeriesClass": "B",
-                    "Quantity": 1000
-                },
-                {
-                    "ShareSeriesClass": "B",
-                    "Quantity": 1000
-                }
-            ]
-        },
-        {
-            "Name": "Future Ventures Ltd",
-            "ShareOwnership": [
-                {
-                    "ShareSeriesClass": "B",
-                    "Quantity": 2000
-                }
-            ]
-        },
-        {
-            "Name": "Olli Amber",
-            "ShareOwnership": [
-                {
-                    "ShareSeriesClass": "B",
-                    "Quantity": 1000
-                }
-            ]
-        },
-        {
-            "Name": "Alli Umber",
-            "ShareOwnership": [
-                {
-                    "ShareSeriesClass": "B",
-                    "Quantity": 1000
                 }
             ]
         }

@@ -24,15 +24,6 @@
                     "Quantity": 2000
                 }
             ]
-        },
-        {
-            "Name": "James Jaatinen",
-            "ShareOwnership": [
-                {
-                    "ShareSeriesClass": "A",
-                    "Quantity": 1000
-                }
-            ]
         }
     ]
 }
