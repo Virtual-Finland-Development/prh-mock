@@ -54,7 +54,6 @@ public class CompanyEstablishmentS3Repository : ICompanyEstablishmentRepository
             ContentType = "application/json",
             ContentBody = JsonSerializer.Serialize(details)
         };
-        //request.Metadata.Add("company-name", details.CompanyDetails.Name);
 
         try
         {
