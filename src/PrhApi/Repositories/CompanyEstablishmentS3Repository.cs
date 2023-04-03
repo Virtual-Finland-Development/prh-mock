@@ -54,7 +54,6 @@ public class CompanyEstablishmentS3Repository : ICompanyEstablishmentRepository
             ContentType = "application/json",
             ContentBody = JsonSerializer.Serialize(details)
         };
-        request.Metadata.Add("company-name", details.CompanyDetails.Name);
 
         try
         {
@@ -89,7 +88,7 @@ public class CompanyEstablishmentS3Repository : ICompanyEstablishmentRepository
         {
             var company = await LoadWithObjectKey(key);
             if (company is null) continue;
-            
+
             companies.Add(new UserCompany
             {
                 NationalIdentifier = S3ObjectKey.GetBusinessIdFromS3ObjectKey(key),
