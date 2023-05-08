@@ -139,6 +139,7 @@ return await Deployment.RunAsync(() =>
     {
         ["ApplicationUrl"] = functionUrl.FunctionUrlResult,
         ["BucketName"] = bucket.Id,
-        ["Tags"] = tags
+        ["Tags"] = tags,
+        ["LambdaId"] = lambdaFunction.Name
     };
 });
