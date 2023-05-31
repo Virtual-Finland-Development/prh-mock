@@ -138,7 +138,9 @@ public class CompanyDetailsService : ICompanyDetailsService
         existingCompany.CompanyDetails.FoundingDate = details.CompanyDetails.FoundingDate;
         existingCompany.CompanyDetails.IndustrySector = details.CompanyDetails.IndustrySector;
         existingCompany.CompanyDetails.ShareCapital = details.CompanyDetails.ShareCapital;
+        existingCompany.CompanyDetails.CapitalCurrency = details.CompanyDetails.CapitalCurrency;
         existingCompany.CompanyDetails.SettlementDeposit = details.CompanyDetails.SettlementDeposit;
+        existingCompany.CompanyDetails.DepositCurrency = details.CompanyDetails.DepositCurrency;
         existingCompany.CompanyDetails.SettlementDate = details.CompanyDetails.SettlementDate;
         existingCompany.CompanyDetails.CountryOfResidence = details.CompanyDetails.CountryOfResidence;
 
