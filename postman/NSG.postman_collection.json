@@ -23,7 +23,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/draft/NSG/Agent/LegalEntity/NonListedCompany/Establishment",
+							"raw": "{{host}}/NSG/Agent/LegalEntity/NonListedCompany/Establishment",
 							"host": [
 								"{{host}}"
 							],
@@ -54,7 +54,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/draft/NSG/Agent/LegalEntity/NonListedCompany/Establishment/Write",
+							"raw": "{{host}}/NSG/Agent/LegalEntity/NonListedCompany/Establishment/Write",
 							"host": [
 								"{{host}}"
 							],
@@ -86,7 +86,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/draft/NSG/Agent/LegalEntity/NonListedCompany/BeneficialOwners",
+							"raw": "{{host}}/NSG/Agent/LegalEntity/NonListedCompany/BeneficialOwners",
 							"host": [
 								"{{host}}"
 							],
@@ -117,7 +117,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/draft/NSG/Agent/LegalEntity/NonListedCompany/BeneficialOwners/Write",
+							"raw": "{{host}}/NSG/Agent/LegalEntity/NonListedCompany/BeneficialOwners/Write",
 							"host": [
 								"{{host}}"
 							],
@@ -149,7 +149,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/draft/NSG/Agent/LegalEntity/NonListedCompany/SignatoryRights",
+							"raw": "{{host}}/NSG/Agent/LegalEntity/NonListedCompany/SignatoryRights",
 							"host": [
 								"{{host}}"
 							],
@@ -180,7 +180,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/draft/NSG/Agent/LegalEntity/NonListedCompany/SignatoryRights/Write",
+							"raw": "{{host}}/NSG/Agent/LegalEntity/NonListedCompany/SignatoryRights/Write",
 							"host": [
 								"{{host}}"
 							],
