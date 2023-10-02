@@ -9,7 +9,7 @@ public static class ProductizerEndpoints
 {
     public static void MapProductizerEndpoints(this WebApplication app)
     {
-        app.MapPost("draft/NSG/Agent/LegalEntity/NonListedCompany/Establishment",
+        app.MapPost("NSG/Agent/LegalEntity/NonListedCompany/Establishment_v1.0",
             async ([FromBody] EstablishmentRequest request, [FromServices] ICompanyDetailsService service,
                 [FromServices] IAuthenticationGatewayService authenticationGatewayService, HttpContext context) =>
             {
@@ -21,7 +21,7 @@ public static class ProductizerEndpoints
                     : Results.Ok(company);
             }).Produces<EstablishmentResponse>().Produces(404);
 
-        app.MapPost("draft/NSG/Agent/LegalEntity/NonListedCompany/Establishment/Write",
+        app.MapPost("NSG/Agent/LegalEntity/NonListedCompany/Establishment/Write_v1.0",
             async ([FromBody] EstablishmentResponse payload, [FromServices] ICompanyDetailsService service,
                 [FromServices] IAuthenticationGatewayService authenticationGatewayService, HttpContext context) =>
             {
@@ -40,7 +40,7 @@ public static class ProductizerEndpoints
                 return Results.Ok(result);
             }).Produces<EstablishmentResponse>().Produces<string>(400);
 
-        app.MapPost("draft/NSG/Agent/LegalEntity/NonListedCompany/BeneficialOwners",
+        app.MapPost("NSG/Agent/LegalEntity/NonListedCompany/BeneficialOwners_v1.0",
             async ([FromBody] BeneficialOwnersRequest request, [FromServices] IBeneficialOwnersService service,
                 [FromServices] IAuthenticationGatewayService authService,
                 HttpContext context) =>
@@ -55,7 +55,7 @@ public static class ProductizerEndpoints
                     : Results.Ok(result);
             }).Produces<BeneficialOwnersResponse>().Produces(404);
 
-        app.MapPost("draft/NSG/Agent/LegalEntity/NonListedCompany/BeneficialOwners/Write",
+        app.MapPost("NSG/Agent/LegalEntity/NonListedCompany/BeneficialOwners/Write_v1.0",
                 async ([FromBody] BeneficialOwnersWriteRequest payload, [FromServices] IBeneficialOwnersService service,
                     [FromServices] IAuthenticationGatewayService authService, HttpContext context) =>
                 {
@@ -68,7 +68,7 @@ public static class ProductizerEndpoints
                 })
             .Produces<BeneficialOwnersResponse>();
 
-        app.MapPost("draft/NSG/Agent/LegalEntity/NonListedCompany/SignatoryRights",
+        app.MapPost("NSG/Agent/LegalEntity/NonListedCompany/SignatoryRights_v1.0",
             async ([FromBody] SignatoryRightsRequest request, [FromServices] ISignatoryRightsService service,
                 [FromServices] IAuthenticationGatewayService authService, HttpContext context) =>
             {
@@ -82,7 +82,7 @@ public static class ProductizerEndpoints
                     : Results.Ok(data);
             }).Produces<SignatoryRightsResponse>().Produces(404);
 
-        app.MapPost("draft/NSG/Agent/LegalEntity/NonListedCompany/SignatoryRights/Write",
+        app.MapPost("NSG/Agent/LegalEntity/NonListedCompany/SignatoryRights/Write_v1.0",
             async (SignatoryRightsWriteRequest payload, ISignatoryRightsService service,
                 IAuthenticationGatewayService authService, HttpContext context) =>
             {
@@ -94,7 +94,7 @@ public static class ProductizerEndpoints
                 return result;
             }).Produces<SignatoryRightsResponse>();
 
-        app.MapPost("draft/NSG/Agent/BasicInformation",
+        app.MapPost("NSG/Agent/BasicInformation_v1.0",
             async ([FromBody] BasicInformationRequest request, [FromServices] ICompanyDetailsService service, HttpContext context) =>
             {
                 var companyBasicInfo = await service.LoadCompanyBasicInformation(request.NationalIdentifier);

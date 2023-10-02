@@ -145,7 +145,7 @@ paths:
       tags:
         - productizer
       description: Endpoint for writing signatory rights data
-  /draft/NSG/Agent/BasicInformation:
+  /NSG/Agent/BasicInformation:
     post:
       summary: Agent Basic Information
       description: Agent Basic Information
